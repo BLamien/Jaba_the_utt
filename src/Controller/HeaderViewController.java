@@ -9,6 +9,8 @@ public class HeaderViewController implements PropertyChangeListener {
     //Attributs
     private Header header;
 
+
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
