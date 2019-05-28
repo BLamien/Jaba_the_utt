@@ -12,11 +12,12 @@ public class MainFrame extends JFrame {
     public static final int heightSize = (int) windowDimension.getHeight();
 
     //Attributs
-    private HeaderViewController header = new HeaderViewController();
+    private HeaderViewController header = new HeaderViewController(new Header());
 
     //Constructor
     public MainFrame() {
         init();
+        setVisible(true);
     }
 
     private void init() {
@@ -31,7 +32,7 @@ public class MainFrame extends JFrame {
         setSize(windowDimension);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(getOwner());
-        setTitle("EduManager");
+        setTitle("JABA");
     }
 
     //Getters & Setters

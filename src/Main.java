@@ -1,9 +1,14 @@
 import Controller.Connexion;
+import View.MainFrame;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
+
+        MainFrame app = new MainFrame();
+
+        /*
         String nombdd = "projetjava";
         String user = "root";
         String passwd = "";
@@ -15,5 +20,7 @@ public class Main {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+         */
     }
 }

@@ -3,6 +3,7 @@ package View;
 import Controller.TabHeaderViewController;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Header extends JPanel {
     //Attributs
@@ -11,7 +12,6 @@ public class Header extends JPanel {
     private JLabel userName;
 
     //constructeur
-
     public Header() {
         init();
     }
@@ -20,8 +20,30 @@ public class Header extends JPanel {
         header1 = new TabHeaderViewController(new TabHeader("Mise à jour"));
         header2 = new TabHeaderViewController(new TabHeader("Refresh"));
 
-        userName = new UserHeader("Léonard DEVINCRE", "/Applications/MAMP/htdocs/Jaba_the_utt/src/Assets/14-Leo.png");
+        userName = new UserHeader("Léonard DEVINCRE", "/Assets/14-Leo.png");
 
+        // Layout
+        GridLayout layout = new GridLayout(1, 4);
+        layout.setHgap(7);
+        setLayout(layout);
+        setBackground(Color.DARK_GRAY);
 
+        this.add(userName);
+        this.add(header1.getTabHeader());
+        this.add(header2.getTabHeader());
+    }
+
+    //Getters & Setters
+    public TabHeaderViewController getHeader1() {
+        return header1;
+    }
+    public void setHeader1(TabHeaderViewController header1) {
+        this.header1 = header1;
+    }
+    public TabHeaderViewController getHeader2() {
+        return header2;
+    }
+    public void setHeader2(TabHeaderViewController header2) {
+        this.header2 = header2;
     }
 }
