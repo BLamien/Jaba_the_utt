@@ -1,6 +1,5 @@
 package View;
 
-import Controller.Connexion;
 import Controller.HeaderViewController;
 
 import javax.swing.*;
@@ -11,8 +10,6 @@ public class MainFrame extends JFrame {
     public static final Dimension windowDimension = Toolkit.getDefaultToolkit().getScreenSize();
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
-
-    private Connexion databaseConnection = null;
 
     //Attributs
     private HeaderViewController header = new HeaderViewController();
