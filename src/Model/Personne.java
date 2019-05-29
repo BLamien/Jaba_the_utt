@@ -2,11 +2,11 @@ package Model;
 
 public class Personne {
     //attributs
-    private int id_personne;
-    private String type;
-    private String prenom;
-    private String login;
-    private String mdp;
+    protected int id_personne;
+    protected String type;
+    protected String prenom;
+    protected String login;
+    protected String mdp;
 
     //getter
     public int getId_personne() {return id_personne;}
