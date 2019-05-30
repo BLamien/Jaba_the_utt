@@ -1,10 +1,8 @@
-package View;
+package View.Acceuil;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.nio.file.Paths;
 
 public class UserHeader extends JLabel{
     private ImagePanel img;

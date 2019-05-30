@@ -1,7 +1,11 @@
-package View;
+package View.Acceuil;
+
+import Constants.Colors;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -17,25 +21,40 @@ public class TabHeader extends JPanel {
 
     private JLabel titleLabel;
     private String title;
+    private String state;
 
     //constructeur
     public TabHeader(String title) {
-        this.title = title;
+        init(title);
     }
 
-    private void init(String state) {
+    private void init(String title) {
         titleLabel = new JLabel(title);
-        setLayout(new GridLayout());
-        setBorder(new EmptyBorder(10,0,10,0));
+        GridLayout gridLayout = new GridLayout();
+        setLayout(gridLayout);
+
+        setBorder(new CompoundBorder(new LineBorder(Colors.white), new EmptyBorder(30,0,30,0)));
         add(titleLabel);
     }
 
     //Getters & Setters
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() { return title; }
     public void setTitle(String title) {
         this.title = title;
+    }
+    public JLabel getTitleLabel() {
+        return titleLabel;
+    }
+    public void setTitleLabel(JLabel titleLabel) {
+        this.titleLabel = titleLabel;
+    }
+    public String getState() { return state; }
+    public void setState(String state) {
+        String oldState = this.state;
+        this.state = state;
+        if(state.equals(STATE_ACTIVATED)){
+            this.pcs.firePropertyChange(STATE_HAS_CHANGED, oldState, this.state);
+        }
     }
 
     //Gestion du changement d'etat
