@@ -84,7 +84,7 @@ CREATE TABLE Enseignement(
 
 CREATE TABLE Personne(
     ID_Personne int(11) PRIMARY KEY AUTO_INCREMENT,
-    Type varchar(255) NOT NULL,
+    Type_Personne varchar(255) NOT NULL,
     Nom varchar(255) NOT NULL,
     Prenom varchar(255) NOT NULL,
     Login varchar(255) NOT NULL,
