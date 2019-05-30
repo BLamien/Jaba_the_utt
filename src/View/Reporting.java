@@ -15,7 +15,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
-//TODO one pie chart and one bar chart
+//TODO des charts dynamiques qui ont un nombre de pics variables
 public class Reporting  {
 
 
