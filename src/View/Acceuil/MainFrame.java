@@ -1,4 +1,4 @@
-package View;
+package View.Acceuil;
 
 import Controller.HeaderViewController;
 
@@ -25,8 +25,10 @@ public class MainFrame extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.GRAY);
+        JPanel h = header.getHeader();
+        h.setSize(widthSize,heightSize/3);
 
-        contentPane.add(header.getHeader(), BorderLayout.NORTH);
+        contentPane.add(h, BorderLayout.NORTH);
 
         // Frame init
         setSize(windowDimension);

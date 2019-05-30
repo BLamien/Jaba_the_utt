@@ -1,9 +1,9 @@
 package Controller;
 
-import View.TabHeader;
+import Constants.Colors;
+import View.Acceuil.TabHeader;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,17 +22,17 @@ public class TabHeaderViewController implements MouseListener {
         tabHeader.setState(constantStateTab);
 
         if(constantStateTab.equals(TabHeader.STATE_NORMAL)) {
-            tabHeader.setBackground(Color.ORANGE);
+            tabHeader.setBackground(Colors.green);
             tabHeader.getTitleLabel().setHorizontalAlignment(SwingConstants.CENTER);
-            tabHeader.getTitleLabel().setForeground(Color.RED);
+            tabHeader.getTitleLabel().setForeground(Colors.white);
         } else if(constantStateTab.equals(TabHeader.STATE_SELECTED)) {
-            tabHeader.setBackground(Color.ORANGE);
+            tabHeader.setBackground(Colors.green);
             tabHeader.getTitleLabel().setHorizontalAlignment(SwingConstants.CENTER);
-            tabHeader.getTitleLabel().setForeground(Color.BLUE);
+            tabHeader.getTitleLabel().setForeground(Colors.gris);
         } else if(constantStateTab.equals(TabHeader.STATE_ACTIVATED)) {
-            tabHeader.setBackground(Color.RED);
+            tabHeader.setBackground(Colors.green);
             tabHeader.getTitleLabel().setHorizontalAlignment(SwingConstants.CENTER);
-            tabHeader.getTitleLabel().setForeground(Color.BLUE);
+            tabHeader.getTitleLabel().setForeground(Colors.gris);
         }
     }
 

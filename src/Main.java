@@ -1,7 +1,4 @@
-import Controller.Connexion;
-import View.MainFrame;
-
-import java.sql.SQLException;
+import View.Acceuil.MainFrame;
 
 public class Main {
     public static void main(String[] args) {

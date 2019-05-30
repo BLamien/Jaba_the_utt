@@ -1,8 +1,10 @@
-package View;
+package View.Acceuil;
 
+import Constants.Colors;
 import Controller.TabHeaderViewController;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class Header extends JPanel {
@@ -23,10 +25,11 @@ public class Header extends JPanel {
         userName = new UserHeader("Léonard DEVINCRE", "/Assets/14-Leo.png");
 
         // Layout
-        GridLayout layout = new GridLayout(1, 4);
-        layout.setHgap(7);
+        GridLayout layout = new GridLayout(1, 3);
+        layout.setHgap(300);
         setLayout(layout);
-        setBackground(Color.DARK_GRAY);
+        setBorder(new EmptyBorder(30, 30,30,30));
+        setBackground(Colors.green);
 
         this.add(userName);
         this.add(header1.getTabHeader());

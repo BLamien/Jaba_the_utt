@@ -1,7 +1,11 @@
-package View;
+package View.Acceuil;
+
+import Constants.Colors;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -26,8 +30,10 @@ public class TabHeader extends JPanel {
 
     private void init(String title) {
         titleLabel = new JLabel(title);
-        setLayout(new GridLayout());
-        setBorder(new EmptyBorder(30,0,30,0));
+        GridLayout gridLayout = new GridLayout();
+        setLayout(gridLayout);
+
+        setBorder(new CompoundBorder(new LineBorder(Colors.white), new EmptyBorder(30,0,30,0)));
         add(titleLabel);
     }
 
