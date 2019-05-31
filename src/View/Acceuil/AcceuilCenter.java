@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class AcceuilCenter extends JPanel {
     //Attributs
+    JButton connexion;
     JTextField addrServer;
     JTextField nomServer;
     JTextField userName;
@@ -24,6 +25,7 @@ public class AcceuilCenter extends JPanel {
         nomServer.setBounds(0,0,50,10);
         userName = new JTextField();
         password = new JPasswordField();
+        connexion = new JButton("Connection");
         addrServer.setPreferredSize(new Dimension(300,30));
         nomServer.setPreferredSize(new Dimension(300,30));
         userName.setPreferredSize(new Dimension(300,30));
@@ -72,12 +74,11 @@ public class AcceuilCenter extends JPanel {
         constraints.gridx = 1;
         constraints.gridy = 3;
         this.add(password, constraints);
-
-        /*
-        GridLayout layout = new GridLayout(1, 3);
-        layout.setHgap(200);
-
-         */
+        constraints.gridx=0;
+        constraints.gridy=4;
+        constraints.gridwidth=2;
+        this.add(connexion, constraints);
+        
         setBorder(new EmptyBorder(30, 30,30,30));
         setBackground(Colors.green);
     }
