@@ -1,9 +1,13 @@
-import Controller.Connexion;
-
-import java.sql.SQLException;
+import View.HomeScreen.MainFrame;
+import View.Acceuil.AccueilFrame;
 
 public class Main {
     public static void main(String[] args) {
+
+        AccueilFrame acceuil = new AccueilFrame();
+        //MainFrame app = new MainFrame();
+
+        /*
         String nombdd = "projetjava";
         String user = "root";
         String passwd = "";
@@ -15,5 +19,7 @@ public class Main {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+         */
     }
 }

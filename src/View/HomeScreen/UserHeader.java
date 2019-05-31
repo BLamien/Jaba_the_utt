@@ -1,10 +1,10 @@
-package View;
+package View.HomeScreen;
+
+import View.ImagePanel;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.nio.file.Paths;
 
 public class UserHeader extends JLabel{
     private ImagePanel img;

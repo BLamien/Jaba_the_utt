@@ -1,4 +1,4 @@
-package View;
+package View.HomeScreen;
 
 import Controller.HeaderViewController;
 
@@ -12,11 +12,12 @@ public class MainFrame extends JFrame {
     public static final int heightSize = (int) windowDimension.getHeight();
 
     //Attributs
-    private HeaderViewController header = new HeaderViewController();
+    private HeaderViewController header = new HeaderViewController(new Header());
 
     //Constructor
     public MainFrame() {
         init();
+        setVisible(true);
     }
 
     private void init() {
@@ -24,14 +25,16 @@ public class MainFrame extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.GRAY);
+        JPanel h = header.getHeader();
+        h.setSize(widthSize,heightSize/3);
 
-        contentPane.add(header.getHeader(), BorderLayout.NORTH);
+        contentPane.add(h, BorderLayout.NORTH);
 
         // Frame init
         setSize(windowDimension);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(getOwner());
-        setTitle("EduManager");
+        setTitle("JABA");
     }
 
     //Getters & Setters
