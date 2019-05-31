@@ -4,20 +4,22 @@ CREATE TABLE Ecole(
 	Annee_Fondation int(11) NOT NULL
 );
 
+CREATE TABLE AnneeScolaire(
+    ID_AnneeScolaire int(11) PRIMARY KEY AUTO_INCREMENT,
+    Debut_AnneeScolaire int(11) NOT NULL,
+    Fin_AnneeScolaire int(11) NOT NULL
+);
+
 CREATE TABLE Classe(
     ID_Classe int(11) PRIMARY KEY AUTO_INCREMENT,
     Niveau varchar(255) NOT NULL,
     ID_Ecole int(11),
     ID_AnneeScolaire int(11),
     FOREIGN KEY (ID_Ecole) REFERENCES Ecole(ID_Ecole),
-    FOREIGN KEY (ID_AnneeScolaire) REFERENCES Ecole(ID_AnneeScolaire)
+    FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire)
 );
 
-CREATE TABLE AnneeScolaire(
-    ID_AnneeScolaire int(11) PRIMARY KEY AUTO_INCREMENT,
-    Debut_AnneeScolaire int(11) NOT NULL,
-    Fin_AnneeScolaire int(11) NOT NULL
-);
+
 
 CREATE TABLE Trimestre(
     ID_Trimestre int(11) PRIMARY KEY AUTO_INCREMENT,
