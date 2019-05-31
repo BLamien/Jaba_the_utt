@@ -7,26 +7,13 @@ CREATE TABLE Ecole(
 <<<<<<< HEAD
 CREATE TABLE Classe(
     ID_Classe int(11) PRIMARY KEY AUTO_INCREMENT,
+    Niveau varchar(255) NOT NULL,
     ID_Ecole int(11),
-    ID_Niveau int(11),
     ID_AnneeScolaire int(11),
     FOREIGN KEY (ID_Ecole) REFERENCES Ecole(ID_Ecole),
-    FOREIGN KEY (ID_Niveau) REFERENCES Niveau(ID_Niveau),
     FOREIGN KEY (ID_AnneeScolaire) REFERENCES Ecole(ID_AnneeScolaire)
 );
 
-CREATE TABLE Effectif(
-    ID_Effectif int(11) PRIMARY KEY AUTO_INCREMENT,
-    ID_Classe int(11),
-    ID_Personne int(11),
-    FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe),
-    FOREIGN KEY (ID_Personne) REFERENCES Personne(ID_Personne)
-);
-
-CREATE TABLE Niveau(
-    ID_Niveau int(11) PRIMARY KEY AUTO_INCREMENT,
-    Nom_Niveau varchar(255) NOT NULL
-);
 CREATE TABLE AnneeScolaire(
     ID_AnneeScolaire int(11) PRIMARY KEY AUTO_INCREMENT,
     Debut_AnneeScolaire int(11) NOT NULL,
@@ -54,6 +41,7 @@ CREATE TABLE Classe(
 CREATE TABLE Trimestre(
     ID_Trimestre int(11) PRIMARY KEY AUTO_INCREMENT,
     Numero int(11) NOT NULL,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     Debut_Trimestre int(11) NOT NULL,
     Debut_Trimestre int(11) NOT NULL,
@@ -61,17 +49,26 @@ CREATE TABLE Trimestre(
     Debut_Trimestre date NOT NULL,
     Fin_Trimestre date NOT NULL,
 >>>>>>> master
+=======
+    Debut_Trimestre date NOT NULL,
+    Fin_Trimestre date NOT NULL,
+>>>>>>> Stashed changes
     ID_AnneeScolaire int(11),
     FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire)
 );
 
 CREATE TABLE Bulletin(
     ID_Bulletin int(11) PRIMARY KEY AUTO_INCREMENT,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+    Moyenne_Trimestre float NOT NULL,
+>>>>>>> Stashed changes
     ID_Trimestre int(11),
-    ID_Effectif int(11),
+    ID_Eleve int(11),
     Appreciation_Bulletin varchar(255) NOT NULL,
     FOREIGN KEY (ID_Trimestre) REFERENCES Trimestre(ID_Trimestre),
+<<<<<<< Updated upstream
     FOREIGN KEY (ID_Effectif) REFERENCES Effectif(ID_Effectif)
 =======
     Moyenne_Trimestre float NOT NULL,
@@ -81,26 +78,38 @@ CREATE TABLE Bulletin(
     FOREIGN KEY (ID_Trimestre) REFERENCES Trimestre(ID_Trimestre),
     FOREIGN KEY (ID_Eleve) REFERENCES Eleve(ID_Eleve)
 >>>>>>> master
+=======
+    FOREIGN KEY (ID_Eleve) REFERENCES Eleve(ID_Eleve)
+>>>>>>> Stashed changes
 );
 
 CREATE TABLE DetailBulletin(
     ID_DetailBulletin int(11) PRIMARY KEY AUTO_INCREMENT,
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
     Moyenne_Enseignement float NOT NULL,
 >>>>>>> master
+=======
+    Moyenne_Enseignement float NOT NULL,
+>>>>>>> Stashed changes
     ID_Bulletin int(11),
     ID_Enseignement int(11),
     Appreciation_DetailBulletin varchar(255) NOT NULL,
     FOREIGN KEY (ID_Bulletin) REFERENCES Bulletin (ID_Bulletin),
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     FOREIGN KEY (ID_Cours) REFERENCES Enseignement(ID_Enseignement)
+=======
+    FOREIGN KEY (ID_Enseignement) REFERENCES Enseignement(ID_Enseignement)
+>>>>>>> Stashed changes
 );
 
-CREATE TABLE Evaluation(
-    ID_Evaluation int(11) PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Devoir(
+    ID_Devoir int(11) PRIMARY KEY AUTO_INCREMENT,
     ID_DetailBulletin int(11),
     Note int(11) NOT NULL,
+<<<<<<< Updated upstream
     Appreciation_Evaluation varchar(255) NOT NULL,
 =======
     FOREIGN KEY (ID_Enseignement) REFERENCES Enseignement(ID_Enseignement)
@@ -112,6 +121,9 @@ CREATE TABLE Devoir(
     Note int(11) NOT NULL,
     Appreciation_Devoir varchar(255) NOT NULL,
 >>>>>>> master
+=======
+    Appreciation_Devoir varchar(255) NOT NULL,
+>>>>>>> Stashed changes
     FOREIGN KEY (ID_DetailBulletin) REFERENCES DetailBulletin(ID_DetailBulletin)
 );
 
@@ -124,13 +136,18 @@ CREATE TABLE Enseignement(
     ID_Enseignement int(11) PRIMARY KEY AUTO_INCREMENT,
     ID_Classe int(11),
     ID_Discipline int(11),
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     ID_Personne int(11),
+=======
+    ID_Enseignant int(11),
+>>>>>>> Stashed changes
     FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe),
     FOREIGN KEY (ID_Discipline) REFERENCES Discipline(ID_Discipline),
-    FOREIGN KEY (ID_Personne) REFERENCES Personne(ID_Personne)
+    FOREIGN KEY (ID_Enseignant) REFERENCES Enseignant(ID_Enseignant)
 );
 
+<<<<<<< Updated upstream
 CREATE TABLE Personne(
     ID_Personne int(11) PRIMARY KEY AUTO_INCREMENT,
     Type varchar(255) NOT NULL,
@@ -144,21 +161,33 @@ CREATE TABLE Personne(
 CREATE TABLE Enseignant(
     ID_Enseignant int(11) PRIMARY KEY AUTO_INCREMENT,
 >>>>>>> master
+=======
+CREATE TABLE Enseignant(
+    ID_Enseignant int(11) PRIMARY KEY AUTO_INCREMENT,
+>>>>>>> Stashed changes
     Nom varchar(255) NOT NULL,
     Prenom varchar(255) NOT NULL,
     Login varchar(255) NOT NULL,
     Mdp varchar(255) NOT NULL
 );
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 CREATE TABLE Inscription(
     ID_Inscription int(11) PRIMARY KEY AUTO_INCREMENT,
+=======
+CREATE TABLE Eleve(
+    ID_Eleve int(11) PRIMARY KEY AUTO_INCREMENT,
+    Nom varchar(255) NOT NULL,
+    Prenom varchar(255) NOT NULL,
+    Login varchar(255) NOT NULL,
+    Mdp varchar(255) NOT NULL,
+>>>>>>> Stashed changes
     ID_Classe int(11),
-    ID_Personne int(11),
-    FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe),
-    FOREIGN KEY (ID_Personne) REFERENCES Personne(ID_Personne)
+    FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe)
 );
 
+<<<<<<< Updated upstream
 =======
 CREATE TABLE Eleve(
     ID_Eleve int(11) PRIMARY KEY AUTO_INCREMENT,
@@ -170,6 +199,8 @@ CREATE TABLE Eleve(
     FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe)
 );
 
+=======
+>>>>>>> Stashed changes
 INSERT INTO Ecole VALUES (1, 'Ece Paris', 1919);
 
 INSERT INTO Enseignant VALUES (1, 'Rossard', 'Jacques', 'JacquesRossard', 'oklm');
@@ -227,4 +258,7 @@ INSERT INTO Devoir VALUES (9, 9, 12, 'Assez Bien');
 
 
 
+<<<<<<< Updated upstream
 >>>>>>> master
+=======
+>>>>>>> Stashed changes
