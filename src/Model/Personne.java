@@ -30,7 +30,7 @@ public class Personne {
         login="";
         mdp="";
     }
-    Personne(int id_personne_,String type_ ,String prenom_ ,String login_, String mdp_){
+    public Personne(int id_personne_,String type_ ,String prenom_ ,String login_, String mdp_){
         id_personne=id_personne_;
         type=type_;
         prenom=prenom_;
