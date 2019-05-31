@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+//TODO ajouter un attribut niveau (string) et enlever la classe niveau
 public class Classe {
     //attribut
     private int id_classe;
