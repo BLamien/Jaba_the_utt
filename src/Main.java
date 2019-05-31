@@ -12,13 +12,5 @@ public class Main {
         String passwd = "";
         View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
-        try {
-            Connexion test = new Connexion(nombdd, user, passwd);
-            System.out.println("Connexion réussi !");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

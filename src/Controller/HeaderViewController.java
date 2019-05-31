@@ -11,7 +11,7 @@ public class HeaderViewController implements PropertyChangeListener {
     private Header header;
 
     //Constructeur
-    public HeaderViewController(Header _header) {
+    public HeaderViewController(View.HomeScreen.Header _header) {
         this.header = _header;
         this.header.getHeader1().getTabHeader().addPropertyChangeListener(this);
         this.header.getHeader2().getTabHeader().addPropertyChangeListener(this);
