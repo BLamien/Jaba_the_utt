@@ -1,7 +1,7 @@
 package Controller;
 
-import View.Acceuil.Header;
-import View.Acceuil.TabHeader;
+import View.HomeScreen.Header;
+import View.HomeScreen.TabHeader;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

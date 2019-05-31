@@ -1,4 +1,4 @@
-package View.Acceuil;
+package View.HomeScreen;
 
 import Constants.Colors;
 

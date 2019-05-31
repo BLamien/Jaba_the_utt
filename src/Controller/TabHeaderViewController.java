@@ -1,7 +1,7 @@
 package Controller;
 
 import Constants.Colors;
-import View.Acceuil.TabHeader;
+import View.HomeScreen.TabHeader;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;

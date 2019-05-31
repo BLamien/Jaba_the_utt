@@ -1,9 +1,11 @@
-import View.Acceuil.MainFrame;
+import View.HomeScreen.MainFrame;
+import View.Acceuil.AccueilFrame;
 
 public class Main {
     public static void main(String[] args) {
 
-        MainFrame app = new MainFrame();
+        AccueilFrame acceuil = new AccueilFrame();
+        //MainFrame app = new MainFrame();
 
         /*
         String nombdd = "projetjava";

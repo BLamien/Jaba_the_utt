@@ -1,4 +1,6 @@
-package View.Acceuil;
+package View.HomeScreen;
+
+import View.ImagePanel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

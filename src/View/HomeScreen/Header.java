@@ -1,4 +1,4 @@
-package View.Acceuil;
+package View.HomeScreen;
 
 import Constants.Colors;
 import Controller.TabHeaderViewController;
@@ -25,7 +25,7 @@ public class Header extends JPanel {
         userName = new UserHeader("Léonard DEVINCRE", "/Assets/14-Leo.png");
 
         // Layout
-        GridLayout layout = new GridLayout(1, 3);
+        GridLayout layout = new GridLayout(1, 1);
         layout.setHgap(300);
         setLayout(layout);
         setBorder(new EmptyBorder(30, 30,30,30));
