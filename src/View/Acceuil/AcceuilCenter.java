@@ -1,6 +1,7 @@
 package View.Acceuil;
 
 import Constants.Colors;
+import Controller.Connexion;
 import View.HomeScreen.MainFrame;
 import View.ImagePanel;
 
@@ -9,12 +10,13 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class AcceuilCenter extends JPanel {
     //Attributs
     JButton connexion;
     JTextField addrServer;
-    JTextField nomServer;
+    JTextField nombdd;
     JTextField userName;
     JPasswordField password;
 
@@ -24,19 +26,27 @@ public class AcceuilCenter extends JPanel {
 
     public void init(){
         addrServer = new JTextField();
-        nomServer = new JTextField();
-        nomServer.setBounds(0,0,50,10);
+        nombdd = new JTextField();
+        nombdd.setBounds(0,0,50,10);
         userName = new JTextField();
         password = new JPasswordField();
         connexion = new JButton("Connection");connexion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Connexion test = new Connexion(nombdd.getText(), userName.getText(), password.getText());
+                    System.out.println("Connexion réussi !");
+                } catch (SQLException u) {
+                    u.printStackTrace();
+                } catch (ClassNotFoundException u) {
+                    u.printStackTrace();
+                }
                 MainFrame mainFrame = new MainFrame();
             }
         });
 
         addrServer.setPreferredSize(new Dimension(300,30));
-        nomServer.setPreferredSize(new Dimension(300,30));
+        nombdd.setPreferredSize(new Dimension(300,30));
         userName.setPreferredSize(new Dimension(300,30));
         password.setPreferredSize(new Dimension(300,30));
 
@@ -70,7 +80,7 @@ public class AcceuilCenter extends JPanel {
         this.add(nomStringLabel, constraints);
         constraints.gridx = 1;
         constraints.gridy = 1;
-        this.add(nomServer, constraints);
+        this.add(nombdd, constraints);
         constraints.gridx = 0;
         constraints.gridy = 2;
         this.add(userNameStringLabel, constraints);

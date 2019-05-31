@@ -12,7 +12,7 @@ public class TabHeaderViewController implements MouseListener {
     TabHeader tabHeader;
 
     //Constructeur
-    public TabHeaderViewController(TabHeader tabHeader) {
+    public TabHeaderViewController(View.HomeScreen.TabHeader tabHeader) {
         this.tabHeader = tabHeader;
         changePanelState(TabHeader.STATE_NORMAL);
         this.tabHeader.addMouseListener(this);
