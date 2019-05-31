@@ -1,11 +1,14 @@
 package View.Acceuil;
 
 import Constants.Colors;
+import View.HomeScreen.MainFrame;
 import View.ImagePanel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AcceuilCenter extends JPanel {
     //Attributs
@@ -25,7 +28,13 @@ public class AcceuilCenter extends JPanel {
         nomServer.setBounds(0,0,50,10);
         userName = new JTextField();
         password = new JPasswordField();
-        connexion = new JButton("Connection");
+        connexion = new JButton("Connection");connexion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFrame mainFrame = new MainFrame();
+            }
+        });
+
         addrServer.setPreferredSize(new Dimension(300,30));
         nomServer.setPreferredSize(new Dimension(300,30));
         userName.setPreferredSize(new Dimension(300,30));
@@ -78,7 +87,7 @@ public class AcceuilCenter extends JPanel {
         constraints.gridy=4;
         constraints.gridwidth=2;
         this.add(connexion, constraints);
-        
+
         setBorder(new EmptyBorder(30, 30,30,30));
         setBackground(Colors.green);
     }
