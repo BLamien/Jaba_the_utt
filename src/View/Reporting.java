@@ -198,6 +198,7 @@ public class Reporting  {
      * @param value1 valeur de liee a la premiere categorie d'entite
      * @param categorie2 seconde categoreie d'entite
      * @param value2 valeur de liee a la seconde categorie d'entite
+     * @param titreFenetre titre de la fenetre ou est represente le graphique
      * @param titreChart titre du graphique
      * @param legend booleen d'affiche des legendes
      * @param tooltips booleen d'affiche des outils
@@ -236,6 +237,7 @@ public class Reporting  {
      * @param value2 valeur de liee a la seconde categorie d'entite
      * @param categorie3 troisieme categoreie d'entite
      * @param value3  valeur de liee a la seconde categorie d'entite
+     * @param titreFenetre titre de la fenetre ou est represente le graphique
      * @param titreChart titre du graphique
      * @param legend booleen d'affiche des legendes
      * @param tooltips booleen d'affiche des outils
