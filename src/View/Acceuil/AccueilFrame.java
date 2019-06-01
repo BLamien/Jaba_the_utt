@@ -1,8 +1,5 @@
 package View.Acceuil;
 //TODO : JavaDoc
-import Controller.HeaderViewController;
-import View.HomeScreen.Header;
-import View.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;

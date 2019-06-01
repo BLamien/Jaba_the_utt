@@ -1,9 +1,7 @@
 package View.HomeScreen;
 //TODO : JavaDoc
-import Controller.HeaderViewController;
 
 import Constants.Colors;
-import Model.Personne;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -42,13 +40,13 @@ public class MainFrame extends JFrame implements ActionListener {
 
         //initiation de la table
         tableau = new JTable(modele);
-        JScrollPane tabs = new JScrollPane(tableau);
+        tabs = new JScrollPane(tableau);
         tabs.setBorder(new EmptyBorder(100,300,100,300));
         tabs.setBackground(Colors.green);
         contentPane.add(tabs, BorderLayout.CENTER);
 
         //bouton en bas
-        JPanel boutons = new JPanel();
+        boutons = new JPanel();
         JButton add = new JButton("Ajouter");
         add.addActionListener(this);
         JButton remove = new JButton("Supprimer");
