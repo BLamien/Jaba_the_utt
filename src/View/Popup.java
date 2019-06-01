@@ -1,5 +1,7 @@
 package View;
 
+import Model.Personne;
+
 import javax.swing.*;
 
 
@@ -32,4 +34,5 @@ public class Popup
             return false;
         }
     }
+
 }

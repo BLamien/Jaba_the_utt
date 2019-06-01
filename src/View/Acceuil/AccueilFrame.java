@@ -1,9 +1,5 @@
 package View.Acceuil;
 
-import Controller.HeaderViewController;
-import View.HomeScreen.Header;
-import View.ImagePanel;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,8 +9,6 @@ public class AccueilFrame extends JFrame {
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
 
-    //Attributs
-    private HeaderViewController header = new HeaderViewController(new Header());
 
     //Constructor
     public AccueilFrame() {
@@ -50,10 +44,5 @@ public class AccueilFrame extends JFrame {
     public static int getHeightSize() {
         return heightSize;
     }
-    public HeaderViewController getHeader() {
-        return header;
-    }
-    public void setHeader(HeaderViewController header) {
-        this.header = header;
-    }
+
 }
