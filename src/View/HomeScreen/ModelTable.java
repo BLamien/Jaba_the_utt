@@ -56,7 +56,6 @@ public class ModelTable extends AbstractTableModel {
 
     public void addPersonne(Personne personne) {
         personnes.add(personne);
-
         fireTableRowsInserted(personnes.size() -1, personnes.size() -1);
     }
 

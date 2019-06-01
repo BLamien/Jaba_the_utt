@@ -27,7 +27,7 @@ public class Connexion {
     public ArrayList<String> requetesMaj = new ArrayList<>();
 
     /**
-     * Constructeur avec 3 paramètres : nom, login et password de la BDD locale
+     * Constructeur avec 3 paramètres : nom, login et password de la Database locale
      *
      * @param nameDatabase
      * @param loginDatabase
@@ -51,7 +51,7 @@ public class Connexion {
 
     /**
      * Constructeur avec 4 paramètres : username et password ECE, login et
-     * password de la BDD à distance sur le serveur de l'ECE
+     * password de la Database à distance sur le serveur de l'ECE
      * @param usernameECE
      * @param passwordECE
      * @param loginDatabase

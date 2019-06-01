@@ -1,23 +1,30 @@
 package View.HomeScreen;
 //TODO : JavaDoc
 import Controller.HeaderViewController;
+
+import Constants.Colors;
 import Model.Personne;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ActionListener {
     //Constantes
     public static final Dimension windowDimension = Toolkit.getDefaultToolkit().getScreenSize();
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
 
     //Attributs
-    private HeaderViewController header = new HeaderViewController(new Header());
+    //private HeaderViewController header = new HeaderViewController(new Header());
+    private HeaderV2 header = new HeaderV2();
     private ModelTable modele = new ModelTable();
     private JTable tableau;
+    private ChoixStats stats = new ChoixStats();
+    private JScrollPane tabs;
+    private JPanel boutons;
 
     //Constructor
     public MainFrame() {
@@ -30,37 +37,27 @@ public class MainFrame extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.GRAY);
-        JPanel h = header.getHeader();
-        h.setSize(widthSize,heightSize/3);
-        contentPane.add(h, BorderLayout.NORTH);
+        header.setSize(widthSize,heightSize/3);
+        contentPane.add(header, BorderLayout.NORTH);
 
         //initiation de la table
         tableau = new JTable(modele);
-        contentPane.add(new JScrollPane(tableau), BorderLayout.CENTER);
+        JScrollPane tabs = new JScrollPane(tableau);
+        tabs.setBorder(new EmptyBorder(100,300,100,300));
+        tabs.setBackground(Colors.green);
+        contentPane.add(tabs, BorderLayout.CENTER);
 
         //bouton en bas
         JPanel boutons = new JPanel();
         JButton add = new JButton("Ajouter");
-        add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                modele.addPersonne(new Personne(233, "ajout", "d'un", "nouvel", "ami"));
-            }
-        });
+        add.addActionListener(this);
         JButton remove = new JButton("Supprimer");
-        remove.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int[] selection = tableau.getSelectedRows();
-
-                for(int i = selection.length - 1; i >= 0; i--){
-                    modele.removePersonne(selection[i]);
-                }
-            }
-        });
+        remove.addActionListener(this);
         boutons.add(add);
         boutons.add(remove);
         contentPane.add(boutons, BorderLayout.SOUTH);
+
+        header.getStats().addActionListener(this);
 
         // Frame init
         setSize(windowDimension);
@@ -79,10 +76,63 @@ public class MainFrame extends JFrame {
     public static int getHeightSize() {
         return heightSize;
     }
-    public HeaderViewController getHeader() {
+    public HeaderV2 getHeader() {
         return header;
     }
-    public void setHeader(HeaderViewController header) {
+    public void setHeader(HeaderV2 header) {
         this.header = header;
+    }
+    public JTable getTableau() {
+        return tableau;
+    }
+    public void setTableau(JTable tableau) {
+        this.tableau = tableau;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+
+        if(button.getText().equals("Supprimer")){
+            if(View.Popup.check("Etes-vous sur de vouloir supprimer cette personne ?")){
+                int[] selection = tableau.getSelectedRows();
+                for(int i = selection.length - 1; i >= 0; i--){
+                    modele.removePersonne(selection[i]);
+                }
+            }
+        }
+        if(button.getText().equals("Ajouter")){
+            AjoutPersonne ap = new AjoutPersonne(modele);
+            getContentPane().revalidate();
+        }
+        if(button.getText().equals("Statistiques")){
+            getContentPane().remove(tabs);
+            getContentPane().remove(boutons);
+            getContentPane().add(stats,BorderLayout.CENTER);
+            getContentPane().repaint();
+        }
+
+
+    }
+
+
+    //Getter & Setter
+    public ModelTable getModele() {
+        return modele;
+    }
+    public void setModele(ModelTable modele) {
+        this.modele = modele;
+    }
+    public ChoixStats getStats() {
+        return stats;
+    }
+    public void setStats(ChoixStats stats) {
+        this.stats = stats;
+    }
+    public JScrollPane getTabs() {
+        return tabs;
+    }
+    public void setTabs(JScrollPane tabs) {
+        this.tabs = tabs;
     }
 }

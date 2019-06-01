@@ -1,5 +1,5 @@
 package View.HomeScreen;
-//TODO : JavaDoc
+
 import Constants.Colors;
 import Controller.TabHeaderViewController;
 

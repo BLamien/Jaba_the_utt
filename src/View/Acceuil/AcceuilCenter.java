@@ -4,6 +4,7 @@ import Constants.Colors;
 import Controller.Connexion;
 import View.HomeScreen.MainFrame;
 import View.ImagePanel;
+import View.Popup;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -36,9 +37,12 @@ public class AcceuilCenter extends JPanel {
                 try {
                     Connexion test = new Connexion(nombdd.getText(), userName.getText(), password.getText());
                     System.out.println("Connexion réussi !");
+                    Popup.infoBox("La connexion à la base de donnée à réussi !", "Connexion réussi !");
                 } catch (SQLException u) {
+                    Popup.infoBox("La connexion à la base de donnée à échoué !", "Connexion raté !");
                     u.printStackTrace();
                 } catch (ClassNotFoundException u) {
+                    Popup.infoBox("La connexion à la base de donnée à échoué !", "Connexion raté !");
                     u.printStackTrace();
                 }
                 MainFrame mainFrame = new MainFrame();
