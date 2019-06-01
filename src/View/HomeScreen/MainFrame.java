@@ -51,10 +51,11 @@ public class MainFrame extends JFrame {
         remove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] selection = tableau.getSelectedRows();
-
-                for(int i = selection.length - 1; i >= 0; i--){
-                    modele.removePersonne(selection[i]);
+                if(View.Popup.check("Etes-vous sur de vouloir supprimer cette personne ?")){
+                    int[] selection = tableau.getSelectedRows();
+                    for(int i = selection.length - 1; i >= 0; i--){
+                        modele.removePersonne(selection[i]);
+                    }
                 }
             }
         });
@@ -67,6 +68,10 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(getOwner());
         setTitle("JABA");
+    }
+
+    public void CheckActionPopup (){
+
     }
 
     //Getters & Setters
