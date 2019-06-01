@@ -29,7 +29,7 @@ import org.jfree.data.general.DefaultPieDataset;
  *          <li>sous forme de diagramme batton</li>
  *      </ul>
  *
- * @author victor
+ * @author Victor
  * @version 1.0
  */
 //TODO des charts dynamiques qui ont un nombre de pics variables

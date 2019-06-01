@@ -1,5 +1,9 @@
 package Model;
-
+/**
+ * <b>classe de definiton d'une discipline</b>
+ * @author Victor
+ * @version 1.0
+ */
 public class Discipline {
     //attribut
     private int id_discipline;

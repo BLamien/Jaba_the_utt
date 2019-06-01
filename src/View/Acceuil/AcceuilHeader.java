@@ -1,5 +1,5 @@
 package View.Acceuil;
-
+//TODO : JavaDoc
 
 import Constants.Colors;
 

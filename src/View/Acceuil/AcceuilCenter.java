@@ -1,5 +1,5 @@
 package View.Acceuil;
-
+//TODO : JavaDoc
 import Constants.Colors;
 import Controller.Connexion;
 import View.HomeScreen.MainFrame;
