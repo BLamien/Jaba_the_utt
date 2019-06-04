@@ -8,8 +8,11 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-
-
+/**
+ * <b>Jpanel du header de la fenetre d'acceuil</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class AcceuilHeader extends JPanel {
     //Attributs
     private JLabel titleLabel;

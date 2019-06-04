@@ -8,7 +8,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * <b>Jframe principal de la fenetre principal de l'application</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class MainFrame extends JFrame implements ActionListener {
     //Constantes
     public static final Dimension windowDimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -16,7 +20,6 @@ public class MainFrame extends JFrame implements ActionListener {
     public static final int heightSize = (int) windowDimension.getHeight();
 
     //Attributs
-    //private HeaderViewController header = new HeaderViewController(new Header());
     private HeaderV2 header = new HeaderV2();
     private ModelTable modele = new ModelTable();
     private JTable tableau;
@@ -24,12 +27,17 @@ public class MainFrame extends JFrame implements ActionListener {
     private JScrollPane tabs;
     private JPanel boutons;
 
-    //Constructor
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public MainFrame() {
         init();
         setVisible(true);
     }
 
+    /**
+     * <b>Methode d'initialisation des composants</b>
+     */
     private void init() {
         // initialisation header
         var contentPane = getContentPane();
@@ -53,9 +61,11 @@ public class MainFrame extends JFrame implements ActionListener {
         remove.addActionListener(this);
         boutons.add(add);
         boutons.add(remove);
+        boutons.setBackground(Colors.gris);
         contentPane.add(boutons, BorderLayout.SOUTH);
 
         header.getStats().addActionListener(this);
+        header.getMenu().addActionListener(this);
 
         // Frame init
         setSize(windowDimension);
@@ -63,6 +73,45 @@ public class MainFrame extends JFrame implements ActionListener {
         setLocationRelativeTo(getOwner());
         setTitle("JABA");
     }
+
+    /**
+     * Methode qui gere les actions des boutons lorsqu'on leurs clique dessus
+     * @param e evenement lorsque l'on clique sur un des boutons
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+
+        if(button.getText().equals("Supprimer")){
+            if(View.Popup.check("Etes-vous sur de vouloir supprimer cette personne ?")){
+                int[] selection = tableau.getSelectedRows();
+                for(int i = selection.length - 1; i >= 0; i--){
+                    modele.removePersonne(selection[i]);
+                }
+            }
+        }
+        if(button.getText().equals("Ajouter")){
+            AjoutPersonne ap = new AjoutPersonne(modele);
+            getContentPane().revalidate();
+        }
+        if(button.getText().equals("Statistiques")){
+            getContentPane().invalidate();
+            getContentPane().remove(tabs);
+            getContentPane().remove(boutons);
+            getContentPane().add(stats,BorderLayout.CENTER);
+            getContentPane().revalidate();
+        }
+        if(button.getText().equals("Menu")){
+            getContentPane().invalidate();
+            getContentPane().remove(stats);
+            getContentPane().add(tabs,BorderLayout.CENTER);
+            getContentPane().add(boutons,BorderLayout.SOUTH);
+            getContentPane().revalidate();
+        }
+
+
+    }
+
 
     //Getters & Setters
     public static Dimension getWindowDimension() {
@@ -86,35 +135,6 @@ public class MainFrame extends JFrame implements ActionListener {
     public void setTableau(JTable tableau) {
         this.tableau = tableau;
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton button = (JButton) e.getSource();
-
-        if(button.getText().equals("Supprimer")){
-            if(View.Popup.check("Etes-vous sur de vouloir supprimer cette personne ?")){
-                int[] selection = tableau.getSelectedRows();
-                for(int i = selection.length - 1; i >= 0; i--){
-                    modele.removePersonne(selection[i]);
-                }
-            }
-        }
-        if(button.getText().equals("Ajouter")){
-            AjoutPersonne ap = new AjoutPersonne(modele);
-            getContentPane().revalidate();
-        }
-        if(button.getText().equals("Statistiques")){
-            getContentPane().remove(tabs);
-            getContentPane().remove(boutons);
-            getContentPane().add(stats,BorderLayout.CENTER);
-            getContentPane().repaint();
-        }
-
-
-    }
-
-
-    //Getter & Setter
     public ModelTable getModele() {
         return modele;
     }

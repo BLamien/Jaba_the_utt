@@ -13,7 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
-
+/**
+ * <b>JPanel du JFrame ajoutPersonne</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class Formulaire extends JPanel {
     //Attributs
     JButton valider;
@@ -24,11 +28,18 @@ public class Formulaire extends JPanel {
     JPasswordField password;
     ModelTable modele;
 
+    /**
+     * Constructeur
+     * @param m modele de la table pour ajout
+     */
     public Formulaire(ModelTable m) {
         modele=m;
         init();
     }
 
+    /**
+     * <b>Methode d'initialisation des composants</b>
+     */
     public void init(){
         id = new JTextField();
         String sType[]={"Ensignants","Eleves"};
@@ -103,40 +114,53 @@ public class Formulaire extends JPanel {
         setBackground(Colors.green);
     }
 
+    /**
+     * Getteur du bouton de validation du formulaire
+     * @return le bouton valider
+     */
     public JButton getValider() {
         return valider;
     }
-    public void setValider(JButton valider) {
-        this.valider = valider;
-    }
+
+    /**
+     * Getteur du Jtextfield qui recupère l'ID
+     * @return le JTextfield de l'ID
+     */
     public JTextField getId() {
         return id;
     }
+    /**
+     * Setteur du Jtextfield qui recupère l'ID
+     */
     public void setId(JTextField id) {
         this.id = id;
     }
+    /**
+     * Getteur du JComboBox qui recupère le type
+     * @return le JComboBox
+     */
     public JComboBox getType() {
         return type;
     }
-    public void setType(JComboBox type) {
-        this.type = type;
-    }
+    /**
+     * Getteur du Jtextfield qui recupère le prenom
+     * @return le JTextfield du prenom
+     */
     public JTextField getPrenom() {
         return prenom;
     }
-    public void setPrenom(JTextField prenom) {
-        this.prenom = prenom;
-    }
+    /**
+     * Getteur du Jtextfield qui recupère le nom d'utilisateur
+     * @return le JTextfield du nom d'utilisateur
+     */
     public JTextField getUserName() {
         return userName;
     }
-    public void setUserName(JTextField userName) {
-        this.userName = userName;
-    }
+    /**
+     * Getteur du Jtextfield qui recupère le mot de passe
+     * @return le JTextfield du mot de passe
+     */
     public JPasswordField getPassword() {
         return password;
-    }
-    public void setPassword(JPasswordField password) {
-        this.password = password;
     }
 }

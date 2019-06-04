@@ -13,6 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+/**
+ * <b>Jpanel de la partie central de la fenetre d'acceuil</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class AcceuilCenter extends JPanel {
     //Attributs
     JButton connexion;
@@ -21,10 +26,16 @@ public class AcceuilCenter extends JPanel {
     JTextField userName;
     JPasswordField password;
 
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public AcceuilCenter() {
         init();
     }
 
+    /**
+     * <b>Methode d'initialisation des composants</b>
+     */
     public void init(){
         addrServer = new JTextField();
         nombdd = new JTextField();
