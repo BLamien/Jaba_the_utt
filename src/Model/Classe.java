@@ -10,7 +10,7 @@ public class Classe {
     //attribut
     private int id_classe;
     private int id_ecole;
-    private int id_niveau;
+    private String nom_niveau;
     private int id_anneeScolaire;
     private ArrayList<Personne> effectif; //cette variable doit contenir uniquement des élèves
 
@@ -28,9 +28,9 @@ public class Classe {
     public int getId_ecole() {return id_ecole;}
     /**
      * <b>getter id niveau</b>
-     * @return id niveau
+     * @return nom niveau
      */
-    public int getId_niveau() {return id_niveau;}
+    public String getNom_niveau() {return nom_niveau;}
     /**
      * <b>getter id annee scolaire</b>
      * @return id annee scolaire
@@ -54,10 +54,13 @@ public class Classe {
      */
     public void setId_ecole(int id_ecole) {this.id_ecole = id_ecole;}
     /**
-     * <b>setter id niveau</b>
-     * @param id_niveau valeur a attribuer a l'id du niveau
+     * <b>setter nom niveau</b>
+     * @param nom_niveau valeur a attribuer a le nom du niveau
      */
-    public void setId_niveau(int id_niveau) {this.id_niveau = id_niveau;}
+    public void setNom_niveau(String nom_niveau) {this.nom_niveau = nom_niveau;}
+
+
+
     /**
      * <b>setter id annee scolaire</b>
      * @param id_anneeScolaire valeur a attribuer a l'id de l'annee scolaire
@@ -76,7 +79,7 @@ public class Classe {
     public Classe(){
         id_classe=0;
         id_ecole=0;
-        id_niveau=0;
+        nom_niveau="";
         id_anneeScolaire=0;
         effectif=new ArrayList<Personne>();
     }
@@ -85,27 +88,27 @@ public class Classe {
      * <b>constructeur surcharge</b>
      * @param id_classe_ valeur a atrribuer a l'id classe
      * @param id_ecole_ valeur a atrribuer a l'id ecole
-     * @param id_niveau_ valeur a atrribuer a l'id niveau
+     * @param nom_niveau_ valeur a atrribuer a l'id niveau
      * @param id_anneeScolaire_ valeur a atrribuer a l'id annee scolaire
      * @param effectif_ valeur a atrribuer a l'effectif
      */
-    public Classe(int id_classe_, int id_ecole_, int id_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
+    public Classe(int id_classe_, int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
         id_classe=id_classe_;
         id_ecole=id_ecole_;
-        id_niveau=id_niveau_;
+        nom_niveau=nom_niveau_;
         id_anneeScolaire=id_anneeScolaire_;
         effectif=effectif_;
     }
     /**
      * <b>constructeur surcharge sans id classe</b>
      * @param id_ecole_ valeur a atrribuer a l'id ecole
-     * @param id_niveau_ valeur a atrribuer a l'id niveau
+     * @param nom_niveau_ valeur a atrribuer a l'id niveau
      * @param id_anneeScolaire_ valeur a atrribuer a l'id annee scolaire
      * @param effectif_ valeur a atrribuer a l'effectif
      */
-    public Classe(int id_ecole_, int id_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
+    public Classe(int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
         id_ecole=id_ecole_;
-        id_niveau=id_niveau_;
+        nom_niveau=nom_niveau_;
         id_anneeScolaire=id_anneeScolaire_;
         effectif=effectif_;
     }
