@@ -12,7 +12,7 @@ public class Classe {
     private int id_ecole;
     private String nom_niveau;
     private int id_anneeScolaire;
-    private ArrayList<Personne> effectif; //cette variable doit contenir uniquement des élèves
+    private ArrayList<Eleve> effectif; //cette variable doit contenir uniquement des élèves
 
     //getter
 
@@ -40,7 +40,9 @@ public class Classe {
      * <b>getter effectif</b>
      * @return effectif
      */
-    public ArrayList<Personne> getEffectif() {return effectif;}
+    public ArrayList<Eleve> getEffectif() {return effectif;}
+
+
 
     //setter
     /**
@@ -70,7 +72,7 @@ public class Classe {
      * <b>setter effectif</b>
      * @param effectif valeur a attribuer a l'effectif
      */
-    public void setEffectif(ArrayList<Personne> effectif) {this.effectif = effectif;}
+    public void setEffectif(ArrayList<Eleve> effectif) {this.effectif = effectif;}
 
     //constructeur
     /**
@@ -81,7 +83,7 @@ public class Classe {
         id_ecole=0;
         nom_niveau="";
         id_anneeScolaire=0;
-        effectif=new ArrayList<Personne>();
+        effectif=new ArrayList<Eleve>();
     }
 
     /**
@@ -92,7 +94,7 @@ public class Classe {
      * @param id_anneeScolaire_ valeur a atrribuer a l'id annee scolaire
      * @param effectif_ valeur a atrribuer a l'effectif
      */
-    public Classe(int id_classe_, int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
+    public Classe(int id_classe_, int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Eleve> effectif_){
         id_classe=id_classe_;
         id_ecole=id_ecole_;
         nom_niveau=nom_niveau_;
@@ -106,7 +108,7 @@ public class Classe {
      * @param id_anneeScolaire_ valeur a atrribuer a l'id annee scolaire
      * @param effectif_ valeur a atrribuer a l'effectif
      */
-    public Classe(int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Personne> effectif_){
+    public Classe(int id_ecole_, String nom_niveau_, int id_anneeScolaire_,ArrayList<Eleve> effectif_){
         id_ecole=id_ecole_;
         nom_niveau=nom_niveau_;
         id_anneeScolaire=id_anneeScolaire_;
@@ -123,13 +125,4 @@ public class Classe {
         effectif.add(monEleve);
     }
 
-    /**
-     * <b>permet l'ajout d'une personne eleve a l'effectif</b>
-     * @param monEleve eleve
-     */
-    public void ajout_eleve(Personne monEleve){
-        //on vérifie que la personne est un eleve
-        if (monEleve instanceof Eleve)
-            effectif.add(monEleve);
-    }
 }
