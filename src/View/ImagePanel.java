@@ -6,13 +6,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
+/**
+ * <b>JPanel qui gere l'affichage des photos</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class ImagePanel extends JPanel {
     //Attributs
     private BufferedImage img;
     private String path;
 
-    //Constructeur
+    /**
+     * Constructeur
+     * @param path String du chemin de stockage de l'image
+     */
     public ImagePanel(String path) {
         this.path = path;
         try {
@@ -25,6 +32,11 @@ public class ImagePanel extends JPanel {
     }
 
     //Getters & Setters
+
+    /**
+     * Gettteur de l'image
+     * @return BufferedImage
+     */
     public BufferedImage getImg() {
         return img;
     }

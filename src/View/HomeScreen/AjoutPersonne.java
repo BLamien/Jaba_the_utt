@@ -8,18 +8,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.Normalizer;
 
+/**
+ * <b>Jframe de la fenetre de saisie de nouvelles personnes</b>
+ * @author Leonard
+ * @version 1.0
+ */
 public class AjoutPersonne extends JFrame {
     public static final Dimension windowDimension = new Dimension(600,800);
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
     ModelTable modele;
 
+    /**
+     * <b>Constructeur</b>
+     * @param m modele de la table pour l'ajouter
+     * @throws HeadlessException
+     */
     public AjoutPersonne(ModelTable m) throws HeadlessException {
         modele = m;
         init();
         setVisible(true);
     }
 
+    /**
+     * <b>methode d'initialisation des composants</b>
+     */
     public void init(){
         // initialisation header
         var contentPane = getContentPane();
