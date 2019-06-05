@@ -42,6 +42,8 @@ public class Classe {
      */
     public ArrayList<Personne> get_effectif() {return effectif;}
 
+
+
     //setter
     /**
      * <b>setter id classe</b>
@@ -70,7 +72,7 @@ public class Classe {
      * <b>setter effectif</b>
      * @param effectif valeur a attribuer a l'effectif
      */
-    public void setEffectif(ArrayList<Personne> effectif) {this.effectif = effectif;}
+    public void setEffectif(ArrayList<Eleve> effectif) {this.effectif = effectif;}
 
     //constructeur
     /**
