@@ -136,12 +136,6 @@ public class Connexion {
             liste.add(rsetMeta.getColumnLabel(i + 1));
         }
 
-        // ajouter un "\n" à la ligne des champs
-        //champs = champs + "\n";
-
-        // ajouter les champs de la ligne dans l'ArrayList
-        //liste.add(champs);
-
         // Retourner l'ArrayList
         return liste;
     }

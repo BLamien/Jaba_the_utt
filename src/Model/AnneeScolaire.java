@@ -6,74 +6,99 @@ package Model;
  */
 public class AnneeScolaire {
     //attribut
-    private int id_anneeScolaire;
-    private int debut_anneeScolaire;
-    private int fin_anneeScolaire;
+    private int id_anneescolaire;
+    private Trimestre trimestre1;
+    private Trimestre trimestre2;
+    private Trimestre trimestre3;
 
-    //getter
     /**
-     * <b>getter id annee scolaire</b>
-     * @return id annee scolaire
+     * <b>Constructeur surchargé</b>
+     * @param id_anneescolaire valeur prise par id_anneescolaire
+     * @param trimestre1 valeur prise par trimestre1
+     * @param trimestre2 valeur prise par trimestre2
+     * @param trimestre3 valeur prise par trimestre3
      */
-    public int getId_anneeScolaire() {return id_anneeScolaire;}
-    /**
-     * <b>getter debut annee scolaire</b>
-     * @return debut annee scolaire
-     */
-    public int getDebut_anneeScolaire() {return debut_anneeScolaire;}
-    /**
-     * <b>getter fin annee scolaire</b>
-     * @return fin annee scolaire
-     */
-    public int getFin_anneeScolaire() {return fin_anneeScolaire;}
-
-    //setter
-    /**
-     * <b>setter id annee scolaire</b>
-     * @param id_anneeScolaire valeur a attribuer a l'id annee scolaire
-     */
-    public void setId_anneeScolaire(int id_anneeScolaire) {this.id_anneeScolaire = id_anneeScolaire;}
-    /**
-     * <b>setter debut annee scolaire</b>
-     * @param debut_anneeScolaire valeur a attribuer a la date de debut annee scolaire
-     */
-    public void setDebut_anneeScolaire(int debut_anneeScolaire) {this.debut_anneeScolaire = debut_anneeScolaire;}
-    /**
-     * <b>setter id annee scolaire</b>
-     * @param fin_anneeScolaire valeur a attribuer a la date de fin annee scolaire
-     */
-    public void setFin_anneeScolaire(int fin_anneeScolaire) {this.fin_anneeScolaire = fin_anneeScolaire;}
-
-    //constructeur
-    /**
-     * <b>constructeur par defaut</b>
-     */
-    public AnneeScolaire(){
-        id_anneeScolaire=0;
-        debut_anneeScolaire=0;
-        fin_anneeScolaire=0;
-    }
-    /**
-     * <b>constructeur surcharge</b>
-     * @param id_anneeScolaire_ valeur a attribuer a l'id annee scolaire
-     * @param debut_anneeScolaire_ valeur a attribuer a la date de debut annee scolaire
-     * @param fin_anneeScolaire_ valeur a attribuer a la date de fin annee scolaire
-     */
-    public AnneeScolaire (int id_anneeScolaire_, int debut_anneeScolaire_, int fin_anneeScolaire_){
-        id_anneeScolaire=id_anneeScolaire_;
-        debut_anneeScolaire=debut_anneeScolaire_;
-        fin_anneeScolaire=fin_anneeScolaire_;
-    }
-    /**
-     * <b>constructeur surcharge sans l'id annee scolaire</b>
-     * @param debut_anneeScolaire_ valeur a attribuer a la date de debut annee scolaire
-     * @param fin_anneeScolaire_ valeur a attribuer a la date de fin annee scolaire
-     */
-    public AnneeScolaire (int debut_anneeScolaire_, int fin_anneeScolaire_){
-        id_anneeScolaire=0;
-        debut_anneeScolaire=debut_anneeScolaire_;
-        fin_anneeScolaire=fin_anneeScolaire_;
+    public AnneeScolaire(int id_anneescolaire, Trimestre trimestre1, Trimestre trimestre2, Trimestre trimestre3) {
+        this.id_anneescolaire = id_anneescolaire;
+        this.trimestre1 = trimestre1;
+        this.trimestre2 = trimestre2;
+        this.trimestre3 = trimestre3;
     }
 
-    //méthode
+    /**
+     * <b>Constructeur surchargé sans les trimestres</b>
+     * @param id_anneescolaire valeur prise par id_anneescolaire
+     */
+    public AnneeScolaire(int id_anneescolaire) {
+        this.id_anneescolaire = id_anneescolaire;
+        this.trimestre1 = new Trimestre();
+        this.trimestre2 = new Trimestre();
+        this.trimestre3 = new Trimestre();
+    }
+
+    /**
+     * <b>getter id_anneescolaire</b>
+     * @return id_anneescolaire
+     */
+    public int getId_anneescolaire() {
+        return id_anneescolaire;
+    }
+
+    /**
+     * <b>stter id_anneescolaire</b>
+     * @param id_anneescolaire nouvelle valeur de id_anneescolaire
+     */
+    public void setId_anneescolaire(int id_anneescolaire) {
+        this.id_anneescolaire = id_anneescolaire;
+    }
+
+    /**
+     * <b>getter trimestre1</b>
+     * @return trimestre1
+     */
+    public Trimestre getTrimestre1() {
+        return trimestre1;
+    }
+
+    /**
+     * <b>setter trimestre 1</b>
+     * @param trimestre1 nouvelle valeur de trimestre1
+     */
+    public void setTrimestre1(Trimestre trimestre1) {
+        this.trimestre1 = trimestre1;
+    }
+
+    /**
+     * <b>getter trimestre2</b>
+     * @return trimestre2
+     */
+    public Trimestre getTrimestre2() {
+        return trimestre2;
+    }
+
+    /**
+     * <b>setter trimestre2</b>
+     * @param trimestre2 nouvelle valeur de trimestre2
+     */
+    public void setTrimestre2(Trimestre trimestre2) {
+        this.trimestre2 = trimestre2;
+    }
+
+    /**
+     * <b>getter trimestre3</b>
+     * @return trimestre3
+     */
+    public Trimestre getTrimestre3() {
+        return trimestre3;
+    }
+
+    /**
+     * <b>setter trimestre3</b>
+     * @param trimestre3 nouvelle valeur de trimestre3
+     */
+    public void setTrimestre3(Trimestre trimestre3) {
+        this.trimestre3 = trimestre3;
+    }
+
+    //méthodes
 }

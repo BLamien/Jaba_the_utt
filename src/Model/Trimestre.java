@@ -1,4 +1,7 @@
 package Model;
+
+import java.util.Date;
+
 /**
  * <b>classe de definiton d'un trimestre</b>
  * @author Victor
@@ -8,8 +11,8 @@ public class Trimestre {
     //attribut
     private int id_trimestre;
     private int numero;
-    private int debut_trimestre;
-    private int fin_trimestre;
+    private Date debut_trimestre;
+    private Date fin_trimestre;
     private int id_anneeScolaire;
 
     //getter
@@ -28,12 +31,12 @@ public class Trimestre {
      * <b>getter debut trimestre</b>
      * @return debut trimestre
      */
-    public int getDebut_trimestre() {return debut_trimestre;}
+    public Date getDebut_trimestre() {return debut_trimestre;}
     /**
      * <b>getter fin trimestre</b>
      * @return fin trimestre
      */
-    public int getFin_trimestre() {return fin_trimestre;}
+    public Date getFin_trimestre() {return fin_trimestre;}
     /**
      * <b>getter id annee scolaire</b>
      * @return id annee scolaire
@@ -55,12 +58,12 @@ public class Trimestre {
      * <b>setter debut trimestre</b>
      * @param debut_trimestre valeur a attribuer a debut trimetre
      */
-    public void setDebut_trimestre(int debut_trimestre) {this.debut_trimestre = debut_trimestre;}
+    public void setDebut_trimestre(Date debut_trimestre) {this.debut_trimestre = debut_trimestre;}
     /**
      * <b>setter fin trimestre</b>
      * @param fin_trimestre valeur a attribuer a fin trimetre
      */
-    public void setFin_trimestre(int fin_trimestre) {this.fin_trimestre = fin_trimestre;}
+    public void setFin_trimestre(Date fin_trimestre) {this.fin_trimestre = fin_trimestre;}
     /**
      * <b>setter id annee scolaire</b>
      * @param id_anneeScolaire valeur a attribuer a id annee scolaire
@@ -88,7 +91,7 @@ public class Trimestre {
      * @param fin_trimestre_ valeur a attribuer a fin trimestre
      * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
      */
-    public Trimestre(int id_trimestre_, int numero_, int debut_trimestre_, int fin_trimestre_, int id_anneeScolaire_){
+    public Trimestre(int id_trimestre_, int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
         id_trimestre=id_trimestre_;
         numero=numero_;
         debut_trimestre=debut_trimestre_;
@@ -103,7 +106,7 @@ public class Trimestre {
      * @param fin_trimestre_ valeur a attribuer a fin trimestre
      * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
      */
-    public Trimestre(int numero_, int debut_trimestre_, int fin_trimestre_, int id_anneeScolaire_){
+    public Trimestre(int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
         id_trimestre=0;
         numero=numero_;
         debut_trimestre=debut_trimestre_;

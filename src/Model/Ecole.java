@@ -6,64 +6,68 @@ package Model;
  */
 public class Ecole {
     //attribut
-    private int id_niveau;
-    private String nom_niveau;
-
-    //getter
-
-    /**
-     * <b>getter id niveau</b>
-     * @return id niveau
-     */
-    public int getId_niveau() {return id_niveau;}
+    private int id_ecole;
+    private String nom_ecole;
+    private int anneefondation;
 
     /**
-     * <b>getter nom niveau</b>
-     * @return nom niveau
+     * <b>Constructeur surcharge</b>
+     * @param id_ecole veleur prise par l'id_ecole
+     * @param nom_ecole valeur prise par le nom_ecole
+     * @param anneefondation valeur prise par l'anneefondation
      */
-    public String getNom_niveau() {return nom_niveau;}
-
-    //setter
-
-    /**
-     * <b>setter id niveau</b>
-     * @param id_niveau valeur a attribuer a l'id du niveau
-     */
-    public void setId_niveau(int id_niveau) {this.id_niveau = id_niveau;}
-
-    /**
-     * <b>setter nom niveau</b>
-     * @param nom_niveau valeur a attribuer au no du niveau
-     */
-    public void setNom_niveau(String nom_niveau) {this.nom_niveau = nom_niveau;}
-
-    //constructeur
-
-    /**
-     * <b>constructeur par defaut</b>
-     */
-    public Ecole(){
-        id_niveau=0;
-        nom_niveau="";
+    public Ecole(int id_ecole, String nom_ecole, int anneefondation) {
+        this.id_ecole = id_ecole;
+        this.nom_ecole = nom_ecole;
+        this.anneefondation = anneefondation;
     }
 
     /**
-     * <b>constructeur surcharge</b>
-     * @param id_niveau_ valeur a attribuer a l'id du niveau
-     * @param nom_niveau_ valeur a attribuer au nom du niveau
+     * <b>getter id_ecole</b>
+     * @return id_ecole
      */
-    public Ecole(int id_niveau_, String nom_niveau_){
-        id_niveau=id_niveau_;
-        nom_niveau=nom_niveau_;
-    }
-    /**
-     * <b>constructeur surcharge sans l'id du niveau</b>
-     * @param nom_niveau_ valeur a attribuer au nom du niveau
-     */
-    public Ecole(String nom_niveau_){
-        id_niveau=0;
-        nom_niveau=nom_niveau_;
+    public int getId_ecole() {
+        return id_ecole;
     }
 
-    //méthode
+    /**
+     * setter id_ecole
+     * @param id_ecole nouvelle valeur id_ecole
+     */
+    public void setId_ecole(int id_ecole) {
+        this.id_ecole = id_ecole;
+    }
+
+    /**
+     * <b> getter nom_ecole</b>
+     * @return nom_ecole
+     */
+    public String getNom_ecole() {
+        return nom_ecole;
+    }
+
+    /**
+     * <b>stter nom_ecole</b>
+     * @param nom_ecole nouvelle valeur nom_ecole
+     */
+    public void setNom_ecole(String nom_ecole) {
+        this.nom_ecole = nom_ecole;
+    }
+
+    /**
+     * <b>getter anneefondation</b>
+     * @return anneefondation
+     */
+    public int getAnneefondation() {
+        return anneefondation;
+    }
+
+    /**
+     * <b>setter anneefondation</b>
+     * @param anneefondation nouvelle valeur anneefondation
+     */
+    public void setAnneefondation(int anneefondation) {
+        this.anneefondation = anneefondation;
+    }
+    //Methodes
 }

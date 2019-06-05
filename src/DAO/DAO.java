@@ -31,9 +31,9 @@ public abstract class DAO<T> {
     public abstract boolean update(T obj);
 
     /**
-     * Méthode de recherche des informations
+     * Méthode de recherche des informations et de connexion
      * @param id
      * @return T
      */
-    public abstract T find(int id);
+    public abstract T Connection(int id);
 }

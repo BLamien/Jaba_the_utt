@@ -2,12 +2,13 @@ package Model;
 /**
  * <b>classe de definiton d'une personne</b>
  * @author Victor
- * @version 1.0
+ * @version 1.1
  */
 public class Personne {
     //attributs
     protected int id_personne;
     protected String type;
+    protected String nom;
     protected String prenom;
     protected String login;
     protected String mdp;
@@ -24,6 +25,11 @@ public class Personne {
      * @return type
      */
     public String getType() {return type;}
+
+    public String getNom() {
+        return nom;
+    }
+
     /**
      * <b>getter prenom</b>
      * @return prenom
@@ -51,6 +57,15 @@ public class Personne {
      * @param type valaur a attribuer a type
      */
     public void setType(String type) {this.type = type;}
+
+    /**
+     * <b>setter type</b>
+     * @param nom valaur a attribuer a nom
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     /**
      * <b>setter prenom</b>
      * @param prenom valaur a attribuer a prenom
@@ -71,9 +86,10 @@ public class Personne {
     /**
      *<b>constructeur par defaut</b>
      */
-    Personne(){
+    public Personne(){
         id_personne=0;
         type="";
+        nom="";
         prenom="";
         login="";
         mdp="";
@@ -83,13 +99,15 @@ public class Personne {
      * <b>constructeur surcharge</b>
      * @param id_personne_ valaur a attribuer a id personne
      * @param type_ valaur a attribuer a type
+     * @param nom_ valeur a attribuer a nom
      * @param prenom_ valaur a attribuer au prenom
      * @param login_ valaur a attribuer au login
      * @param mdp_ valaur a attribuer au mot de passe
      */
-    public Personne(int id_personne_,String type_ ,String prenom_ ,String login_, String mdp_){
+    public Personne(int id_personne_,String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
         id_personne=id_personne_;
         type=type_;
+        nom=nom_;
         prenom=prenom_;
         login=login_;
         mdp=mdp_;
@@ -97,13 +115,15 @@ public class Personne {
     /**
      * <b>constructeur surcharge sans id personne</b>
      * @param type_ valaur a attribuer a type
+     * @param nom_ valeur a attribuer a nom
      * @param prenom_ valaur a attribuer au prenom
      * @param login_ valaur a attribuer au login
      * @param mdp_ valaur a attribuer au mot de passe
      */
-    public Personne(String type_ ,String prenom_ ,String login_, String mdp_){
+    public Personne(String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
         id_personne=0;
         type=type_;
+        nom=nom_;
         prenom=prenom_;
         login=login_;
         mdp=mdp_;
