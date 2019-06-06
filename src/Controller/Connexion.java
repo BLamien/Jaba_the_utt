@@ -128,19 +128,13 @@ public class Connexion {
         int nbColonne = rsetMeta.getColumnCount();
 
         // creation d'une ArrayList de String
-        ArrayList<String> liste;
-        liste = new ArrayList<>();
-        String champs = "";
+        ArrayList<String> liste = new ArrayList<>();
+        //String champs = "";
         // Ajouter tous les champs du resultat dans l'ArrayList
         for (int i = 0; i < nbColonne; i++) {
-            champs = champs + " " + rsetMeta.getColumnLabel(i + 1);
+            //champs = champs + " " + rsetMeta.getColumnLabel(i + 1);
+            liste.add(rsetMeta.getColumnLabel(i + 1));
         }
-
-        // ajouter un "\n" à la ligne des champs
-        champs = champs + "\n";
-
-        // ajouter les champs de la ligne dans l'ArrayList
-        liste.add(champs);
 
         // Retourner l'ArrayList
         return liste;

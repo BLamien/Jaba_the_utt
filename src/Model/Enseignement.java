@@ -7,9 +7,9 @@ package Model;
 public class Enseignement {
     //attribut
     private int id_enseignement;
-    private int id_discipline;
-    private int id_enseignant;
-    private int id_classe;
+    private Discipline discipline;
+    private Personne enseignant;
+    private Classe classe;
 
     //getter
     /**
@@ -18,20 +18,20 @@ public class Enseignement {
      */
     public int getId_enseignement() {return id_enseignement;}
     /**
-     *<b>getter id discipline</b>
-     * @return id discipline
+     *<b>getter  discipline</b>
+     * @return  discipline
      */
-    public int getId_discipline() {return id_discipline;}
+    public Discipline get_discipline() {return discipline;}
     /**
-     *<b>getter id enseignant</b>
-     * @return id enseignant
+     *<b>getter  enseignant</b>
+     * @return  enseignant
      */
-    public int getId_enseignant() {return id_enseignant;}
+    public Personne get_enseignant() {return enseignant;}
     /**
-     *<b>getter id classe</b>
-     * @return id classe
+     *<b>getter classe</b>
+     * @return  classe
      */
-    public int getId_classe() {return id_classe;}
+    public Classe get_classe() {return classe;}
 
     //setter
     /**
@@ -40,20 +40,20 @@ public class Enseignement {
      */
     public void setId_enseignement(int id_enseignement) {this.id_enseignement = id_enseignement;}
     /**
-     * <b>setter id discipline</b>
-     * @param id_discipline valeur a attribuer a id discipline
+     * <b>setter discipline</b>
+     * @param discipline Objet a attribuer a discipline
      */
-    public void setId_discipline(int id_discipline) {this.id_discipline = id_discipline;}
+    public void set_discipline(Discipline discipline) {this.discipline = discipline;}
     /**
-     * <b>setter id enseignant</b>
-     * @param id_enseignant valeur a attribuer a id enseignant
+     * <b>setter enseignant</b>
+     * @param enseignant Objet a attribuer a enseignant
      */
-    public void setId_enseignant(int id_enseignant) {this.id_enseignant = id_enseignant;}
+    public void set_enseignant(Personne enseignant) {this.enseignant = enseignant;}
     /**
-     * <b>setter id classe</b>
-     * @param id_classe valeur a attribuer a id classe
+     * <b>setter classe</b>
+     * @param classe valeur a attribuer a classe
      */
-    public void setId_classe(int id_classe) {this.id_classe = id_classe;}
+    public void setId_classe(Classe classe) {this.classe = classe;}
 
     //constructeur
     /**
@@ -61,35 +61,33 @@ public class Enseignement {
      */
     public Enseignement(){
         id_enseignement=0;
-        id_discipline=0;
-        id_enseignant=0;
-        id_classe=0;
+        discipline=new Discipline();
+        enseignant=new Personne();
+        classe=new Classe();
     }
 
     /**
      * <b>constructeur surcharge</b>
      * @param id_enseignement_ valeur a attribuer a l'id enseignement
-     * @param id_discipline_ valeur a attribuer a l'id discipline
-     * @param id_enseignant_ valeur a attribuer a l'id enseignant
-     * @param id_classe_ valeur a attribuer a l'id classe
+     * @param discipline_ valeur a attribuer a discipline
+     * @param enseignant_ valeur a attribuer a enseignant
+     * @param classe_ valeur a attribuer a classe
      */
-    public Enseignement(int id_enseignement_, int id_discipline_, int id_enseignant_, int id_classe_){
+    public Enseignement(int id_enseignement_, Discipline discipline_, Personne enseignant_, Classe classe_){
         id_enseignement=id_enseignement_;
-        id_discipline=id_discipline_;
-        id_enseignant=id_enseignant_;
-        id_classe=id_classe_;
+        discipline=discipline_;
+        enseignant=enseignant_;
+        classe=classe_;
     }
     /**
-     * <b>constructeur surcharge</b>
-     * @param id_discipline_ valeur a attribuer a l'id discipline
-     * @param id_enseignant_ valeur a attribuer a l'id enseignant
-     * @param id_classe_ valeur a attribuer a l'id classe
+     * <b>constructeur surcharge sans objets</b>
+     * @param id_enseignement_ valeur a attribuer a l'id enseignement
      */
-    public Enseignement(int id_discipline_, int id_enseignant_, int id_classe_){
-        id_enseignement=0;
-        id_discipline=id_discipline_;
-        id_enseignant=id_enseignant_;
-        id_classe=id_classe_;
+    public Enseignement(int id_enseignement_){
+        id_enseignement=id_enseignement_;
+        discipline=new Discipline();
+        enseignant=new Personne();
+        classe=new Classe();
     }
 
     //méthode

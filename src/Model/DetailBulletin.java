@@ -1,4 +1,7 @@
 package Model;
+
+import java.util.ArrayList;
+
 /**
  * <b>classe de definiton du detail du bulletin</b>
  * @author Victor
@@ -7,9 +10,10 @@ package Model;
 public class DetailBulletin {
     //attributs
     private int id_detailBulletin;
-    private int id_bulletin;
-    private int id_enseignant;
+    private float moyenne_matiere;
+    private Enseignement matiere;
     private String appreciation_detailBulletin;
+    private ArrayList<Devoir> notes;
 
     //getter
 
@@ -19,81 +23,101 @@ public class DetailBulletin {
      */
     public int getId_detailBulletin() {return id_detailBulletin;}
     /**
-     * <b>getter id bulletin</b>
-     * @return id bulletin
+     * <b>getter moyenne_matiere</b>
+     * @return moyenne_matiere
      */
-    public int getId_bulletin() {return id_bulletin;}
+    public float getMoyenne_matiere() {
+        return moyenne_matiere;
+    }
     /**
-     * <b>getter id enseignant</b>
-     * @return id enseignant
+     * <b>getter matiere</b>
+     * @return matiere
      */
-    public int getId_enseignant() {return id_enseignant;}
+    public Enseignement get_matiere() {return matiere;}
     /**
      * <b>getter appreciation</b>
      * @return appreciation
      */
     public String getAppreciation_detailBulletin() {return appreciation_detailBulletin;}
 
+    /**
+     * <b>getter notes</b>
+     * @return notes
+     */
+    public ArrayList<Devoir> getNotes() {
+        return notes;
+    }
 
     //setter
-
     /**
      * <b>setter id detail bulletin</b>
      * @param id_detailBulletin valeur a attribuer au detail du bulletin
      */
     public void setId_detailBulletin(int id_detailBulletin) {this.id_detailBulletin = id_detailBulletin;}
     /**
-     * <b>setter id bulletin</b>
-     * @param id_bulletin valeur a attribuer a l'id du bulletin
+     * <b>seter moyenne_matiere</b>
+     * @param moyenne_matiere valeur attribuer a moyenne_matiere
      */
-    public void setId_bulletin(int id_bulletin) {this.id_bulletin = id_bulletin;}
+    public void setMoyenne_matiere(float moyenne_matiere) {
+        this.moyenne_matiere = moyenne_matiere;
+    }
     /**
-     * <b>setter id ensignant</b>
-     * @param id_enseignant valeur a attribuer a l'id de l'enseignant
+     * <b>setter matiere</b>
+     * @param matiere Objet a attribuer a matiere
      */
-    public void setId_enseignant(int id_enseignant) {this.id_enseignant = id_enseignant;}
+    public void set_matiere(Enseignement matiere) {this.matiere = matiere;}
     /**
      * <b>setter apprecaiton</b>
      * @param appreciation_detailBulletin valeur a attribuer a l'appreciation
      */
     public void setAppreciation_detailBulletin(String appreciation_detailBulletin) {this.appreciation_detailBulletin = appreciation_detailBulletin;}
 
-    //constructeur
+    /**
+     * <b>setter notes</b>
+     * @param  notes arraylist a attribuer a notes
+     */
+    public void setNotes(ArrayList<Devoir> notes) {
+        this.notes = notes;
+    }
 
+    //constructeur
     /**
      * <b>constructeur par defaut</b>
      */
     public DetailBulletin(){
-        id_bulletin=0;
         id_detailBulletin=0;
-        id_enseignant=0;
+        moyenne_matiere=0;
+        matiere=new Enseignement();
         appreciation_detailBulletin="";
+        notes=new ArrayList<>();
     }
 
     /**
      * <b>constructeur surcharge</b>
      * @param id_detailBulletin_ valeur a attribuer au detail du bulletin
-     * @param id_bulletin_ valeur a attribuer a l'id bulletin
-     * @param id_enseignant_ valeur a attribuer a l'id de l'enseignant
+     * @param moyenne_matiere_ valeur a attribuer a moyenne_matiere
+     * @param matiere_ Objet a attribuer a matiere
      * @param appreciation_detailBulletin_ valeur a attribuer a l'apprecation
+     * @param notes_ arraylist a attribuer a notes
      */
-    public DetailBulletin(int id_detailBulletin_, int id_bulletin_, int id_enseignant_, String appreciation_detailBulletin_){
+    public DetailBulletin(int id_detailBulletin_, float moyenne_matiere_, Enseignement matiere_, String appreciation_detailBulletin_, ArrayList<Devoir> notes_){
         id_detailBulletin=id_detailBulletin_;
-        id_bulletin=id_bulletin_;
-        id_enseignant=id_enseignant_;
+        moyenne_matiere=moyenne_matiere_;
+        matiere=matiere_;
         appreciation_detailBulletin=appreciation_detailBulletin_;
+        notes=notes_;
     }
     /**
-     * <b>constructeur surcharge sans id detail bulletin</b>
-     * @param id_bulletin_ valeur a attribuer a l'id bulletin
-     * @param id_enseignant_ valeur a attribuer a l'id de l'enseignant
+     * <b>constructeur surcharge sans les objets ni arraylist</b>
+     * @param id_detailBulletin_ valeur a attribuer a l'id bulletin
      * @param appreciation_detailBulletin_ valeur a attribuer a l'apprecation
      */
-    public DetailBulletin(int id_bulletin_, int id_enseignant_, String appreciation_detailBulletin_){
-        id_detailBulletin=0;
-        id_bulletin=id_bulletin_;
-        id_enseignant=id_enseignant_;
+    public DetailBulletin(int id_detailBulletin_, float moyenne_matiere_, String appreciation_detailBulletin_){
+        id_detailBulletin=id_detailBulletin_;
+        moyenne_matiere=moyenne_matiere_;
+        matiere=new Enseignement();
         appreciation_detailBulletin=appreciation_detailBulletin_;
+        notes=new ArrayList<>();
     }
 
     //méthode
