@@ -2,9 +2,12 @@ package View.HomeScreen;
 //TODO : JavaDoc
 
 import Constants.Colors;
+import View.Bulletin.BulletinFrame;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,13 +57,15 @@ public class MainFrame extends JFrame implements ActionListener {
         tabs = new JScrollPane(tableau);
         tabs.setBorder(new EmptyBorder(100,300,100,300));
         tabs.setBackground(Colors.green);
-        tabs.addMouseListener( new MouseAdapter() {
-            public void mouseClicked (MouseEvent e)  {
-                if (e.getClickCount() == 2) {
-                    // Do something
+        tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {//This line prevents double events
+                    BulletinFrame bulletinFrame = new BulletinFrame();
+                    System.out.println(tableau.getValueAt(tableau.getSelectedRow(), tableau.getSelectedColumn()).toString());
                 }
             }
-        } );
+        });
+
         contentPane.add(tabs, BorderLayout.CENTER);
 
         //bouton en bas

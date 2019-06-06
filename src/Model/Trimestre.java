@@ -15,6 +15,52 @@ public class Trimestre {
     private Date fin_trimestre;
     private int id_anneeScolaire;
 
+    //constructeur
+
+    /**
+     * <b>constructeur par defaut</b>
+     */
+    public Trimestre(){
+        id_trimestre=0;
+        numero=0;
+        debut_trimestre= new Date(2012,8,12);
+        fin_trimestre=new Date(2013,1,13);
+        id_anneeScolaire=0;
+    }
+
+    /**
+     * <b>constructeur surcharge</b>
+     * @param id_trimestre_ valeur a attribuer a id trimestre
+     * @param numero_ valeur a attribuer a numero
+     * @param debut_trimestre_ valeur a attribuer a debut trimestre
+     * @param fin_trimestre_ valeur a attribuer a fin trimestre
+     * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
+     */
+    public Trimestre(int id_trimestre_, int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
+        id_trimestre=id_trimestre_;
+        numero=numero_;
+        debut_trimestre=debut_trimestre_;
+        fin_trimestre=fin_trimestre_;
+        id_anneeScolaire=id_anneeScolaire_;
+    }
+
+    /**
+     * <b>constructeur surcharge sans id_trimestre</b>
+     * @param numero_ valeur a attribuer a numero
+     * @param debut_trimestre_ valeur a attribuer a debut trimestre
+     * @param fin_trimestre_ valeur a attribuer a fin trimestre
+     * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
+     */
+    public Trimestre(int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
+        id_trimestre=0;
+        numero=numero_;
+        debut_trimestre=debut_trimestre_;
+        fin_trimestre=fin_trimestre_;
+        id_anneeScolaire=id_anneeScolaire_;
+    }
+
+    //méthodes
+
     //getter
 
     /**
@@ -70,49 +116,5 @@ public class Trimestre {
      */
     public void setId_anneeScolaire(int id_anneeScolaire) {this.id_anneeScolaire = id_anneeScolaire;}
 
-    //constructeur
 
-    /**
-     * <b>constructeur par defaut</b>
-     */
-    public Trimestre(){
-        id_trimestre=0;
-        numero=0;
-        debut_trimestre= new Date(2012,8,12);
-        fin_trimestre=new Date(2013,1,13);
-        id_anneeScolaire=0;
-    }
-
-    /**
-     * <b>constructeur surcharge</b>
-     * @param id_trimestre_ valeur a attribuer a id trimestre
-     * @param numero_ valeur a attribuer a numero
-     * @param debut_trimestre_ valeur a attribuer a debut trimestre
-     * @param fin_trimestre_ valeur a attribuer a fin trimestre
-     * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
-     */
-    public Trimestre(int id_trimestre_, int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
-        id_trimestre=id_trimestre_;
-        numero=numero_;
-        debut_trimestre=debut_trimestre_;
-        fin_trimestre=fin_trimestre_;
-        id_anneeScolaire=id_anneeScolaire_;
-    }
-
-    /**
-     * <b>constructeur surcharge sans id_trimestre</b>
-     * @param numero_ valeur a attribuer a numero
-     * @param debut_trimestre_ valeur a attribuer a debut trimestre
-     * @param fin_trimestre_ valeur a attribuer a fin trimestre
-     * @param id_anneeScolaire_ valeur a attribuer a id annee scolaire
-     */
-    public Trimestre(int numero_, Date debut_trimestre_, Date fin_trimestre_, int id_anneeScolaire_){
-        id_trimestre=0;
-        numero=numero_;
-        debut_trimestre=debut_trimestre_;
-        fin_trimestre=fin_trimestre_;
-        id_anneeScolaire=id_anneeScolaire_;
-    }
-
-    //méthodes
 }

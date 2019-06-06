@@ -1,4 +1,7 @@
 package Model;
+
+import java.util.ArrayList;
+
 /**
  * <b>classe de definiton d'une personne</b>
  * @author Victor
@@ -12,6 +15,7 @@ public class Personne {
     protected String prenom;
     protected String login;
     protected String mdp;
+    protected ArrayList<Bulletin> bulletins;
 
     //constructeur
     /**
@@ -24,11 +28,29 @@ public class Personne {
         prenom="";
         login="";
         mdp="";
+        bulletins=new ArrayList<Bulletin>();
     }
 
     /**
      * <b>constructeur surcharge</b>
      * @param id_personne_ valaur a attribuer a id personne
+     * @param type_ valaur a attribuer a type
+     * @param nom_ valeur a attribuer a nom
+     * @param prenom_ valaur a attribuer au prenom
+     * @param login_ valaur a attribuer au login
+     * @param mdp_ valaur a attribuer au mot de passe
+     */
+    public Personne(int id_personne_,String type_ ,String nom_, String prenom_ ,String login_, String mdp_, ArrayList<Bulletin> bulletins_){
+        id_personne=id_personne_;
+        type=type_;
+        nom=nom_;
+        prenom=prenom_;
+        login=login_;
+        mdp=mdp_;
+        bulletins = bulletins_;
+    }
+    /**
+     * <b>constructeur surcharge sans id personne</b>
      * @param type_ valaur a attribuer a type
      * @param nom_ valeur a attribuer a nom
      * @param prenom_ valaur a attribuer au prenom
@@ -42,22 +64,7 @@ public class Personne {
         prenom=prenom_;
         login=login_;
         mdp=mdp_;
-    }
-    /**
-     * <b>constructeur surcharge sans id personne</b>
-     * @param type_ valaur a attribuer a type
-     * @param nom_ valeur a attribuer a nom
-     * @param prenom_ valaur a attribuer au prenom
-     * @param login_ valaur a attribuer au login
-     * @param mdp_ valaur a attribuer au mot de passe
-     */
-    public Personne(String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
-        id_personne=0;
-        type=type_;
-        nom=nom_;
-        prenom=prenom_;
-        login=login_;
-        mdp=mdp_;
+        bulletins = new ArrayList<>();
     }
 
     //methode
@@ -95,6 +102,13 @@ public class Personne {
      * @return le mot de passe
      */
     public String getMdp() {return mdp;}
+    /**
+     *<b>getter liste de bulletin</b>
+     * @return la liste de bulletins
+     */
+    public ArrayList<Bulletin> getBulletins() {
+        return bulletins;
+    }
 
     //setter
     /**
@@ -131,5 +145,11 @@ public class Personne {
      * @param mdp valaur a attribuer au mot de passe
      */
     public void setMdp(String mdp) {this.mdp = mdp;}
-
+    /**
+     * <b>setter liste de bulletin</b>
+     * @param bulletins la liste des bulletins
+     */
+    public void setBulletins(ArrayList<Bulletin> bulletins) {
+        this.bulletins = bulletins;
+    }
 }
