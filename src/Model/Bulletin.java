@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Bulletin {
     //attribut
     private int id_bulletin;
+    private float moyenne;
     private Trimestre trimestre;
     private String appreciation_bulletin;
     private Personne eleve;
@@ -21,6 +22,14 @@ public class Bulletin {
      * @return id bulletin
      */
     public int getId_bulletin() {return id_bulletin;}
+
+    /**
+     * <b>getter moyenne</b>
+     * @return moyenne
+     */
+    public float getMoyenne() {
+        return moyenne;
+    }
     /**
      * <b>getter id trimestre</b>
      * @return id trimestre
@@ -53,6 +62,13 @@ public class Bulletin {
      */
     public void setId_bulletin(int id_bulletin) {this.id_bulletin = id_bulletin; }
     /**
+     * <b>setter moyenne</b>
+     * @param moyenne valeur attribuer a moyenne
+     */
+    public void setMoyenne(float moyenne) {
+        this.moyenne = moyenne;
+    }
+    /**
      * <b>setter trimestre</b>
      * @param trimestre Objet attribuer au trimestre
      */
@@ -83,6 +99,7 @@ public class Bulletin {
      */
     public Bulletin(){
         id_bulletin=0;
+        moyenne=0;
         trimestre=new Trimestre();
         appreciation_bulletin="";
         eleve=new Personne();
@@ -92,10 +109,12 @@ public class Bulletin {
     /**
      * <b>constructeur surcharge sans objets ni arraylist</b>
      * @param id_bulletin_ valeur a attribuer a l'id bulletin
+     * @param moyenne_ valeur a attribuer a moyenne
      * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
      */
-    public Bulletin(int id_bulletin_, String appreciation_bulletin_){
+    public Bulletin(int id_bulletin_, float moyenne_, String appreciation_bulletin_){
         id_bulletin=id_bulletin_;
+        moyenne=moyenne_;
         trimestre=new Trimestre();
         appreciation_bulletin=appreciation_bulletin_;
         eleve=new Personne();
@@ -105,13 +124,15 @@ public class Bulletin {
     /**
      * <b>constructeur surcharge</b>
      * @param id_bulletin_ valeur a attribuer a l'id bulletin
+     * @param moyenne_ valeur a attribuer a moyenne
      * @param trimestre_ Objet a attribuer a trimestre
      * @param eleve_ Objet a attribuer a eleve
      * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
      * @param matieres_ arraylist a attribuer a matieres
      */
-    public Bulletin(int id_bulletin_, Trimestre trimestre_, Personne eleve_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
+    public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, Personne eleve_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
         id_bulletin=id_bulletin_;
+        moyenne=moyenne_
         trimestre=trimestre_;
         appreciation_bulletin=appreciation_bulletin_;
         eleve=eleve_;

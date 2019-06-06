@@ -1,6 +1,6 @@
 package DAO
 
-import Model.Personne;
+import Model.Bulletin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,41 +8,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
-public class EleveDAO extends com.sdz.dao.DAO<Personne> {
+public class EleveDAO extends com.sdz.dao.DAO<Bulletin> {
     public EleveDAO(Connection conn) {
         super(conn);
     }
 
-    public boolean create(Personne obj) {
+    public boolean create(Bulletin obj) {
         return false;
     }
 
-    public boolean delete(Personne obj) {
+    public boolean delete(Bulletin obj) {
         return false;
     }
 
-    public boolean update(Personne obj) {
+    public boolean update(Bulletin obj) {
         return false;
     }
 
-    public Personne connection(int id) {
-        Personne Personne = new Personne();
+    public Bulletin connection(int id) {
+        Bulletin Bulletin = new Bulletin();
 
         try {
             // chargement driver "com.mysql.jdbc.Driver"
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/Eleve";
+            String urlDatabase = "jdbc:mysql://localhost:3306/Bulletin";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE Login ="+id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Bulletin WHERE Login ="+id);
             if(result.first())
-                Personne = new Personne(result.getInt("ID_Eleve"),
+                Bulletin = new Bulletin(result.getInt("ID_Bulletin"),
                         "eleve",
                         result.getString("Nom"),
                         result.getString("Prenom"),
@@ -52,6 +52,6 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Personne;
+        return Bulletin;
     }
 }

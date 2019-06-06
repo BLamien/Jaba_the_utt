@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class DetailBulletin {
     //attributs
     private int id_detailBulletin;
+    private float moyenne_matiere;
     private Enseignement matiere;
     private String appreciation_detailBulletin;
     private ArrayList<Devoir> notes;
@@ -21,6 +22,13 @@ public class DetailBulletin {
      * @return id detail bulletin
      */
     public int getId_detailBulletin() {return id_detailBulletin;}
+    /**
+     * <b>getter moyenne_matiere</b>
+     * @return moyenne_matiere
+     */
+    public float getMoyenne_matiere() {
+        return moyenne_matiere;
+    }
     /**
      * <b>getter matiere</b>
      * @return matiere
@@ -47,6 +55,13 @@ public class DetailBulletin {
      */
     public void setId_detailBulletin(int id_detailBulletin) {this.id_detailBulletin = id_detailBulletin;}
     /**
+     * <b>seter moyenne_matiere</b>
+     * @param moyenne_matiere valeur attribuer a moyenne_matiere
+     */
+    public void setMoyenne_matiere(float moyenne_matiere) {
+        this.moyenne_matiere = moyenne_matiere;
+    }
+    /**
      * <b>setter matiere</b>
      * @param matiere Objet a attribuer a matiere
      */
@@ -59,7 +74,7 @@ public class DetailBulletin {
 
     /**
      * <b>setter notes</b>
-     * @param  nouvelle arraylist a attribuer a notes
+     * @param  notes arraylist a attribuer a notes
      */
     public void setNotes(ArrayList<Devoir> notes) {
         this.notes = notes;
@@ -71,6 +86,7 @@ public class DetailBulletin {
      */
     public DetailBulletin(){
         id_detailBulletin=0;
+        moyenne_matiere=0;
         matiere=new Enseignement();
         appreciation_detailBulletin="";
         notes=new ArrayList<>();
@@ -79,12 +95,14 @@ public class DetailBulletin {
     /**
      * <b>constructeur surcharge</b>
      * @param id_detailBulletin_ valeur a attribuer au detail du bulletin
+     * @param moyenne_matiere_ valeur a attribuer a moyenne_matiere
      * @param matiere_ Objet a attribuer a matiere
      * @param appreciation_detailBulletin_ valeur a attribuer a l'apprecation
      * @param notes_ arraylist a attribuer a notes
      */
-    public DetailBulletin(int id_detailBulletin_, Enseignement matiere_, String appreciation_detailBulletin_, ArrayList<Devoir> notes_){
+    public DetailBulletin(int id_detailBulletin_, float moyenne_matiere_, Enseignement matiere_, String appreciation_detailBulletin_, ArrayList<Devoir> notes_){
         id_detailBulletin=id_detailBulletin_;
+        moyenne_matiere=moyenne_matiere_;
         matiere=matiere_;
         appreciation_detailBulletin=appreciation_detailBulletin_;
         notes=notes_;
@@ -94,8 +112,9 @@ public class DetailBulletin {
      * @param id_detailBulletin_ valeur a attribuer a l'id bulletin
      * @param appreciation_detailBulletin_ valeur a attribuer a l'apprecation
      */
-    public DetailBulletin(int id_detailBulletin_, String appreciation_detailBulletin_){
+    public DetailBulletin(int id_detailBulletin_, float moyenne_matiere_, String appreciation_detailBulletin_){
         id_detailBulletin=id_detailBulletin_;
+        moyenne_matiere=moyenne_matiere_;
         matiere=new Enseignement();
         appreciation_detailBulletin=appreciation_detailBulletin_;
         notes=new ArrayList<>();
