@@ -13,8 +13,51 @@ public class Bulletin {
     private float moyenne;
     private Trimestre trimestre;
     private String appreciation_bulletin;
-    private Personne eleve;
     ArrayList<DetailBulletin> matieres;
+
+    //constructeur
+
+    /**
+     * <b>constructeur par defaut</b>
+     */
+    public Bulletin(){
+        id_bulletin=0;
+        moyenne=0;
+        trimestre=new Trimestre();
+        appreciation_bulletin="";
+        matieres= new ArrayList<>();
+    }
+
+    /**
+     * <b>constructeur surcharge sans objets ni arraylist</b>
+     * @param id_bulletin_ valeur a attribuer a l'id bulletin
+     * @param moyenne_ valeur a attribuer a moyenne
+     * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
+     */
+    public Bulletin(int id_bulletin_, float moyenne_, String appreciation_bulletin_){
+        id_bulletin=id_bulletin_;
+        moyenne=moyenne_;
+        trimestre=new Trimestre();
+        appreciation_bulletin=appreciation_bulletin_;
+        matieres=new ArrayList<>();
+    }
+
+    /**
+     * <b>constructeur surcharge</b>
+     * @param id_bulletin_ valeur a attribuer a l'id bulletin
+     * @param moyenne_ valeur a attribuer a moyenne
+     * @param trimestre_ Objet a attribuer a trimestre
+     * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
+     * @param matieres_ arraylist a attribuer a matieres
+     */
+    public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
+        id_bulletin=id_bulletin_;
+        moyenne=moyenne_;
+        trimestre=trimestre_;
+        appreciation_bulletin=appreciation_bulletin_;
+        matieres=matieres_;
+    }
+    //methode
 
     //getter
     /**
@@ -42,11 +85,6 @@ public class Bulletin {
     public String getAppreciation_bulletin() {
         return appreciation_bulletin;
     }
-    /**
-     * <b>getter eleve</b>
-     * @return eleve
-     */
-    public Personne get_eleve() {return eleve; }
 
     /**
      * <b>getter des matieres</b>
@@ -78,11 +116,6 @@ public class Bulletin {
      * @param appreciation_bulletin valeur attribuer a l'appreciation
      */
     public void setAppreciation_bulletin(String appreciation_bulletin) {this.appreciation_bulletin = appreciation_bulletin;}
-    /**
-     * <b>setter eleve</b>
-     * @param eleve Objet attribuer a eleve
-     */
-    public void set_eleve(Personne eleve) {this.eleve = eleve;}
 
     /**
      * <b>setter de matières</b>
@@ -92,53 +125,7 @@ public class Bulletin {
         this.matieres = matieres;
     }
 
-    //constructeur
 
-    /**
-     * <b>constructeur par defaut</b>
-     */
-    public Bulletin(){
-        id_bulletin=0;
-        moyenne=0;
-        trimestre=new Trimestre();
-        appreciation_bulletin="";
-        eleve=new Personne();
-        matieres= new ArrayList<>();
-    }
-
-    /**
-     * <b>constructeur surcharge sans objets ni arraylist</b>
-     * @param id_bulletin_ valeur a attribuer a l'id bulletin
-     * @param moyenne_ valeur a attribuer a moyenne
-     * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
-     */
-    public Bulletin(int id_bulletin_, float moyenne_, String appreciation_bulletin_){
-        id_bulletin=id_bulletin_;
-        moyenne=moyenne_;
-        trimestre=new Trimestre();
-        appreciation_bulletin=appreciation_bulletin_;
-        eleve=new Personne();
-        matieres=new ArrayList<>();
-    }
-
-    /**
-     * <b>constructeur surcharge</b>
-     * @param id_bulletin_ valeur a attribuer a l'id bulletin
-     * @param moyenne_ valeur a attribuer a moyenne
-     * @param trimestre_ Objet a attribuer a trimestre
-     * @param eleve_ Objet a attribuer a eleve
-     * @param appreciation_bulletin_ valeur a attribuer a l'appreciation du bulletin
-     * @param matieres_ arraylist a attribuer a matieres
-     */
-    public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, Personne eleve_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
-        id_bulletin=id_bulletin_;
-        moyenne=moyenne_;
-        trimestre=trimestre_;
-        appreciation_bulletin=appreciation_bulletin_;
-        eleve=eleve_;
-        matieres=matieres_;
-    }
-    //methode
 }
 
 

@@ -21,6 +21,7 @@ public class BulletinFrame extends JFrame {
 
     public BulletinFrame() throws HeadlessException {
         init();
+        setVisible(true);
     }
 
     public void init(){
@@ -28,6 +29,14 @@ public class BulletinFrame extends JFrame {
         detailsBulletin.add(" Physique : 6/20 - Pitoyable...");
         detailsBulletin.add(" Flue traversière : 14/20 - ca passe");
         detailsBulletin.add(" Jaba : 19/20 - T'es chaud comme Léo");
+
+        JTabbedPane jt = new JTabbedPane();
+
+        jt.add("Trimestre 1", new formBulletin());
+        jt.add( "Trimestre 2", new formBulletin());
+        jt.add("Trimestre 3", new formBulletin()) ;
+
+        getContentPane().add(jt);
 
 
         // Frame init
