@@ -1,5 +1,6 @@
 package DAO;
 
+import Model.Bulletin;
 import Model.Personne;
 
 import java.sql.DriverManager;
@@ -40,8 +41,8 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE Login ="+id);
-            if(result.first())
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE Login =" + id);
+            if (result.first())
                 Personne = new Personne(result.getInt("ID_Eleve"),
                         "eleve",
                         result.getString("Nom"),
@@ -49,6 +50,14 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
                         result.getString("Login"),
                         result.getString("Mdp")
                 );
+
+            result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Bulletin WHERE ID_Eleve =" + Personne.getId_personne());
+            if (result.next()) {
+                com.sdz.dao.DAO<Bulletin> bulletinDAO = new BulletinDAO();
+                Personne.getBulletins().add(bulletinDAO.Connection(result.getInt("ID_Bulletin")));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

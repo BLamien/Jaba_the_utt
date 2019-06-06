@@ -53,7 +53,7 @@ public class Enseignement {
      * <b>setter classe</b>
      * @param classe valeur a attribuer a classe
      */
-    public void setId_classe(Classe classe) {this.classe = classe;}
+    public void set_classe(Classe classe) {this.classe = classe;}
 
     //constructeur
     /**

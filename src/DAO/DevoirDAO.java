@@ -40,7 +40,7 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Devoir WHERE Login ="+id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Devoir WHERE ID_Devoir ="+id);
             if(result.first())
                 Devoir = new Devoir(result.getInt("ID_Devoir"),
                         result.getInt("Note"),
