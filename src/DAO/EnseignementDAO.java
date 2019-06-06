@@ -1,6 +1,6 @@
 package DAO
 
-import Model.AnneeScolaire;
+import Model.Enseignement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,44 +8,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
-public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
-    public AnneeScolaireDAO(Connection conn) {
+public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
+    public EnseignementDAO(Connection conn) {
         super(conn);
     }
 
-    public boolean create(AnneeScolaire obj) {
+    public boolean create(Enseignement obj) {
         return false;
     }
 
-    public boolean delete(AnneeScolaire obj) {
+    public boolean delete(Enseignement obj) {
         return false;
     }
 
-    public boolean update(AnneeScolaire obj) {
+    public boolean update(Enseignement obj) {
         return false;
     }
 
-    public AnneeScolaire connection(int id) {
-        AnneeScolaire AnneeScolaire = new AnneeScolaire();
+    public Enseignement connection(int id) {
+        Enseignement Enseignement = new Enseignement();
 
         try {
             // chargement driver "com.mysql.jdbc.Driver"
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/AnneeScolaire";
+            String urlDatabase = "jdbc:mysql://localhost:3306/Enseignement";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM AnneeScolaire WHERE ID_AnneeScolaire ="+id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Enseignement WHERE Login ="+id);
             if(result.first())
-                AnneeScolaire = new AnneeScolaire(result.getInt("ID_AnneeScolaire"));
+                Enseignement = new Enseignement(result.getInt("ID_Enseignement")
+                );
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return AnneeScolaire;
+        return Enseignement;
     }
 }

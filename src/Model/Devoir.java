@@ -60,7 +60,7 @@ public class Devoir {
      * @param note_ valeur a attribuer a la note
      * @param appreciation_evaluation_ valeur a attribuer a l'appreciation
      */
-    public Devoir(int id_devoir_, int note_, String appreciation_evaluation_, int id_detailBulletin_){
+    public Devoir(int id_devoir_, int note_, String appreciation_evaluation_){
         id_devoir=id_devoir_;
         note=note_;
         appreciation_evaluation=appreciation_evaluation_;

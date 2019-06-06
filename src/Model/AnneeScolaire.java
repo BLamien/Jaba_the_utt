@@ -37,6 +37,16 @@ public class AnneeScolaire {
     }
 
     /**
+     * <b>constructeur par defaut</b>
+     */
+    public AnneeScolaire() {
+        this.id_anneescolaire = 0;
+        this.trimestre1 = new Trimestre();
+        this.trimestre2 = new Trimestre();
+        this.trimestre3 = new Trimestre();
+    }
+
+    /**
      * <b>getter id_anneescolaire</b>
      * @return id_anneescolaire
      */

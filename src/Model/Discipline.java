@@ -26,10 +26,6 @@ public class Discipline {
         id_discipline=id_discipline_;
         nom_discipline=nom_discipline_;
     }
-    public Discipline(String nom_discipline_){
-        id_discipline=0;
-        nom_discipline=nom_discipline_;
-    }
 
     //méthodes
 

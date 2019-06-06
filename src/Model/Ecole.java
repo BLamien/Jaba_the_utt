@@ -23,6 +23,15 @@ public class Ecole {
     }
 
     /**
+     * <b>constructeur par defaut</b>
+     */
+    public Ecole() {
+        id_ecole=0;
+        nom_ecole="";
+        anneefondation=0;
+    }
+
+    /**
      * <b>getter id_ecole</b>
      * @return id_ecole
      */

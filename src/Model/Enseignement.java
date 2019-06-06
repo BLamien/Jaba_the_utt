@@ -79,6 +79,16 @@ public class Enseignement {
         enseignant=enseignant_;
         classe=classe_;
     }
+    /**
+     * <b>constructeur surcharge sans objets</b>
+     * @param id_enseignement_ valeur a attribuer a l'id enseignement
+     */
+    public Enseignement(int id_enseignement_){
+        id_enseignement=id_enseignement_;
+        discipline=new Discipline();
+        enseignant=new Personne();
+        classe=new Classe();
+    }
 
     //méthode
 }

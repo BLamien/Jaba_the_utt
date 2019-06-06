@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
-public class EnseignantDAO extends com.sdz.dao.DAO<Trimestre> {
-    public EnseignantDAO(Connection conn) {
+public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
+    public TrimestreDAO(Connection conn) {
         super(conn);
     }
 
