@@ -11,8 +11,7 @@
 package View;
 
 import Model.Classe;
-import Model.Eleve;
-import Model.Enseignant;
+import Model.Personne;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -84,30 +83,30 @@ public class Reporting  {
 
         ArrayList<Classe> ok = new ArrayList<Classe>();
         Classe okk = new Classe();
-        ArrayList<Eleve> effectif = new ArrayList<Eleve>();
+        ArrayList<Personne> effectif = new ArrayList<Personne>();
         okk.setNom_niveau("6");
-        Eleve okkk= new Eleve();
+        Personne okkk= new Personne();
         effectif.add(okkk);
-        Eleve okkk1= new Eleve();
+        Personne okkk1= new Personne();
         effectif.add(okkk1);
         okk.setEffectif(effectif);
 
 
         Classe okk2 = new Classe();
-        ArrayList<Eleve> effectif2 = new ArrayList<Eleve>();
+        ArrayList<Personne> effectif2 = new ArrayList<Personne>();
         okk2.setNom_niveau("5");
-        Eleve okkk2= new Eleve();
+        Personne okkk2= new Personne();
         effectif.add(okkk2);
-        Eleve okkk12= new Eleve();
+        Personne okkk12= new Personne();
         effectif2.add(okkk12);
-        Eleve okkk123= new Eleve();
+        Personne okkk123= new Personne();
         effectif2.add(okkk123);
         okk2.setEffectif(effectif2);
 
         ok.add(okk);
         ok.add(okk2);
 
-        System.out.println(okk2.getEffectif().size());
+        System.out.println(okk2.get_effectif().size());
 
 
         graphEleveNiveau(ok);
@@ -318,7 +317,7 @@ public class Reporting  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         //on ajoute toutes les valeurs de notre arrayList
         for(int i=0; i<mesClasses.size();i++){
-            dataset.addValue(mesClasses.get(i).getEffectif().size(), categorie1, mesClasses.get(i).getNom_niveau());
+            dataset.addValue(mesClasses.get(i).get_effectif().size(), categorie1, mesClasses.get(i).getNom_niveau());
         }
 
 
@@ -358,7 +357,7 @@ public class Reporting  {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         //on ajoute toutes les valeurs de notre arrayList
         for(int i=0; i<mesClasses.size();i++){
-            dataset.addValue(mesClasses.get(i).getEffectif().size(), "nb eleves", mesClasses.get(i).getNom_niveau());
+            dataset.addValue(mesClasses.get(i).get_effectif().size(), "nb eleves", mesClasses.get(i).getNom_niveau());
         }
 
         JFreeChart chart = ChartFactory.createBarChart(
@@ -378,8 +377,17 @@ public class Reporting  {
 
     // proportion de profs et d'élèves dans l'école
     //TODO : la classe école devrait peut etre contenir une arraylist de porf et d eleves
-    public static void garphEleveProf(ArrayList<Eleve> mesEleves, ArrayList<Enseignant> mesProfs) {
+    public static void garphEleveProf(ArrayList<Personne> personnes){
+        ArrayList<Personne> mesProfs = new ArrayList<>();
+        ArrayList<Personne> mesEleves = new ArrayList<>();
+        for(int k=0;k<personnes.size();k++){
+            if(personnes.get(k).getType()=="Eleve"){
+                mesProfs.add(personnes.get(k));
+            }else{
+                mesEleves.add(personnes.get(k));
+            }
 
+        }
         // create a dataset...
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("enseignants",mesProfs.size());
@@ -402,8 +410,17 @@ public class Reporting  {
 
 
     // proportion de profs et d'élèves par école
-    public static void graphEleveProf_ecole(ArrayList<Eleve> mesEleves, ArrayList<Enseignant> mesProfs, String column1, String column2){
+    public static void graphEleveProf_ecole(ArrayList<Personne> personnes, String column1, String column2){
+        ArrayList<Personne> mesProfs = new ArrayList<>();
+        ArrayList<Personne> mesEleves = new ArrayList<>();
+        for(int k=0;k<personnes.size();k++){
+            if(personnes.get(k).getType()=="Eleve"){
+                mesProfs.add(personnes.get(k));
+            }else{
+                mesEleves.add(personnes.get(k));
+            }
 
+        }
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(mesEleves.size(), "eleve", "el");
         dataset.addValue(mesProfs.size(), "enseignant", "ei");

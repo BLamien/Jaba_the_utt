@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Ecole;
 
@@ -25,7 +25,8 @@ public class EcoleDAO extends com.sdz.dao.DAO<Ecole> {
         return false;
     }
 
-    public Ecole connection(int id) {
+    @Override
+    public Ecole Connection(int id) {
         Ecole Ecole = new Ecole();
 
         try {
@@ -48,7 +49,10 @@ public class EcoleDAO extends com.sdz.dao.DAO<Ecole> {
                 );
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return Ecole;
     }
+
 }

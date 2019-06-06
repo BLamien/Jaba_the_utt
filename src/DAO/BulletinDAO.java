@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Bulletin;
 
@@ -25,7 +25,8 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
         return false;
     }
 
-    public Bulletin connection(int id) {
+    @Override
+    public Bulletin Connection(int id) {
         Bulletin Bulletin = new Bulletin();
 
         try {
@@ -48,7 +49,11 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
                 );
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return Bulletin;
     }
+
+
 }

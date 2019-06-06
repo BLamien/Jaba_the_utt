@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Discipline;
 
@@ -25,7 +25,8 @@ public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
         return false;
     }
 
-    public Discipline connection(int id) {
+    @Override
+    public Discipline Connection(int id) {
         Discipline Discipline = new Discipline();
 
         try {
@@ -47,7 +48,10 @@ public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
                 );
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return Discipline;
     }
+
 }

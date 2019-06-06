@@ -45,7 +45,7 @@ public class AjoutPersonne extends JFrame {
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addPersonne(new Personne(Integer.parseInt(form.getId().getText()), (String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()));
+                modele.addPersonne(new Personne(Integer.parseInt(form.getId().getText()), (String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()));
                 setVisible(false); //you can't see me!
                 dispose();
             }

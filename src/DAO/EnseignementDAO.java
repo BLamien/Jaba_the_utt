@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Enseignement;
 
@@ -25,12 +25,17 @@ public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
         return false;
     }
 
-    public Enseignement connection(int id) {
+    @Override
+    public Enseignement Connection(int id) {
         Enseignement Enseignement = new Enseignement();
 
         try {
             // chargement driver "com.mysql.jdbc.Driver"
-            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
             String urlDatabase = "jdbc:mysql://localhost:3306/Enseignement";
@@ -49,4 +54,5 @@ public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
         }
         return Enseignement;
     }
+
 }

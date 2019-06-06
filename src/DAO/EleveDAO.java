@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Personne;
 
@@ -25,7 +25,8 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         return false;
     }
 
-    public Personne connection(int id) {
+    @Override
+    public Personne Connection(int id) {
         Personne Personne = new Personne();
 
         try {
@@ -51,7 +52,10 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
                 );
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return Personne;
     }
+
 }

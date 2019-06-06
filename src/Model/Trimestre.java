@@ -78,8 +78,8 @@ public class Trimestre {
     public Trimestre(){
         id_trimestre=0;
         numero=0;
-        debut_trimestre=0;
-        fin_trimestre=0;
+        debut_trimestre= new Date(2012,8,12);
+        fin_trimestre=new Date(2013,1,13);
         id_anneeScolaire=0;
     }
 

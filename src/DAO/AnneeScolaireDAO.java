@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.AnneeScolaire;
 
@@ -25,7 +25,8 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
         return false;
     }
 
-    public AnneeScolaire connection(int id) {
+    @Override
+    public AnneeScolaire Connection(int id) {
         AnneeScolaire AnneeScolaire = new AnneeScolaire();
 
         try {
@@ -45,7 +46,10 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
                 AnneeScolaire = new AnneeScolaire(result.getInt("ID_AnneeScolaire"));
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return AnneeScolaire;
     }
+
 }

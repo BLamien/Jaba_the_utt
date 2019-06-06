@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Devoir;
 
@@ -25,7 +25,8 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         return false;
     }
 
-    public Devoir connection(int id) {
+    @Override
+    public Devoir Connection(int id) {
         Devoir Devoir = new Devoir();
 
         try {
@@ -48,7 +49,10 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
                 );
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return Devoir;
     }
+
 }

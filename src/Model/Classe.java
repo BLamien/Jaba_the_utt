@@ -72,7 +72,7 @@ public class Classe {
      * <b>setter effectif</b>
      * @param effectif valeur a attribuer a l'effectif
      */
-    public void setEffectif(ArrayList<Eleve> effectif) {this.effectif = effectif;}
+    public void setEffectif(ArrayList<Personne> effectif) {this.effectif = effectif;}
 
     //constructeur
     /**

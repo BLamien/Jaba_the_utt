@@ -1,4 +1,4 @@
-package DAO
+package DAO;
 
 import Model.Trimestre;
 
@@ -25,7 +25,8 @@ public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
         return false;
     }
 
-    public Trimestre connection(int id) {
+    @Override
+    public Trimestre Connection(int id) {
         Trimestre Trimestre = new Trimestre();
 
         try {
@@ -47,10 +48,13 @@ public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
                         result.getDate("Debut_Trimestre"),
                         result.getDate("Fin_Trimestre"),
                         result.getInt("ID_AnneeScolaire")
-                        );
+                );
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return Trimestre;
     }
+
 }

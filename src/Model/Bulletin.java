@@ -132,7 +132,7 @@ public class Bulletin {
      */
     public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, Personne eleve_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
         id_bulletin=id_bulletin_;
-        moyenne=moyenne_
+        moyenne=moyenne_;
         trimestre=trimestre_;
         appreciation_bulletin=appreciation_bulletin_;
         eleve=eleve_;
