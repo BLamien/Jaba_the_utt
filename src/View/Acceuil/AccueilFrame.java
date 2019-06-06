@@ -30,7 +30,6 @@ public class AccueilFrame extends JFrame {
     private void init() {
         // Content Panel init
         var contentPane = getContentPane();
-        contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.GRAY);
         AcceuilHeader header = new AcceuilHeader();
         AcceuilCenter center = new AcceuilCenter();

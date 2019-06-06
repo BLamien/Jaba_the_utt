@@ -2,6 +2,7 @@ package View.HomeScreen;
 //TODO : JavaDoc
 
 import Constants.Colors;
+import Model.Personne;
 import View.Bulletin.BulletinFrame;
 
 import javax.swing.*;
@@ -60,7 +61,7 @@ public class MainFrame extends JFrame implements ActionListener {
         tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {//This line prevents double events
-                    BulletinFrame bulletinFrame = new BulletinFrame();
+                    BulletinFrame bulletinFrame = new BulletinFrame(new Personne());
                     System.out.println(tableau.getValueAt(tableau.getSelectedRow(), tableau.getSelectedColumn()).toString());
                 }
             }
