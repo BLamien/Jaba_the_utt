@@ -64,10 +64,10 @@ public class Classe {
 
 
     /**
-     * <b>setter id annee scolaire</b>
+     * <b>setter annee scolaire</b>
      * @param anneescolaire valeur a attribuer a l'id de l'annee scolaire
      */
-    public void anneescolaire(AnneeScolaire anneescolaire) {this.anneescolaire = anneescolaire;}
+    public void setAnneeScolaire(AnneeScolaire anneescolaire) {this.anneescolaire = anneescolaire;}
     /**
      * <b>setter effectif</b>
      * @param effectif valeur a attribuer a l'effectif

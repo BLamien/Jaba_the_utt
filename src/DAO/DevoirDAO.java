@@ -2,15 +2,14 @@ package DAO;
 
 import Model.Devoir;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
-    public DevoirDAO(Connection conn) {
-        super(conn);
+    public DevoirDAO() {
+        super();
     }
 
     public boolean create(Devoir obj) {
@@ -41,7 +40,7 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Devoir WHERE Login ="+id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Devoir WHERE ID_Devoir ="+id);
             if(result.first())
                 Devoir = new Devoir(result.getInt("ID_Devoir"),
                         result.getInt("Note"),

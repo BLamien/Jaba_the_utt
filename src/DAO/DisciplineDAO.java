@@ -2,15 +2,14 @@ package DAO;
 
 import Model.Discipline;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
-    public DisciplineDAO(Connection conn) {
-        super(conn);
+    public DisciplineDAO() {
+        super();
     }
 
     public boolean create(Discipline obj) {
@@ -41,7 +40,7 @@ public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Discipline WHERE Login ="+id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Discipline WHERE ID_Discipline ="+id);
             if(result.first())
                 Discipline = new Discipline(result.getInt("ID_Discipline"),
                         result.getString("Nom_Discipline")

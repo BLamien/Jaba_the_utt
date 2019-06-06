@@ -2,15 +2,14 @@ package DAO;
 
 import Model.Personne;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
-    public EnseignantDAO(Connection conn) {
-        super(conn);
+    public EnseignantDAO() {
+        super();
     }
 
     public boolean create(Personne obj) {
