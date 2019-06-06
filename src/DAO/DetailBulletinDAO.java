@@ -2,15 +2,14 @@ package DAO;
 
 import Model.DetailBulletin;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
-    public DetailBulletinDAO(Connection conn) {
-        super(conn);
+    public DetailBulletinDAO() {
+        super();
     }
 
     public boolean create(DetailBulletin obj) {

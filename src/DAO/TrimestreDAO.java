@@ -2,15 +2,14 @@ package DAO;
 
 import Model.Trimestre;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
-    public TrimestreDAO(Connection conn) {
-        super(conn);
+    public TrimestreDAO() {
+        super();
     }
 
     public boolean create(Trimestre obj) {

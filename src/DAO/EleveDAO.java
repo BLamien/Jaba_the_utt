@@ -2,15 +2,14 @@ package DAO;
 
 import Model.Personne;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //CTRL + SHIFT + O pour générer les imports
 public class EleveDAO extends com.sdz.dao.DAO<Personne> {
-    public EleveDAO(Connection conn) {
-        super(conn);
+    public EleveDAO() {
+        super();
     }
 
     public boolean create(Personne obj) {

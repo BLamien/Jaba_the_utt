@@ -1,12 +1,13 @@
 package com.sdz.dao;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public abstract class DAO<T> {
-    protected Connection connect = null;
+    protected Connection connect;
 
-    public DAO(Connection conn){
-        this.connect = conn;
+    public DAO(){
+        this.connect = null;
     }
 
     /**
@@ -35,5 +36,5 @@ public abstract class DAO<T> {
      * @param id
      * @return T
      */
-    public abstract T Connection(int id);
+    public abstract T Connection(int id) throws SQLException;
 }
