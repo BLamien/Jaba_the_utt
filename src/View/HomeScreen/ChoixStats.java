@@ -44,6 +44,11 @@ public class ChoixStats extends JPanel implements ActionListener {
         this.add(graphBaton);
     }
 
+    public void suppr(){
+        setVisible(false);
+        remove(this);
+    }
+
     /**
      * Methode qui gere les actions des boutons lorsqu'on leurs clique dessus
      * @param e evenement lorsque l'on clique sur un des boutons

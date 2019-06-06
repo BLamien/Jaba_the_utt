@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.Normalizer;
+import java.util.ArrayList;
 
 /**
  * <b>Jframe de la fenetre de saisie de nouvelles personnes</b>
@@ -18,6 +19,7 @@ public class AjoutPersonne extends JFrame {
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
     ModelTable modele;
+
 
     /**
      * <b>Constructeur</b>
@@ -53,7 +55,8 @@ public class AjoutPersonne extends JFrame {
 
         // Frame init
         setSize(windowDimension);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         setLocationRelativeTo(getOwner());
         setTitle("Ajouter une personne");
     }

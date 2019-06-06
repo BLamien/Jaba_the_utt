@@ -40,7 +40,7 @@ public class AccueilFrame extends JFrame {
 
         // Frame init
         setSize(windowDimension);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //setLocationRelativeTo(getOwner());
         setTitle("Acceuil");
     }

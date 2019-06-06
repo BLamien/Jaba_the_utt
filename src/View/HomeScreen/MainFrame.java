@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  * <b>Jframe principal de la fenetre principal de l'application</b>
  * @author Leonard
@@ -51,6 +54,13 @@ public class MainFrame extends JFrame implements ActionListener {
         tabs = new JScrollPane(tableau);
         tabs.setBorder(new EmptyBorder(100,300,100,300));
         tabs.setBackground(Colors.green);
+        tabs.addMouseListener( new MouseAdapter() {
+            public void mouseClicked (MouseEvent e)  {
+                if (e.getClickCount() == 2) {
+                    // Do something
+                }
+            }
+        } );
         contentPane.add(tabs, BorderLayout.CENTER);
 
         //bouton en bas
@@ -104,6 +114,7 @@ public class MainFrame extends JFrame implements ActionListener {
         if(button.getText().equals("Menu")){
             getContentPane().invalidate();
             getContentPane().remove(stats);
+            stats.setVisible(false);
             getContentPane().add(tabs,BorderLayout.CENTER);
             getContentPane().add(boutons,BorderLayout.SOUTH);
             getContentPane().revalidate();

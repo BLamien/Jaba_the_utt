@@ -21,7 +21,10 @@ public class ModelTable extends AbstractTableModel {
      */
     public ModelTable() {
         super();
+        initTest();
+    }
 
+    private void initTest(){
         personnes.add(new Personne(12,"eleves" ,"leo","lifao", "cacacac"));
         personnes.add(new Personne(1,"eleves" ,"t","truc", "fzef"));
         personnes.add(new Personne(22,"eleves" ,"thibault","bidule", "fe"));
@@ -29,7 +32,6 @@ public class ModelTable extends AbstractTableModel {
         personnes.add(new Personne(10,"eleves" ,"antoine","madk", "htqhw"));
         personnes.add(new Personne(13,"eleves" ,"paul","lifdsfao", "gqe"));
         personnes.add(new Personne(8,"eleves" ,"jb","fzfe", "gqrge"));
-
     }
 
     /**
