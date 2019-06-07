@@ -8,7 +8,7 @@
 
 
 
-package View;
+package View.Statistique;
 
 import Model.Classe;
 import Model.Personne;
