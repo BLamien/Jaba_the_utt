@@ -1,7 +1,6 @@
-package View.HomeScreen;
+package View.Statistique;
 
 import Constants.Colors;
-import View.Reporting;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

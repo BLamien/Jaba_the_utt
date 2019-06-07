@@ -25,7 +25,6 @@ public class BulletinFrame extends JFrame {
     //Contient : moyenne trimestrielle pour cet enseignement (calculée) et appréciation
     ArrayList<String> detailsBulletin = new ArrayList<>();
 
-    ArrayList<DetailBulletin> detailBulletins = new ArrayList<>();
     ArrayList<Bulletin> bulletins = new ArrayList<>();
     Personne personne;
 
@@ -38,13 +37,25 @@ public class BulletinFrame extends JFrame {
 
     private void initPersonnes(Personne personneSelect_) {
         personne=personneSelect_;
-        detailBulletins.add(new DetailBulletin(1,17,"t'es un BV man"));
-        detailBulletins.add(new DetailBulletin(1,11,"ca passe"));
-        detailBulletins.add(new DetailBulletin(1,6,"excellent"));
-        detailBulletins.add(new DetailBulletin(1,2,"plus nul que ma grand mere"));
-        detailBulletins.add(new DetailBulletin(1,19,"t'es chaud comme léo"));
+        ArrayList<DetailBulletin> detailBulletins1 = new ArrayList<>();
+
+        detailBulletins1.add(new DetailBulletin(1,17,"t'es un BV man"));
+        detailBulletins1.add(new DetailBulletin(1,11,"ca passe"));
+        detailBulletins1.add(new DetailBulletin(1,6,"excellent"));
+        detailBulletins1.add(new DetailBulletin(1,2,"plus nul que ma grand mere"));
+        detailBulletins1.add(new DetailBulletin(1,19,"t'es chaud comme léo"));
 //    public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
-        bulletins.add(new Bulletin(1,13,new Trimestre(), "Super sympa !", detailBulletins));
+        bulletins.add(new Bulletin(1,13,new Trimestre(), "Super sympa !", detailBulletins1));
+        ArrayList<DetailBulletin> detailBulletins = new ArrayList<>();
+
+        detailBulletins.add(new DetailBulletin(1,18,"Bien ouej"));
+        detailBulletins.add(new DetailBulletin(1,17,"Le petit thomas est un bon élève"));
+        detailBulletins.add(new DetailBulletin(1,2,"tu peux pas etre bon partour mggle"));
+        detailBulletins.add(new DetailBulletin(1,20,"je crois que j'ai mis un 2 devant le 0..."));
+        detailBulletins.add(new DetailBulletin(1,19,"Possède une marge de progression significative"));
+
+        bulletins.add(new Bulletin(1,16,new Trimestre(), "Incroyable bulletin", detailBulletins));
+
 
         personne.setBulletins(bulletins);
         personne.setNom("Chaud");
@@ -59,16 +70,16 @@ public class BulletinFrame extends JFrame {
 
         JTabbedPane jt = new JTabbedPane();
 
-        jt.add("Trimestre 1", new formBulletin(personne));
-        jt.add( "Trimestre 2", new formBulletin(personne));
-        jt.add("Trimestre 3", new formBulletin(personne)) ;
+        for(int i=0;i<personne.getBulletins().size();i++){
+            jt.add("Bulletin "+i, new formBulletin(personne, i));
+        }
 
         getContentPane().add(jt);
 
 
         // Frame init
         setBackground(Colors.green);
-        setSize(windowDimension);
+        setSize(new Dimension(1000,1000));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         setLocationRelativeTo(getOwner());

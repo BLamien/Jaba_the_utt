@@ -27,6 +27,7 @@ public class formBulletin extends JPanel {
     JTextField appreciationMatiere;
     ModelTable modele;
     Personne personne;
+    int numBulletin;
 
 
 
@@ -34,7 +35,8 @@ public class formBulletin extends JPanel {
     /**
      * Constructeur
      */
-    public formBulletin(Personne personneSelect) {
+    public formBulletin(Personne personneSelect, int numBulletin_) {
+        numBulletin=numBulletin_;
         personne=personneSelect;
         init();
     }
@@ -92,20 +94,20 @@ public class formBulletin extends JPanel {
 
         //boucle pour afficher les i matières du bulletin
         int i=2;
-        for(i=2;i<personne.getBulletins().get(0).getMatieres().size();i++)
+        for(i=2;i<personne.getBulletins().get(numBulletin).getMatieres().size();i++)
         {
             constraints.gridx = 0;
             constraints.gridy = i;
             this.add(new JLabel("Moyenne : "), constraints);
             constraints.gridx = 1;
             constraints.gridy = i;
-            this.add(new JLabel(Float.toString(personne.getBulletins().get(0).getMatieres().get(i).getMoyenne_matiere())+"/20"), constraints);
+            this.add(new JLabel(Float.toString(personne.getBulletins().get(numBulletin).getMatieres().get(i).getMoyenne_matiere())+"/20"), constraints);
             constraints.gridx = 2;
             constraints.gridy = i;
             this.add(new JLabel("Appreciation : "), constraints);
             constraints.gridx = 3;
             constraints.gridy = i;
-            this.add(new JLabel(personne.getBulletins().get(0).getMatieres().get(i).getAppreciation_detailBulletin()), constraints);
+            this.add(new JLabel(personne.getBulletins().get(numBulletin).getMatieres().get(i).getAppreciation_detailBulletin()), constraints);
         }
         //on programme la moyenne et l'appréciation général
         constraints.gridx=0;
@@ -113,13 +115,13 @@ public class formBulletin extends JPanel {
         this.add(new JLabel("Moyenne général : "), constraints);
         constraints.gridx=1;
         constraints.gridy=i+1;
-        this.add(new JLabel(Float.toString(personne.getBulletins().get(0).getMoyenne())+"/20"), constraints);
+        this.add(new JLabel(Float.toString(personne.getBulletins().get(numBulletin).getMoyenne())+"/20"), constraints);
         constraints.gridx=2;
         constraints.gridy=i+1;
         this.add(new JLabel("Appréciation général : "), constraints);
         constraints.gridx=3;
         constraints.gridy=i+1;
-        this.add(new JLabel(personne.getBulletins().get(0).getAppreciation_bulletin()), constraints);
+        this.add(new JLabel(personne.getBulletins().get(numBulletin).getAppreciation_bulletin()), constraints);
 
         //on programme le bouton de validation après les i matières
         constraints.gridx=0;

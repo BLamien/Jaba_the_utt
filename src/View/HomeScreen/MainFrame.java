@@ -4,6 +4,8 @@ package View.HomeScreen;
 import Constants.Colors;
 import Model.Personne;
 import View.Bulletin.BulletinFrame;
+import View.Statistique.ChoixStats;
+import View.Statistique.StatsFrame;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,8 +14,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * <b>Jframe principal de la fenetre principal de l'application</b>
@@ -111,19 +111,10 @@ public class MainFrame extends JFrame implements ActionListener {
             getContentPane().revalidate();
         }
         if(button.getText().equals("Statistiques")){
-            getContentPane().invalidate();
-            getContentPane().remove(tabs);
-            getContentPane().remove(boutons);
-            getContentPane().add(stats,BorderLayout.CENTER);
-            getContentPane().revalidate();
+            StatsFrame statsFrame = new StatsFrame();
         }
         if(button.getText().equals("Menu")){
-            getContentPane().invalidate();
-            getContentPane().remove(stats);
-            stats.setVisible(false);
-            getContentPane().add(tabs,BorderLayout.CENTER);
-            getContentPane().add(boutons,BorderLayout.SOUTH);
-            getContentPane().revalidate();
+
         }
 
 
