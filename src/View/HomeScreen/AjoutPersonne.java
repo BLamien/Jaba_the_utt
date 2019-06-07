@@ -1,13 +1,12 @@
 package View.HomeScreen;
 
 import Model.Personne;
+import View.HomeScreen.ModelsTable.ModelTablePersonne;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.Normalizer;
-import java.util.ArrayList;
 
 /**
  * <b>Jframe de la fenetre de saisie de nouvelles personnes</b>
@@ -18,7 +17,7 @@ public class AjoutPersonne extends JFrame {
     public static final Dimension windowDimension = new Dimension(600,800);
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
-    ModelTable modele;
+    ModelTablePersonne modele;
 
 
     /**
@@ -26,7 +25,7 @@ public class AjoutPersonne extends JFrame {
      * @param m modele de la table pour l'ajouter
      * @throws HeadlessException
      */
-    public AjoutPersonne(ModelTable m) throws HeadlessException {
+    public AjoutPersonne(ModelTablePersonne m) throws HeadlessException {
         modele = m;
         init();
         setVisible(true);

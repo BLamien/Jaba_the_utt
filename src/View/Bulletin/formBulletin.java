@@ -1,11 +1,8 @@
 package View.Bulletin;
 
 import Constants.Colors;
-import Model.Bulletin;
-import Model.DetailBulletin;
 import Model.Personne;
-import Model.Trimestre;
-import View.HomeScreen.ModelTable;
+import View.HomeScreen.ModelsTable.ModelTablePersonne;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -25,7 +22,7 @@ public class formBulletin extends JPanel {
     JComboBox prenom;
     JTextField moyenneMatiere;
     JTextField appreciationMatiere;
-    ModelTable modele;
+    ModelTablePersonne modele;
     Personne personne;
     int numBulletin;
 

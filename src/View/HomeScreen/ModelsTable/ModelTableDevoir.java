@@ -1,9 +1,9 @@
-package View.HomeScreen;
+package View.HomeScreen.ModelsTable;
 //TODO : JavaDoc
+import Model.Devoir;
 import Model.Personne;
 
 import javax.swing.table.AbstractTableModel;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -11,27 +11,17 @@ import java.util.ArrayList;
  * @author Leonard
  * @version 1.0
  */
-public class ModelTable extends AbstractTableModel {
-    private ArrayList<Personne> personnes = new ArrayList<Personne>();
+public class ModelTableDevoir extends AbstractTableModel {
+    private ArrayList<Devoir> devoir;
 
-    private String[] entetes = {"ID", "type", "Prenom", "login", "password"};
+    private String[] entetes = {"ID", "Note", "Commentaire"};
 
     /**
      * <b>Constructeur du modèle de JTable</b>
      */
-    public ModelTable() {
+    public ModelTableDevoir(ArrayList<Devoir> devoir_) {
         super();
-        initTest();
-    }
-
-    private void initTest(){
-        personnes.add(new Personne(12,"eleves" ,"dev","leo","lifao", "cacacac"));
-        personnes.add(new Personne(1,"eleves" ,"huh","t","truc", "fzef"));
-        personnes.add(new Personne(22,"eleves" ,"kjl","thibault","bidule", "fe"));
-        personnes.add(new Personne(32,"eleves" ,"nlhl","xav","chouette", "cacactjqhac"));
-        personnes.add(new Personne(10,"eleves" ,"nljhln","antoine","madk", "htqhw"));
-        personnes.add(new Personne(13,"eleves" ,"kjpmih","paul","lifdsfao", "gqe"));
-        personnes.add(new Personne(8,"eleves" ,"jnlkij","jb","fzfe", "gqrge"));
+        devoir =devoir_;
     }
 
     /**
@@ -39,7 +29,7 @@ public class ModelTable extends AbstractTableModel {
      * @return int
      */
     public int getRowCount() {
-        return personnes.size();
+        return devoir.size();
     }
 
     /**
@@ -68,15 +58,11 @@ public class ModelTable extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
             case 0:
-                return personnes.get(rowIndex).getId_personne();
+                return devoir.get(rowIndex).getId_devoir();
             case 1:
-                return personnes.get(rowIndex).getType();
+                return devoir.get(rowIndex).getNote();
             case 2:
-                return personnes.get(rowIndex).getPrenom();
-            case 3:
-                return personnes.get(rowIndex).getLogin();
-            case 4:
-                return personnes.get(rowIndex).getMdp();
+                return devoir.get(rowIndex).getAppreciation_evaluation();
             default:
                 return null; //Ne devrait jamais arriver
         }
@@ -84,19 +70,19 @@ public class ModelTable extends AbstractTableModel {
 
     /**
      * Methode qui permet l'ajout d'une personne
-     * @param personne personne que l'on souhaite ajouter
+     * @param devoir_ personne que l'on souhaite ajouter
      */
-    public void addPersonne(Personne personne) {
-        personnes.add(personne);
-        fireTableRowsInserted(personnes.size() -1, personnes.size() -1);
+    public void addDevoir(Devoir devoir_) {
+        devoir.add(devoir_);
+        fireTableRowsInserted(devoir.size() -1, devoir.size() -1);
     }
 
     /**
      * Methode qui permet de supprimer une personne
      * @param rowIndex index de la personne à supprimer
      */
-    public void removePersonne(int rowIndex) {
-        personnes.remove(rowIndex);
+    public void removeDevoir(int rowIndex) {
+        devoir.remove(rowIndex);
 
         fireTableRowsDeleted(rowIndex, rowIndex);
     }

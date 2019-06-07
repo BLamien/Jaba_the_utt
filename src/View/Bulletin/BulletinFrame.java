@@ -44,7 +44,6 @@ public class BulletinFrame extends JFrame {
         detailBulletins1.add(new DetailBulletin(1,6,"excellent"));
         detailBulletins1.add(new DetailBulletin(1,2,"plus nul que ma grand mere"));
         detailBulletins1.add(new DetailBulletin(1,19,"t'es chaud comme léo"));
-//    public Bulletin(int id_bulletin_, float moyenne_, Trimestre trimestre_, String appreciation_bulletin_, ArrayList<DetailBulletin> matieres_){
         bulletins.add(new Bulletin(1,13,new Trimestre(), "Super sympa !", detailBulletins1));
         ArrayList<DetailBulletin> detailBulletins = new ArrayList<>();
 

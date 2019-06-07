@@ -1,18 +1,12 @@
 package View.HomeScreen;
 
 import Constants.Colors;
-import Controller.Connexion;
-import Model.Personne;
-import View.ImagePanel;
-import View.Popup;
+import View.HomeScreen.ModelsTable.ModelTablePersonne;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.sql.SQLException;
+
 /**
  * <b>JPanel du JFrame ajoutPersonne</b>
  * @author Leonard
@@ -27,13 +21,13 @@ public class Formulaire extends JPanel {
     JTextField nom;
     JTextField userName;
     JPasswordField password;
-    ModelTable modele;
+    ModelTablePersonne modele;
 
     /**
      * Constructeur
      * @param m modele de la table pour ajout
      */
-    public Formulaire(ModelTable m) {
+    public Formulaire(ModelTablePersonne m) {
         modele=m;
         init();
     }
