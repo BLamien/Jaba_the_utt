@@ -1,14 +1,12 @@
-import Controller.Connexion;
-import View.Acceuil.AcceuilCenter;
-import View.Acceuil.AccueilFrame;
+import DAO.EleveDAO;
+import Model.Personne;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        String nombdd = "projetjava";
+        /*String nombdd = "projetjava";
         String user = "root";
         String passwd = "";
         View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
@@ -29,7 +27,29 @@ public class Main {
         for(int i=0; i<Liste.size(); i++)
         {
             System.out.print(Liste.get(i)+ " ");
+        }*/
+
+        //Test
+        com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
+        Personne eleve = new Personne();
+        for(int i = 1; i <= 3; i++){
+             eleve = eleveDao.Connection(i);
+            System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
+                    + eleve.getLogin()+"\n- " + eleve.getMdp());
+            //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
 
+        /*com.sdz.dao.DAO<Personne> eleveDao1 = new EleveDAO();
+        Personne eleve1 = eleveDao1.Connection(0);
+        System.out.println("Elève N°" + eleve1.getId_personne() + "\n- " + eleve1.getType() + "\n- " + eleve1.getNom() + "\n- " + eleve1.getPrenom() + "\n- "
+                + eleve1.getLogin() + "\n- " + eleve1.getMdp());
+        com.sdz.dao.DAO<Personne> eleveDao2 = new EleveDAO();
+        Personne eleve2 = eleveDao2.Connection(1);
+        System.out.println("Elève N°" + eleve2.getId_personne() + "\n- " + eleve2.getType() + "\n- " + eleve2.getNom() + "\n- " + eleve2.getPrenom() + "\n- "
+                + eleve2.getLogin() + "\n- " + eleve2.getMdp());
+        com.sdz.dao.DAO<Personne> eleveDao3 = new EleveDAO();
+        Personne eleve3 = eleveDao3.Connection(2);
+        System.out.println("Elève N°" + eleve3.getId_personne() + "\n- " + eleve3.getType() + "\n- " + eleve3.getNom() + "\n- " + eleve3.getPrenom() + "\n- "
+                + eleve3.getLogin() + "\n- " + eleve3.getMdp());*/
     }
 }
