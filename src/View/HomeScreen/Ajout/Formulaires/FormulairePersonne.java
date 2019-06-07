@@ -1,4 +1,4 @@
-package View.HomeScreen;
+package View.HomeScreen.Ajout.Formulaires;
 
 import Constants.Colors;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
@@ -12,7 +12,7 @@ import java.awt.*;
  * @author Leonard
  * @version 1.0
  */
-public class Formulaire extends JPanel {
+public class FormulairePersonne extends JPanel {
     //Attributs
     JButton valider;
     JTextField id;
@@ -27,7 +27,7 @@ public class Formulaire extends JPanel {
      * Constructeur
      * @param m modele de la table pour ajout
      */
-    public Formulaire(ModelTablePersonne m) {
+    public FormulairePersonne(ModelTablePersonne m) {
         modele=m;
         init();
     }

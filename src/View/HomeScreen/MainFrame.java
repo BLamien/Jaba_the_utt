@@ -5,6 +5,8 @@ import Constants.Colors;
 import Model.Devoir;
 import Model.Personne;
 import View.Bulletin.BulletinFrame;
+import View.HomeScreen.Ajout.AjoutDevoir;
+import View.HomeScreen.Ajout.AjoutPersonne;
 import View.HomeScreen.ModelsTable.ModelTableClasse;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
 import View.HomeScreen.ModelsTable.ModelTableEnseignement;
@@ -122,6 +124,9 @@ public class MainFrame extends JFrame implements ActionListener {
         setTitle("JABA");
     }
 
+    /**
+     * <b>Methode qui intialise les modeles de tables</b>
+     */
     private void initTables() {
         //initiation de la table Personne
         tableauPersonne = new JTable(modelePersonne);
@@ -192,7 +197,20 @@ public class MainFrame extends JFrame implements ActionListener {
             }
         }
         if(button.getText().equals("Ajouter")){
-            AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+            if(actualScrollPane==tabPersonne){
+                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+                System.out.println("trou");
+            }
+            if(actualScrollPane==tabDevoir){
+                System.out.println("caca");
+                AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
+            }
+            if(actualScrollPane==tabClasse){
+                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+            }
+            if(actualScrollPane==tabEnseignement){
+                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+            }
             getContentPane().revalidate();
         }
         if(button.getText().equals("Statistiques")){

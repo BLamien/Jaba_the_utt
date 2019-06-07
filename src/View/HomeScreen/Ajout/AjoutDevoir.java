@@ -1,7 +1,9 @@
-package View.HomeScreen;
+package View.HomeScreen.Ajout;
 
-import Model.Personne;
-import View.HomeScreen.ModelsTable.ModelTablePersonne;
+import Model.Devoir;
+import View.HomeScreen.Ajout.Formulaires.FormulaireDevoir;
+import View.HomeScreen.Ajout.Formulaires.FormulairePersonne;
+import View.HomeScreen.ModelsTable.ModelTableDevoir;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,11 +15,11 @@ import java.awt.event.ActionListener;
  * @author Leonard
  * @version 1.0
  */
-public class AjoutPersonne extends JFrame {
+public class AjoutDevoir extends JFrame {
     public static final Dimension windowDimension = new Dimension(600,800);
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
-    ModelTablePersonne modele;
+    ModelTableDevoir modele;
 
 
     /**
@@ -25,7 +27,7 @@ public class AjoutPersonne extends JFrame {
      * @param m modele de la table pour l'ajouter
      * @throws HeadlessException
      */
-    public AjoutPersonne(ModelTablePersonne m) throws HeadlessException {
+    public AjoutDevoir(ModelTableDevoir m) throws HeadlessException {
         modele = m;
         init();
         setVisible(true);
@@ -39,12 +41,12 @@ public class AjoutPersonne extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.green);
-        Formulaire form = new Formulaire(modele);
+        FormulaireDevoir form = new FormulaireDevoir(modele);
 
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addPersonne(new Personne(Integer.parseInt(form.getId().getText()), (String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()));
+                modele.addDevoir(new Devoir(Integer.parseInt(form.getId().getText()), Integer.parseInt(form.getNote().getText()), form.getAppreciation().getText()));
                 setVisible(false); //you can't see me!
                 dispose();
             }
@@ -57,6 +59,6 @@ public class AjoutPersonne extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         setLocationRelativeTo(getOwner());
-        setTitle("Ajouter une personne");
+        setTitle("Ajouter un devoir");
     }
 }
