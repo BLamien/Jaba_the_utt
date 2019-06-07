@@ -34,14 +34,14 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/Eleve";
+            String urlDatabase = "jdbc:mysql://localhost:3306/projetjava";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE Login =" + id);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE ID_Eleve = " + id);
             if (result.first())
                 Personne = new Personne(result.getInt("ID_Eleve"),
                         "eleve",
@@ -54,7 +54,7 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Bulletin WHERE ID_Eleve =" + Personne.getId_personne());
-            if (result.next()) {
+            while (result.next()) {
                 com.sdz.dao.DAO<Bulletin> bulletinDAO = new BulletinDAO();
                 Personne.getBulletins().add(bulletinDAO.Connection(result.getInt("ID_Bulletin")));
             }

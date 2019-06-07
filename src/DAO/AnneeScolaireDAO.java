@@ -34,7 +34,7 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/AnneeScolaire";
+            String urlDatabase = "jdbc:mysql://localhost:3306/projetjava";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
@@ -47,7 +47,7 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
 
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+"AND Numero = 1");
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+" AND Numero = 1");
             if (result.first()) {
                 com.sdz.dao.DAO<Trimestre> trimestreDAO = new TrimestreDAO();
                 AnneeScolaire.setTrimestre1(trimestreDAO.Connection(result.getInt("ID_Trimestre")));
@@ -55,7 +55,7 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
 
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+"AND Numero = 2");
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+" AND Numero = 2");
             if (result.first()) {
                 com.sdz.dao.DAO<Trimestre> trimestreDAO = new TrimestreDAO();
                 AnneeScolaire.setTrimestre2(trimestreDAO.Connection(result.getInt("ID_Trimestre")));
@@ -63,7 +63,7 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
 
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+"AND Numero = 3");
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_AnneeScolaire =" + AnneeScolaire.getId_anneescolaire()+" AND Numero = 3");
             if (result.first()) {
                 com.sdz.dao.DAO<Trimestre> trimestreDAO = new TrimestreDAO();
                 AnneeScolaire.setTrimestre3(trimestreDAO.Connection(result.getInt("ID_Trimestre")));

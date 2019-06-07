@@ -35,7 +35,7 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/Bulletin";
+            String urlDatabase = "jdbc:mysql://localhost:3306/projetjava";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
@@ -51,10 +51,11 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
 
             ResultSet tamp = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT ID_Trimestre FROM Bulletin WHERE ID_Bulletin =" + Bulletin.getId_bulletin());
-            result = this.connect.createStatement(
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Bulletin WHERE ID_Bulletin =" + Bulletin.getId_bulletin());
+            tamp.first();
+             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_Trimestre =" + tamp);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Trimestre WHERE ID_Trimestre =" + tamp.getInt("ID_Trimestre"));
             if (result.first()) {
                 com.sdz.dao.DAO<Trimestre> trimestreDAO = new TrimestreDAO();
                 Bulletin.set_trimestre(trimestreDAO.Connection(result.getInt("ID_Trimestre")));
@@ -63,7 +64,7 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM DetailBulletin WHERE ID_Bulletin ="+Bulletin.getId_bulletin() );
-            if (result.next()) {
+            while (result.next()) {
                 com.sdz.dao.DAO<DetailBulletin> detailBulletinDAO = new DetailBulletinDAO();
                 Bulletin.getMatieres().add(detailBulletinDAO.Connection(result.getInt("ID_DetailBulletin")));
             }

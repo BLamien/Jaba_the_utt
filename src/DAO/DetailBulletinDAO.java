@@ -35,7 +35,7 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
             Class.forName("com.mysql.jdbc.Driver");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/DetailBulletin";
+            String urlDatabase = "jdbc:mysql://localhost:3306/projetjava";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
@@ -59,10 +59,11 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
 
             ResultSet tamp = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT ID_Enseignement FROM DetailBulletin WHERE ID_DetailBulletin =" + DetailBulletin.getId_detailBulletin());
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM DetailBulletin WHERE ID_DetailBulletin =" + DetailBulletin.getId_detailBulletin());
+            tamp.first();
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Enseignement WHERE ID_Enseignement ="+tamp);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Enseignement WHERE ID_Enseignement ="+tamp.getInt("ID_Enseignement"));
             if (result.first()) {
                 com.sdz.dao.DAO<Enseignement> enseignementDAO = new EnseignementDAO();
                 DetailBulletin.set_matiere(enseignementDAO.Connection(result.getInt("ID_Enseignement")));
