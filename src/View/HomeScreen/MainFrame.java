@@ -13,6 +13,7 @@ import View.HomeScreen.ModelsTable.ModelTableClasse;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
 import View.HomeScreen.ModelsTable.ModelTableEnseignement;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
+import View.Recherche.RechercheFrame;
 import View.Statistique.ChoixStats;
 import View.Statistique.StatsFrame;
 
@@ -160,6 +161,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         header.getStats().addActionListener(this);
         header.getMenu().addActionListener(this);
+        header.getRecherche().addActionListener(this);
 
         // Frame init
         setSize(windowDimension);
@@ -257,6 +259,9 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if(button.getText().equals("Statistiques")){
             StatsFrame statsFrame = new StatsFrame(classes,personnes);
+        }
+        if(button.getText().equals("Rechercher")){
+            RechercheFrame rechercheFrame = new RechercheFrame(classes,personnes);
         }
         if(button.getText().equals("Menu")){
             //a voir
