@@ -1,15 +1,14 @@
 import DAO.EleveDAO;
 import Model.Personne;
-import View.Acceuil.AccueilFrame;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
+        //View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
-       /*//Test
+       //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
         for(int i = 1; i <= 3; i++){
@@ -23,7 +22,7 @@ public class Main {
         Personne eleve2 = new Personne("eleve", "Cabrel", "Francis", "FrancisCabrel", "couscous4");
         String classeeleve2 = "6emeB";
         com.sdz.dao.DAO<Personne> eleveDao2 = new EleveDAO();
-        ((EleveDAO) eleveDao2).ajoutEleve(eleve2, classeeleve2);*/
+        ((EleveDAO) eleveDao2).ajoutEleve(eleve2, classeeleve2);
 
         /*com.sdz.dao.DAO<Personne> eleveDao1 = new EleveDAO();
         Personne eleve1 = eleveDao1.Connection(0);
