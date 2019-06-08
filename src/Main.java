@@ -1,10 +1,8 @@
-import Controller.Connexion;
 import DAO.EleveDAO;
 import Model.Personne;
 import View.Acceuil.AccueilFrame;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -13,7 +11,7 @@ public class Main {
 
 
 
-       /* //Test
+       //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
         for(int i = 1; i <= 3; i++){
@@ -21,7 +19,7 @@ public class Main {
             System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
                     + eleve.getLogin()+"\n- " + eleve.getMdp());
             //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
-        }*/
+        }
 
         /*com.sdz.dao.DAO<Personne> eleveDao1 = new EleveDAO();
         Personne eleve1 = eleveDao1.Connection(0);

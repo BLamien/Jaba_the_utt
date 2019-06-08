@@ -14,16 +14,16 @@ public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
         super();
     }
 
-    public boolean create(Trimestre obj) {
-        return false;
+    public void create(Trimestre obj) {
+
     }
 
-    public boolean delete(Trimestre obj) {
-        return false;
+    public void delete(Trimestre obj) {
+
     }
 
-    public boolean update(Trimestre obj) {
-        return false;
+    public void update(Trimestre obj) {
+
     }
 
     @Override

@@ -14,16 +14,17 @@ public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
         super();
     }
 
-    public boolean create(Personne obj) {
-        return false;
+    public void create(Personne obj) {
+
+
     }
 
-    public boolean delete(Personne obj) {
-        return false;
+    public void delete(Personne obj) {
+
     }
 
-    public boolean update(Personne obj) {
-        return false;
+    public void update(Personne obj) {
+
     }
 
     @Override

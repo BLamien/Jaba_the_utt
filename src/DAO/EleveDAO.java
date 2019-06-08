@@ -6,6 +6,7 @@ import Model.Personne;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import static Constants.ConstConnexion.urlDatabase;
 
@@ -15,16 +16,42 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         super();
     }
 
-    public boolean create(Personne newEleve) {
-        return false;
+    public void ajoutEleve(Personne newEleve, String classenewEleve) {
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+            ResultSet result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Classe WHERE Niveau = " + classenewEleve);
+            result.first();
+            Statement result2 = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result2.executeUpdate("INSERT INTO Eleve (Nom, Prenom, Login, Mdp, ID_Classe)" +
+                    "VALUES ('" + newEleve.getNom() + "', " +
+                    "'" + newEleve.getPrenom() + "', " +
+                    "'" + newEleve.getLogin() + "', " +
+                    "'" + newEleve.getMdp() + "', " +
+                    ""+result.getInt("ID_Classe")+")");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean delete(Personne obj) {
-        return false;
+    public void create(Personne obj) {
+
     }
 
-    public boolean update(Personne obj) {
-        return false;
+    public void delete(Personne obj) {
+
+    }
+
+    public void update(Personne obj) {
+
     }
 
     @Override

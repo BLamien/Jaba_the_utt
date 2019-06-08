@@ -14,16 +14,16 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         super();
     }
 
-    public boolean create(Devoir obj) {
-        return false;
+    public void create(Devoir obj) {
+
     }
 
-    public boolean delete(Devoir obj) {
-        return false;
+    public void delete(Devoir obj) {
+
     }
 
-    public boolean update(Devoir obj) {
-        return false;
+    public void update(Devoir obj) {
+
     }
 
     @Override

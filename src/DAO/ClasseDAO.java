@@ -17,16 +17,16 @@ public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
         super();
     }
 
-    public boolean create(Classe obj) {
-        return false;
+    public void create(Classe obj) {
+
     }
 
-    public boolean delete(Classe obj) {
-        return false;
+    public void delete(Classe obj) {
+
     }
 
-    public boolean update(Classe obj) {
-        return false;
+    public void update(Classe obj) {
+
     }
 
     @Override

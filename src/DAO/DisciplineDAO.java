@@ -14,16 +14,16 @@ public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
         super();
     }
 
-    public boolean create(Discipline obj) {
-        return false;
+    public void create(Discipline obj) {
+
     }
 
-    public boolean delete(Discipline obj) {
-        return false;
+    public void delete(Discipline obj) {
+
     }
 
-    public boolean update(Discipline obj) {
-        return false;
+    public void update(Discipline obj) {
+
     }
 
     @Override

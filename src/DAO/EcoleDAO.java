@@ -14,16 +14,16 @@ public class EcoleDAO extends com.sdz.dao.DAO<Ecole> {
         super();
     }
 
-    public boolean create(Ecole obj) {
-        return false;
+    public void create(Ecole obj) {
+
     }
 
-    public boolean delete(Ecole obj) {
-        return false;
+    public void delete(Ecole obj) {
+
     }
 
-    public boolean update(Ecole obj) {
-        return false;
+    public void update(Ecole obj) {
+
     }
 
     @Override

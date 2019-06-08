@@ -16,16 +16,16 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
         super();
     }
 
-    public boolean create(DetailBulletin obj) {
-        return false;
+    public void create(DetailBulletin obj) {
+
     }
 
-    public boolean delete(DetailBulletin obj) {
-        return false;
+    public void delete(DetailBulletin obj) {
+
     }
 
-    public boolean update(DetailBulletin obj) {
-        return false;
+    public void update(DetailBulletin obj) {
+
     }
 
     @Override

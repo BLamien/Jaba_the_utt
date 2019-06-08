@@ -15,16 +15,16 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
         super();
     }
 
-    public boolean create(AnneeScolaire obj) {
-        return false;
+    public void create(AnneeScolaire obj) {
+
     }
 
-    public boolean delete(AnneeScolaire obj) {
-        return false;
+    public void delete(AnneeScolaire obj) {
+
     }
 
-    public boolean update(AnneeScolaire obj) {
-        return false;
+    public void update(AnneeScolaire obj) {
+
     }
 
     @Override
