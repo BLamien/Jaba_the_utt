@@ -15,7 +15,7 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         super();
     }
 
-    public boolean create(Personne obj) {
+    public boolean create(Personne newEleve) {
         return false;
     }
 

@@ -50,7 +50,7 @@ public class Personne {
         bulletins = bulletins_;
     }
     /**
-     * <b>constructeur surcharge sans id personne</b>
+     * <b>constructeur surcharge sans bulletins</b>
      * @param type_ valaur a attribuer a type
      * @param nom_ valeur a attribuer a nom
      * @param prenom_ valaur a attribuer au prenom
@@ -59,6 +59,23 @@ public class Personne {
      */
     public Personne(int id_personne_,String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
         id_personne=id_personne_;
+        type=type_;
+        nom=nom_;
+        prenom=prenom_;
+        login=login_;
+        mdp=mdp_;
+        bulletins = new ArrayList<>();
+    }
+    /**
+     * <b>constructeur surcharge sans bulletins ni id_personne</b>
+     * @param type_ valaur a attribuer a type
+     * @param nom_ valeur a attribuer a nom
+     * @param prenom_ valaur a attribuer au prenom
+     * @param login_ valaur a attribuer au login
+     * @param mdp_ valaur a attribuer au mot de passe
+     */
+    public Personne(String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
+        id_personne=0;
         type=type_;
         nom=nom_;
         prenom=prenom_;
