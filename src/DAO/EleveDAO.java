@@ -55,7 +55,20 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     }
 
     public void delete(Personne obj) {
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
 
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void update(Personne obj) {

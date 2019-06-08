@@ -2,84 +2,22 @@ CREATE TABLE Ecole(
     ID_Ecole int(11) PRIMARY KEY AUTO_INCREMENT,
 	Nom_Ecole varchar(255) NOT NULL,
 	Annee_Fondation int(11) NOT NULL
-);
+)ENGINE=INNODB;
 
 CREATE TABLE AnneeScolaire(
     ID_AnneeScolaire int(11) PRIMARY KEY AUTO_INCREMENT,
     Debut_AnneeScolaire int(11) NOT NULL,
     Fin_AnneeScolaire int(11) NOT NULL
-);
+)ENGINE=INNODB;
 
 CREATE TABLE Classe(
     ID_Classe int(11) PRIMARY KEY AUTO_INCREMENT,
     Niveau varchar(255) NOT NULL,
     ID_Ecole int(11),
     ID_AnneeScolaire int(11),
-    FOREIGN KEY (ID_Ecole) REFERENCES Ecole(ID_Ecole),
-    FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire)
-);
-
-
-
-CREATE TABLE Trimestre(
-    ID_Trimestre int(11) PRIMARY KEY AUTO_INCREMENT,
-    Numero int(11) NOT NULL,
-    Debut_Trimestre date NOT NULL,
-    Fin_Trimestre date NOT NULL,
-    ID_AnneeScolaire int(11),
-    FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire)
-);
-
-CREATE TABLE Bulletin(
-    ID_Bulletin int(11) PRIMARY KEY AUTO_INCREMENT,
-    Moyenne_Trimestre float NOT NULL,
-    ID_Trimestre int(11),
-    ID_Eleve int(11),
-    Appreciation_Bulletin varchar(255) NOT NULL,
-    FOREIGN KEY (ID_Trimestre) REFERENCES Trimestre(ID_Trimestre),
-    FOREIGN KEY (ID_Eleve) REFERENCES Eleve(ID_Eleve)
-);
-
-CREATE TABLE DetailBulletin(
-    ID_DetailBulletin int(11) PRIMARY KEY AUTO_INCREMENT,
-    Moyenne_Enseignement float NOT NULL,
-    ID_Bulletin int(11),
-    ID_Enseignement int(11),
-    Appreciation_DetailBulletin varchar(255) NOT NULL,
-    FOREIGN KEY (ID_Bulletin) REFERENCES Bulletin (ID_Bulletin),
-    FOREIGN KEY (ID_Enseignement) REFERENCES Enseignement(ID_Enseignement)
-);
-
-CREATE TABLE Devoir(
-    ID_Devoir int(11) PRIMARY KEY AUTO_INCREMENT,
-    ID_DetailBulletin int(11),
-    Note int(11) NOT NULL,
-    Appreciation_Devoir varchar(255) NOT NULL,
-    FOREIGN KEY (ID_DetailBulletin) REFERENCES DetailBulletin(ID_DetailBulletin)
-);
-
-CREATE TABLE Discipline(
-    ID_Discipline int(11) PRIMARY KEY AUTO_INCREMENT,
-    Nom_Discipline varchar(255) NOT NULL
-);
-
-CREATE TABLE Enseignement(
-    ID_Enseignement int(11) PRIMARY KEY AUTO_INCREMENT,
-    ID_Classe int(11),
-    ID_Discipline int(11),
-    ID_Enseignant int(11),
-    FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe),
-    FOREIGN KEY (ID_Discipline) REFERENCES Discipline(ID_Discipline),
-    FOREIGN KEY (ID_Enseignant) REFERENCES Enseignant(ID_Enseignant)
-);
-
-CREATE TABLE Enseignant(
-    ID_Enseignant int(11) PRIMARY KEY AUTO_INCREMENT,
-    Nom varchar(255) NOT NULL,
-    Prenom varchar(255) NOT NULL,
-    Login varchar(255) NOT NULL,
-    Mdp varchar(255) NOT NULL
-);
+     CONSTRAINT fk_ID_Ecole FOREIGN KEY (ID_Ecole) REFERENCES Ecole(ID_Ecole) ON DELETE CASCADE,
+     CONSTRAINT fk_ID_AnneeScolaire_Classe FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire) ON DELETE CASCADE
+)ENGINE=INNODB;
 
 CREATE TABLE Eleve(
     ID_Eleve int(11) PRIMARY KEY AUTO_INCREMENT,
@@ -88,18 +26,70 @@ CREATE TABLE Eleve(
     Login varchar(255) NOT NULL,
     Mdp varchar(255) NOT NULL,
     ID_Classe int(11),
-    FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe)
-);
+     CONSTRAINT fk_ID_Classe_Eleve FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe) ON DELETE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE Enseignant(
+    ID_Enseignant int(11) PRIMARY KEY AUTO_INCREMENT,
+    Nom varchar(255) NOT NULL,
+    Prenom varchar(255) NOT NULL,
+    Login varchar(255) NOT NULL,
+    Mdp varchar(255) NOT NULL
+)ENGINE=INNODB;
+
+CREATE TABLE Discipline(
+    ID_Discipline int(11) PRIMARY KEY AUTO_INCREMENT,
+    Nom_Discipline varchar(255) NOT NULL
+)ENGINE=INNODB;
+
+CREATE TABLE Enseignement(
+    ID_Enseignement int(11) PRIMARY KEY AUTO_INCREMENT,
+    ID_Classe int(11),
+    ID_Discipline int(11),
+    ID_Enseignant int(11),
+     CONSTRAINT fk_ID_Classe_Enseignement FOREIGN KEY (ID_Classe) REFERENCES Classe(ID_Classe) ON DELETE CASCADE,
+     CONSTRAINT fk_ID_Discipline FOREIGN KEY (ID_Discipline) REFERENCES Discipline(ID_Discipline) ON DELETE CASCADE,
+     CONSTRAINT fk_ID_Enseignant FOREIGN KEY (ID_Enseignant) REFERENCES Enseignant(ID_Enseignant) ON DELETE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE Trimestre(
+    ID_Trimestre int(11) PRIMARY KEY AUTO_INCREMENT,
+    Numero int(11) NOT NULL,
+    Debut_Trimestre date NOT NULL,
+    Fin_Trimestre date NOT NULL,
+    ID_AnneeScolaire int(11),
+     CONSTRAINT fk_ID_AnneeScolaire_Trimestre FOREIGN KEY (ID_AnneeScolaire) REFERENCES AnneeScolaire(ID_AnneeScolaire) ON DELETE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE Bulletin(
+    ID_Bulletin int(11) PRIMARY KEY AUTO_INCREMENT,
+    Moyenne_Trimestre float NOT NULL,
+    ID_Trimestre int(11),
+    ID_Eleve int(11),
+    Appreciation_Bulletin varchar(255) NOT NULL,
+     CONSTRAINT fk_ID_Trimestre FOREIGN KEY (ID_Trimestre) REFERENCES Trimestre(ID_Trimestre) ON DELETE CASCADE,
+     CONSTRAINT fk_ID_Eleve FOREIGN KEY (ID_Eleve) REFERENCES Eleve(ID_Eleve) ON DELETE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE DetailBulletin(
+    ID_DetailBulletin int(11) PRIMARY KEY AUTO_INCREMENT,
+    Moyenne_Enseignement float NOT NULL,
+    ID_Bulletin int(11),
+    ID_Enseignement int(11),
+    Appreciation_DetailBulletin varchar(255) NOT NULL,
+     CONSTRAINT fk_ID_Bulletin FOREIGN KEY (ID_Bulletin) REFERENCES Bulletin (ID_Bulletin) ON DELETE CASCADE,
+     CONSTRAINT fk_ID_Enseignement FOREIGN KEY (ID_Enseignement) REFERENCES Enseignement(ID_Enseignement) ON DELETE CASCADE
+)ENGINE=INNODB;
+
+CREATE TABLE Devoir(
+    ID_Devoir int(11) PRIMARY KEY AUTO_INCREMENT,
+    ID_DetailBulletin int(11),
+    Note int(11) NOT NULL,
+    Appreciation_Devoir varchar(255) NOT NULL,
+     CONSTRAINT fk_ID_DetailBulletin FOREIGN KEY (ID_DetailBulletin) REFERENCES DetailBulletin(ID_DetailBulletin) ON DELETE CASCADE
+)ENGINE=INNODB;
 
 INSERT INTO Ecole VALUES (1, 'Ece Paris', 1919);
-
-INSERT INTO Enseignant VALUES (1, 'Rossard', 'Jacques', 'JacquesRossard', 'oklm');
-INSERT INTO Enseignant VALUES (2, 'Cabrel', 'Francis', 'FrancisCabrel', 'eaucalme');
-INSERT INTO Enseignant VALUES (3, 'Lacour', 'Bernard', 'BernardLacour', 'calmwater');
-
-INSERT INTO Eleve VALUES (1, 'Lemercier', 'Thomas', 'ThomasLemercier', 'couscous1', 1);
-INSERT INTO Eleve VALUES (2, 'Devincre', 'Leonard', 'LeonardDevincre', 'couscous2', 1);
-INSERT INTO Eleve VALUES (3, 'Aymard', 'Victor', 'VictorAymard', 'couscous3', 2);
 
 INSERT INTO AnneeScolaire VALUES (1, 2018, 2019);
 
@@ -113,6 +103,14 @@ INSERT INTO Classe VALUES (2, '6emeB', 1, 1);
 INSERT INTO Discipline VALUES (1, 'Maths');
 INSERT INTO Discipline VALUES (2, 'Francais');
 INSERT INTO Discipline VALUES (3, 'Musique');
+
+INSERT INTO Enseignant VALUES (1, 'Rossard', 'Jacques', 'JacquesRossard', 'oklm');
+INSERT INTO Enseignant VALUES (2, 'Cabrel', 'Francis', 'FrancisCabrel', 'eaucalme');
+INSERT INTO Enseignant VALUES (3, 'Lacour', 'Bernard', 'BernardLacour', 'calmwater');
+
+INSERT INTO Eleve VALUES (1, 'Lemercier', 'Thomas', 'ThomasLemercier', 'couscous1', 1);
+INSERT INTO Eleve VALUES (2, 'Devincre', 'Leonard', 'LeonardDevincre', 'couscous2', 1);
+INSERT INTO Eleve VALUES (3, 'Aymard', 'Victor', 'VictorAymard', 'couscous3', 2);
 
 INSERT INTO Enseignement VALUES (1, 1, 1, 3);
 INSERT INTO Enseignement VALUES (2, 1, 2, 2);
