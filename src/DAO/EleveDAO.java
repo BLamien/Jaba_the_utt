@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static Constants.ConstConnexion.urlDatabase;
+
 //CTRL + SHIFT + O pour générer les imports
 public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     public EleveDAO() {
@@ -33,8 +35,6 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
             // chargement driver "com.mysql.jdbc.Driver"
             Class.forName("com.mysql.jdbc.Driver");
 
-            // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3306/projetjava";
 
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");

@@ -2,6 +2,7 @@ package View.HomeScreen;
 //TODO : JavaDoc
 
 import Constants.Colors;
+import DAO.EleveDAO;
 import Model.Devoir;
 import Model.Personne;
 import View.Bulletin.BulletinFrame;
@@ -21,6 +22,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -70,6 +72,20 @@ public class MainFrame extends JFrame implements ActionListener {
         personnes.add(new Personne(10,"eleves" ,"nljhln","antoine","madk", "htqhw"));
         personnes.add(new Personne(13,"eleves" ,"kjpmih","paul","lifdsfao", "gqe"));
         personnes.add(new Personne(8,"eleves" ,"jnlkij","jb","fzfe", "gqrge"));
+
+        com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
+        for(int i = 1; i <= 3; i++){
+            try {
+                personnes.add(eleveDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            //test
+            /*System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
+                    + eleve.getLogin()+"\n- " + eleve.getMdp());*/
+            //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
+
+        }
         modelePersonne = new ModelTablePersonne(personnes);
 
         ArrayList<Devoir> devoirs = new ArrayList<Devoir>();

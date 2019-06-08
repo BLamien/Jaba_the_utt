@@ -1,35 +1,19 @@
+import Controller.Connexion;
 import DAO.EleveDAO;
 import Model.Personne;
+import View.Acceuil.AccueilFrame;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        /*String nombdd = "projetjava";
-        String user = "root";
-        String passwd = "";
         View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
-        Connexion test = null;
-        try {
-            test = new Connexion(nombdd, user, passwd);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        ArrayList<String> Liste;
-        String table = "eleve";
-        Liste = test.remplirChampsTable(table);
 
-        for(int i=0; i<Liste.size(); i++)
-        {
-            System.out.print(Liste.get(i)+ " ");
-        }*/
-
-        //Test
+       /* //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
         for(int i = 1; i <= 3; i++){
@@ -37,7 +21,7 @@ public class Main {
             System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
                     + eleve.getLogin()+"\n- " + eleve.getMdp());
             //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
-        }
+        }*/
 
         /*com.sdz.dao.DAO<Personne> eleveDao1 = new EleveDAO();
         Personne eleve1 = eleveDao1.Connection(0);
