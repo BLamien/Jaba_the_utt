@@ -40,9 +40,26 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve HAVING ID_Eleve = (SELECT MAX(ID_Eleve) FROM Eleve)");
             if(result.first()){
-            com.sdz.dao.DAO<Bulletin> bulletinDAO = new BulletinDAO();
-            ((BulletinDAO) bulletinDAO).ajouterBulletin(result.getInt("ID_Eleve"));
+                com.sdz.dao.DAO<Bulletin> bulletinDAO = new BulletinDAO();
+                ((BulletinDAO) bulletinDAO).ajouterBulletin(result.getInt("ID_Eleve"));
             }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void suppressionEleve(int ID_Eleve){
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+            Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result.executeUpdate("DELETE FROM Eleve WHERE ID_Eleve = " + ID_Eleve);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -55,20 +72,7 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     }
 
     public void delete(Personne obj) {
-        try {
-            // chargement driver "com.mysql.jdbc.Driver"
-            Class.forName("com.mysql.jdbc.Driver");
 
-            //création d'une connexion JDBC à la base
-            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
-
-
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void update(Personne obj) {

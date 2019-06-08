@@ -64,7 +64,6 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
             // chargement driver "com.mysql.jdbc.Driver"
             Class.forName("com.mysql.jdbc.Driver");
 
-
             //création d'une connexion JDBC à la base
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
 
