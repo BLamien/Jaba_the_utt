@@ -15,7 +15,6 @@ import java.awt.*;
 public class FormulairePersonne extends JPanel {
     //Attributs
     JButton valider;
-    JTextField id;
     JComboBox type;
     JTextField prenom;
     JTextField nom;
@@ -36,7 +35,6 @@ public class FormulairePersonne extends JPanel {
      * <b>Methode d'initialisation des composants</b>
      */
     public void init(){
-        id = new JTextField();
         String sType[]={"Ensignants","Eleves"};
         type = new JComboBox(sType);
         nom = new JTextField();
@@ -46,20 +44,17 @@ public class FormulairePersonne extends JPanel {
         valider = new JButton("Ajouter");
 
 
-        id.setPreferredSize(new Dimension(300,30));
         type.setPreferredSize(new Dimension(300,30));
         nom.setPreferredSize(new Dimension(300,30));
         prenom.setPreferredSize(new Dimension(300,30));
         userName.setPreferredSize(new Dimension(300,30));
         password.setPreferredSize(new Dimension(300,30));
 
-        JLabel idStringLabel = new JLabel("Id : ");
         JLabel typesrtringLabel = new JLabel("Type : ");
         JLabel nomStringLabel = new JLabel("Nom : ");
         JLabel prenomStringLabel = new JLabel("Prenom : ");
         JLabel usernameStringLabel = new JLabel("Nom d'utilisateur : ");
         JLabel mdpStringLabel = new JLabel("Mot de passe : ");
-        idStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         typesrtringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         nomStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         prenomStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
@@ -76,42 +71,36 @@ public class FormulairePersonne extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        this.add(idStringLabel, constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(id, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
         this.add(typesrtringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 1;
+        constraints.gridy = 0;
         this.add(type, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(nomStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(nom, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(prenomStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(prenom, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 4;
+        constraints.gridy = 3;
         this.add(usernameStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 4;
+        constraints.gridy = 3;
         this.add(userName, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 5;
+        constraints.gridy = 4;
         this.add(mdpStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 5;
+        constraints.gridy = 4;
         this.add(password, constraints);
         constraints.gridx=0;
-        constraints.gridy=6;
+        constraints.gridy=5;
         constraints.gridwidth=2;
         this.add(valider, constraints);
 
@@ -127,19 +116,6 @@ public class FormulairePersonne extends JPanel {
         return valider;
     }
 
-    /**
-     * Getteur du Jtextfield qui recupère l'ID
-     * @return le JTextfield de l'ID
-     */
-    public JTextField getId() {
-        return id;
-    }
-    /**
-     * Setteur du Jtextfield qui recupère l'ID
-     */
-    public void setId(JTextField id) {
-        this.id = id;
-    }
     /**
      * Getteur du JComboBox qui recupère le type
      * @return le JComboBox

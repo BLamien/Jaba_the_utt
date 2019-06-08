@@ -2,7 +2,6 @@ package View.HomeScreen.Ajout.Formulaires;
 
 import Constants.Colors;
 import View.HomeScreen.ModelsTable.ModelTableClasse;
-import View.HomeScreen.ModelsTable.ModelTableDevoir;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,10 +15,12 @@ import java.awt.*;
 public class FormulaireClasse extends JPanel {
     //Attributs
     JButton valider;
-    JTextField id_classe;
     JTextField ecole;
     JTextField nom_niveau;
     JTextField annee_scolaire;
+    JList<String> listPersonnes = new JList<>();
+    JList<String> listEcoles = new JList<>();
+
     //JTextField classe;    il faut rajouter la liste de toutes les personnes
     ModelTableClasse modele;
     /**
@@ -35,7 +36,6 @@ public class FormulaireClasse extends JPanel {
      * <b>Methode d'initialisation des composants</b>
      */
     public void init(){
-        id_classe = new JTextField();
         ecole = new JTextField();
         nom_niveau = new JTextField();
         annee_scolaire = new JTextField();
@@ -44,20 +44,32 @@ public class FormulaireClasse extends JPanel {
         valider = new JButton("Ajouter");
 
 
-        id_classe.setPreferredSize(new Dimension(300,30));
         ecole.setPreferredSize(new Dimension(300,30));
         nom_niveau.setPreferredSize(new Dimension(300,30));
         annee_scolaire.setPreferredSize(new Dimension(300,300));
 
 
-        JLabel id_classeStringLabel = new JLabel("Id : ");
-        JLabel ecoleStringLabel = new JLabel("Note : ");
-        JLabel nom_niveauStringLabel = new JLabel("Appreciation : ");
+        JLabel ecoleStringLabel = new JLabel("Ecole : ");
+        JLabel nom_niveauStringLabel = new JLabel("Niveau : ");
         JLabel annee_scolaireStringLabel = new JLabel("Année scolaire : ");
-        id_classeStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+        JLabel personnesStringLabel = new JLabel("Membres : ");
         ecoleStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         nom_niveauStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         annee_scolaireStringLabel.setFont(new Font("Verdana",Font.BOLD,18));
+
+        DefaultListModel<String> l1 = new DefaultListModel<>();
+        for (int i=0;i<modele.getPersonnes().size();i++){
+            l1.addElement(modele.getPersonnes().get(i).getNom());
+        };
+        listPersonnes = new JList<>(l1);
+        listPersonnes.setBounds(100,100, 75,75);
+
+        DefaultListModel<String> l2 = new DefaultListModel<>();
+        for(int i=0;i<modele.getEcoles().size();i++){
+            l2.addElement(modele.getEcoles().get(i).getNom_ecole());
+        }
+        listEcoles = new JList<>(l2);
+        listEcoles.setBounds(100,100,75,75);
 
 
         // Layout
@@ -70,28 +82,28 @@ public class FormulaireClasse extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        this.add(id_classeStringLabel, constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(id_classe, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
         this.add(ecoleStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 1;
-        this.add(ecole, constraints);
+        constraints.gridy = 0;
+        this.add(listEcoles, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(annee_scolaireStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(annee_scolaire, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(nom_niveauStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(nom_niveau, constraints);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        this.add(personnesStringLabel, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        this.add(listPersonnes, constraints);
         constraints.gridx=0;
         constraints.gridy=4;
         constraints.gridwidth=2;
@@ -107,12 +119,6 @@ public class FormulaireClasse extends JPanel {
     }
     public void setValider(JButton valider) {
         this.valider = valider;
-    }
-    public JTextField getId_classe() {
-        return id_classe;
-    }
-    public void setId_classe(JTextField id_classe) {
-        this.id_classe = id_classe;
     }
     public JTextField getEcole() {
         return ecole;
@@ -131,5 +137,11 @@ public class FormulaireClasse extends JPanel {
     }
     public void setAnnee_scolaire(JTextField annee_scolaire) {
         this.annee_scolaire = annee_scolaire;
+    }
+    public JList<String> getListPersonnes() {
+        return listPersonnes;
+    }
+    public JList<String> getListEcoles() {
+        return listEcoles;
     }
 }

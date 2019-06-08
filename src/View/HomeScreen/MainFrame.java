@@ -2,14 +2,8 @@ package View.HomeScreen;
 //TODO : JavaDoc
 
 import Constants.Colors;
-import DAO.ClasseDAO;
-import DAO.DevoirDAO;
-import DAO.EleveDAO;
-import DAO.EnseignementDAO;
-import Model.Classe;
-import Model.Devoir;
-import Model.Enseignement;
-import Model.Personne;
+import DAO.*;
+import Model.*;
 import View.Bulletin.BulletinFrame;
 import View.HomeScreen.Ajout.AjoutClasse;
 import View.HomeScreen.Ajout.AjoutDevoir;
@@ -53,7 +47,6 @@ public class MainFrame extends JFrame implements ActionListener {
     private JTable tableauDevoir;
     private JTable tableauClasse;
     private JTable tableauEnseignement;
-    private ChoixStats stats = new ChoixStats();
     private JScrollPane tabPersonne;
     private JScrollPane tabDevoir;
     private JScrollPane tabClasse;
@@ -64,6 +57,7 @@ public class MainFrame extends JFrame implements ActionListener {
     ArrayList<Devoir> devoirs = new ArrayList<>();
     ArrayList<Classe> classes = new ArrayList<>();
     ArrayList<Enseignement> enseignements = new ArrayList<>();
+    ArrayList<Ecole> ecoles = new ArrayList<>();
 
 
     /**
@@ -98,6 +92,15 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         modeleDevoir = new ModelTableDevoir(devoirs);
 
+        com.sdz.dao.DAO<Ecole> ecoleDao = new EcoleDAO();
+        for(int i = 1; i <= 3; i++){
+            try {
+                ecoles.add(ecoleDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         com.sdz.dao.DAO<Classe> classeDao = new ClasseDAO();
         for(int i = 1; i <= 3; i++){
             try {
@@ -106,7 +109,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 e.printStackTrace();
             }
         }
-        modelClasse = new ModelTableClasse(classes);
+        modelClasse = new ModelTableClasse(classes,personnes,ecoles);
 
         com.sdz.dao.DAO<Enseignement> enseignementDao = new EnseignementDAO();
         for(int i = 1; i <= 3; i++){
@@ -240,10 +243,8 @@ public class MainFrame extends JFrame implements ActionListener {
         if(button.getText().equals("Ajouter")){
             if(actualScrollPane==tabPersonne){
                 AjoutPersonne ap = new AjoutPersonne(modelePersonne);
-                System.out.println("trou");
             }
             if(actualScrollPane==tabDevoir){
-                System.out.println("caca");
                 AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
             }
             if(actualScrollPane==tabClasse){
@@ -255,7 +256,7 @@ public class MainFrame extends JFrame implements ActionListener {
             getContentPane().revalidate();
         }
         if(button.getText().equals("Statistiques")){
-            StatsFrame statsFrame = new StatsFrame();
+            StatsFrame statsFrame = new StatsFrame(classes,personnes);
         }
         if(button.getText().equals("Menu")){
             //a voir
@@ -316,12 +317,6 @@ public class MainFrame extends JFrame implements ActionListener {
     }
     public void setModelePersonne(ModelTablePersonne modelePersonne) {
         this.modelePersonne = modelePersonne;
-    }
-    public ChoixStats getStats() {
-        return stats;
-    }
-    public void setStats(ChoixStats stats) {
-        this.stats = stats;
     }
     public JScrollPane getTabPersonne() {
         return tabPersonne;

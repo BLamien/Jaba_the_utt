@@ -48,7 +48,7 @@ public class AjoutEnseignement extends JFrame {
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addEnseignement(new Enseignement(Integer.parseInt(form.getId_enseignement().getText()),new Discipline(), new Personne(), new Classe()));
+                modele.addEnseignement(new Enseignement(new Discipline(), new Personne(), new Classe()));
                 setVisible(false); //you can't see me!
                 dispose();
             }

@@ -16,7 +16,6 @@ import java.awt.*;
 public class FormulaireEnseignement extends JPanel {
     //Attributs
     JButton valider;
-    JTextField id_enseignement;
     JTextField discipline;
     JTextField enseignant;
     JTextField classe;
@@ -35,7 +34,6 @@ public class FormulaireEnseignement extends JPanel {
      * <b>Methode d'initialisation des composants</b>
      */
     public void init(){
-        id_enseignement = new JTextField();
         discipline = new JTextField();
         enseignant = new JTextField();
         classe = new JTextField();
@@ -44,17 +42,14 @@ public class FormulaireEnseignement extends JPanel {
         valider = new JButton("Ajouter");
 
 
-        id_enseignement.setPreferredSize(new Dimension(300,30));
         discipline.setPreferredSize(new Dimension(300,30));
         enseignant.setPreferredSize(new Dimension(300,30));
         classe.setPreferredSize(new Dimension(300,300));
 
 
-        JLabel id_enseignementStringLabel = new JLabel("Id : ");
         JLabel disciplineStringLabel = new JLabel("Discipline : ");
         JLabel enseignantStringLabel = new JLabel("Enseignant : ");
         JLabel classeStringLabel = new JLabel("Classe : ");
-        id_enseignementStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         disciplineStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         enseignantStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         classeStringLabel.setFont(new Font("Verdana",Font.BOLD,18));
@@ -70,30 +65,24 @@ public class FormulaireEnseignement extends JPanel {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        this.add(id_enseignementStringLabel, constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(id_enseignement, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
         this.add(disciplineStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 1;
+        constraints.gridy = 0;
         this.add(discipline, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(classeStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(classe, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(enseignantStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 3;
+        constraints.gridy = 2;
         this.add(enseignant, constraints);
         constraints.gridx=0;
-        constraints.gridy=4;
+        constraints.gridy=3;
         constraints.gridwidth=2;
         this.add(valider, constraints);
 
@@ -107,12 +96,6 @@ public class FormulaireEnseignement extends JPanel {
     }
     public void setValider(JButton valider) {
         this.valider = valider;
-    }
-    public JTextField getId_enseignement() {
-        return id_enseignement;
-    }
-    public void setId_enseignement(JTextField id_enseignement) {
-        this.id_enseignement = id_enseignement;
     }
     public JTextField getDiscipline() {
         return discipline;

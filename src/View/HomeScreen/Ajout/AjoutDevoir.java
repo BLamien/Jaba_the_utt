@@ -46,7 +46,7 @@ public class AjoutDevoir extends JFrame {
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addDevoir(new Devoir(Integer.parseInt(form.getId().getText()), Integer.parseInt(form.getNote().getText()), form.getAppreciation().getText()));
+                modele.addDevoir(new Devoir(Integer.parseInt(form.getNote().getText()), form.getAppreciation().getText()));
                 setVisible(false); //you can't see me!
                 dispose();
             }

@@ -80,6 +80,17 @@ public class Enseignement {
         classe=classe_;
     }
     /**
+     * <b>constructeur surcharge sans ID</b>
+     * @param discipline_ valeur a attribuer a discipline
+     * @param enseignant_ valeur a attribuer a enseignant
+     * @param classe_ valeur a attribuer a classe
+     */
+    public Enseignement(Discipline discipline_, Personne enseignant_, Classe classe_){
+        discipline=discipline_;
+        enseignant=enseignant_;
+        classe=classe_;
+    }
+    /**
      * <b>constructeur surcharge sans objets</b>
      * @param id_enseignement_ valeur a attribuer a l'id enseignement
      */
