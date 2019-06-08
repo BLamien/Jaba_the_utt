@@ -384,9 +384,9 @@ public class Reporting  {
         ArrayList<Personne> mesEleves = new ArrayList<>();
         for(int k=0;k<personnes.size();k++){
             if(personnes.get(k).getType()=="Eleve"){
-                mesProfs.add(personnes.get(k));
-            }else{
                 mesEleves.add(personnes.get(k));
+            }else{
+                mesProfs.add(personnes.get(k));
             }
 
         }
@@ -412,7 +412,7 @@ public class Reporting  {
 
 
     // proportion de profs et d'élèves par école
-    public static void graphEleveProf_ecole(ArrayList<Personne> personnes, String column1, String column2){
+    public static void graphEleveProf_ecole(ArrayList<Personne> personnes){
         ArrayList<Personne> mesProfs = new ArrayList<>();
         ArrayList<Personne> mesEleves = new ArrayList<>();
         for(int k=0;k<personnes.size();k++){
