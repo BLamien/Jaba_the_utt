@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ModelTablePersonne extends AbstractTableModel {
     private ArrayList<Personne> personnes;
 
-    private String[] entetes = {"ID", "type", "Prenom", "login", "password"};
+    private String[] entetes = {"ID", "type", "Nom", "Prenom", "login", "password"};
 
     /**
      * <b>Constructeur du modèle de JTable</b>
@@ -61,10 +61,12 @@ public class ModelTablePersonne extends AbstractTableModel {
             case 1:
                 return personnes.get(rowIndex).getType();
             case 2:
-                return personnes.get(rowIndex).getPrenom();
+                return personnes.get(rowIndex).getNom();
             case 3:
-                return personnes.get(rowIndex).getLogin();
+                return personnes.get(rowIndex).getPrenom();
             case 4:
+                return personnes.get(rowIndex).getLogin();
+            case 5:
                 return personnes.get(rowIndex).getMdp();
             default:
                 return null; //Ne devrait jamais arriver
