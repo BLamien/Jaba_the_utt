@@ -34,6 +34,9 @@ public class FormulaireDevoir extends JPanel {
      */
     public void init(){
         id = new JTextField();
+        note = new JTextField();
+        appreciation = new JTextField();
+        
 
         valider = new JButton("Ajouter");
 

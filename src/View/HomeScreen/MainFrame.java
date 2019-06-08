@@ -11,7 +11,9 @@ import Model.Devoir;
 import Model.Enseignement;
 import Model.Personne;
 import View.Bulletin.BulletinFrame;
+import View.HomeScreen.Ajout.AjoutClasse;
 import View.HomeScreen.Ajout.AjoutDevoir;
+import View.HomeScreen.Ajout.AjoutEnseignement;
 import View.HomeScreen.Ajout.AjoutPersonne;
 import View.HomeScreen.ModelsTable.ModelTableClasse;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
@@ -245,10 +247,10 @@ public class MainFrame extends JFrame implements ActionListener {
                 AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
             }
             if(actualScrollPane==tabClasse){
-                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+                AjoutClasse ap = new AjoutClasse(modelClasse);
             }
             if(actualScrollPane==tabEnseignement){
-                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+                AjoutEnseignement ap = new AjoutEnseignement(modelEnseignement);
             }
             getContentPane().revalidate();
         }
