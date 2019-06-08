@@ -2,8 +2,13 @@ package View.HomeScreen;
 //TODO : JavaDoc
 
 import Constants.Colors;
+import DAO.ClasseDAO;
+import DAO.DevoirDAO;
 import DAO.EleveDAO;
+import DAO.EnseignementDAO;
+import Model.Classe;
 import Model.Devoir;
+import Model.Enseignement;
 import Model.Personne;
 import View.Bulletin.BulletinFrame;
 import View.HomeScreen.Ajout.AjoutDevoir;
@@ -53,6 +58,11 @@ public class MainFrame extends JFrame implements ActionListener {
     private JScrollPane tabEnseignement;
     private JScrollPane actualScrollPane;
     private JPanel boutons;
+    ArrayList<Personne> personnes = new ArrayList<>();
+    ArrayList<Devoir> devoirs = new ArrayList<>();
+    ArrayList<Classe> classes = new ArrayList<>();
+    ArrayList<Enseignement> enseignements = new ArrayList<>();
+
 
     /**
      * <b>Constructeur par defaut</b>
@@ -64,14 +74,7 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     private void initComponent() {
-        ArrayList<Personne> personnes = new ArrayList<Personne>();
-        personnes.add(new Personne(12,"eleves" ,"dev","leo","lifao", "cacacac"));
-        personnes.add(new Personne(1,"eleves" ,"huh","t","truc", "fzef"));
-        personnes.add(new Personne(22,"eleves" ,"kjl","thibault","bidule", "fe"));
-        personnes.add(new Personne(32,"eleves" ,"nlhl","xav","chouette", "cacactjqhac"));
-        personnes.add(new Personne(10,"eleves" ,"nljhln","antoine","madk", "htqhw"));
-        personnes.add(new Personne(13,"eleves" ,"kjpmih","paul","lifdsfao", "gqe"));
-        personnes.add(new Personne(8,"eleves" ,"jnlkij","jb","fzfe", "gqrge"));
+
 
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         for(int i = 1; i <= 3; i++){
@@ -80,19 +83,39 @@ public class MainFrame extends JFrame implements ActionListener {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            //test
-            /*System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
-                    + eleve.getLogin()+"\n- " + eleve.getMdp());*/
-            //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
-
         }
         modelePersonne = new ModelTablePersonne(personnes);
 
-        ArrayList<Devoir> devoirs = new ArrayList<Devoir>();
-        devoirs.add(new Devoir(1,8,"Faites mieux pour le prochain DS"));
-        devoirs.add(new Devoir(2,16,"Bien ouej"));
-        devoirs.add(new Devoir(3,19,"Ca serait pas une copie de Léo ca ?"));
+        com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
+        for(int i = 1; i <= 3; i++){
+            try {
+                devoirs.add(devoirDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         modeleDevoir = new ModelTableDevoir(devoirs);
+
+        com.sdz.dao.DAO<Classe> classeDao = new ClasseDAO();
+        for(int i = 1; i <= 3; i++){
+            try {
+                classes.add(classeDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        modelClasse = new ModelTableClasse(classes);
+
+        com.sdz.dao.DAO<Enseignement> enseignementDao = new EnseignementDAO();
+        for(int i = 1; i <= 3; i++){
+            try {
+                enseignements.add(enseignementDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        modelEnseignement = new ModelTableEnseignement(enseignements);
+
     }
 
     /**
@@ -147,12 +170,12 @@ public class MainFrame extends JFrame implements ActionListener {
         //initiation de la table Personne
         tableauPersonne = new JTable(modelePersonne);
         tabPersonne = new JScrollPane(tableauPersonne);
-        tabPersonne.setBorder(new EmptyBorder(100,300,100,300));
+        tabPersonne.setBorder(new EmptyBorder(50,150,50,150));
         tabPersonne.setBackground(Colors.green);
         tableauPersonne.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {//This line prevents double events
-                    BulletinFrame bulletinFrame = new BulletinFrame(new Personne());
+                    BulletinFrame bulletinFrame = new BulletinFrame(personnes.get(tableauPersonne.getSelectedRow()));
                     System.out.println(tableauPersonne.getValueAt(tableauPersonne.getSelectedRow(), tableauPersonne.getSelectedColumn()).toString());
                 }
             }
@@ -160,7 +183,7 @@ public class MainFrame extends JFrame implements ActionListener {
         //initiation de la table Devoir
         tableauDevoir = new JTable(modeleDevoir);
         tabDevoir = new JScrollPane(tableauDevoir);
-        tabDevoir.setBorder(new EmptyBorder(100,300,100,300));
+        tabDevoir.setBorder(new EmptyBorder(50,150,50,150));
         tabDevoir.setBackground(Colors.green);
         tableauDevoir.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
@@ -172,7 +195,7 @@ public class MainFrame extends JFrame implements ActionListener {
         //initiation de la table Classe
         tableauClasse = new JTable(modelClasse);
         tabClasse = new JScrollPane(tableauClasse);
-        tabClasse.setBorder(new EmptyBorder(100,300,100,300));
+        tabClasse.setBorder(new EmptyBorder(50,150,50,150));
         tabClasse.setBackground(Colors.green);
         tableauClasse.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {
@@ -184,7 +207,7 @@ public class MainFrame extends JFrame implements ActionListener {
         //initiation de la table Enseignement
         tableauEnseignement = new JTable(modelEnseignement);
         tabEnseignement = new JScrollPane(tableauEnseignement);
-        tabEnseignement.setBorder(new EmptyBorder(100,300,100,300));
+        tabEnseignement.setBorder(new EmptyBorder(50,150,50,150));
         tabEnseignement.setBackground(Colors.green);
         tableauEnseignement.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
             public void valueChanged(ListSelectionEvent event) {

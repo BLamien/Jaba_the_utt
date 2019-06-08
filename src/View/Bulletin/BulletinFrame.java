@@ -29,8 +29,9 @@ public class BulletinFrame extends JFrame {
     Personne personne;
 
 
-    public BulletinFrame(Personne personne) throws HeadlessException {
-        initPersonnes(personne);
+    public BulletinFrame(Personne personne_) throws HeadlessException {
+        //initPersonnes(personne);
+        personne=personne_;
         init();
         setVisible(true);
     }
