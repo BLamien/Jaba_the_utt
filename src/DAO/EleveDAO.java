@@ -34,7 +34,15 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
                     "'" + newEleve.getPrenom() + "', " +
                     "'" + newEleve.getLogin() + "', " +
                     "'" + newEleve.getMdp() + "', " +
-                    ""+result.getInt("ID_Classe")+")");
+                    "" + result.getInt("ID_Classe") + ")");
+
+            result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve HAVING ID_Eleve = (SELECT MAX(ID_Eleve) FROM Eleve)");
+            if(result.first()){
+            com.sdz.dao.DAO<Bulletin> bulletinDAO = new BulletinDAO();
+            ((BulletinDAO) bulletinDAO).ajouterBulletin(result.getInt("ID_Eleve"));
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

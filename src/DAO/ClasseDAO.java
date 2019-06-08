@@ -52,7 +52,7 @@ public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
             result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve WHERE ID_Classe =" + Classe.getId_classe());
-            if (result.next()) {
+            while (result.next()) {
                 Classe.get_effectif().add(new Personne(result.getInt("ID_Eleve"),
                         "eleve",
                         result.getString("Nom"),
