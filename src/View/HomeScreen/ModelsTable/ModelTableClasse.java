@@ -1,6 +1,7 @@
 package View.HomeScreen.ModelsTable;
 //TODO : JavaDoc
 import Model.Classe;
+import Model.Ecole;
 import Model.Personne;
 
 import javax.swing.table.AbstractTableModel;
@@ -13,15 +14,19 @@ import java.util.ArrayList;
  */
 public class ModelTableClasse extends AbstractTableModel {
     private ArrayList<Classe> classes;
+    private ArrayList<Personne> personnes;
+    private ArrayList<Ecole> ecoles;
 
     private String[] entetes = {"ID", "Ecole", "Niveau", "Année scolaire", "Taille effectif"};
 
     /**
      * <b>Constructeur du modèle de JTable</b>
      */
-    public ModelTableClasse(ArrayList<Classe> classes_) {
+    public ModelTableClasse(ArrayList<Classe> classes_, ArrayList<Personne> personnes_, ArrayList<Ecole> ecoles_) {
         super();
         classes =classes_;
+        personnes=personnes_;
+        ecoles=ecoles_;
     }
 
     /**
@@ -76,7 +81,7 @@ public class ModelTableClasse extends AbstractTableModel {
      * Methode qui permet l'ajout d'une personne
      * @param classe personne que l'on souhaite ajouter
      */
-    public void addPersonne(Classe classe) {
+    public void addClasse(Classe classe) {
         classes.add(classe);
         fireTableRowsInserted(classes.size() -1, classes.size() -1);
     }
@@ -85,9 +90,19 @@ public class ModelTableClasse extends AbstractTableModel {
      * Methode qui permet de supprimer une personne
      * @param rowIndex index de la personne à supprimer
      */
-    public void removePersonne(int rowIndex) {
+    public void removeClasse(int rowIndex) {
         classes.remove(rowIndex);
 
         fireTableRowsDeleted(rowIndex, rowIndex);
+    }
+
+    public ArrayList<Classe> getClasses() {
+        return classes;
+    }
+    public ArrayList<Personne> getPersonnes() {
+        return personnes;
+    }
+    public ArrayList<Ecole> getEcoles() {
+        return ecoles;
     }
 }

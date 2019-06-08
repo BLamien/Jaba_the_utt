@@ -66,6 +66,15 @@ public class Devoir {
         appreciation_evaluation=appreciation_evaluation_;
     }
 
+    /**
+     * <b>constructeur surcharge sans ID</b>
+     * @param note_ valeur a attribuer a la note
+     * @param appreciation_evaluation_ valeur a attribuer a l'appreciation
+     */
+    public Devoir(int note_, String appreciation_evaluation_){
+        note=note_;
+        appreciation_evaluation=appreciation_evaluation_;
+    }
     //méthode
 
 }

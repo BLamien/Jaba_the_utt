@@ -74,7 +74,7 @@ public class ModelTableEnseignement extends AbstractTableModel {
      * Methode qui permet l'ajout d'une personne
      * @param enseignement personne que l'on souhaite ajouter
      */
-    public void addPersonne(Enseignement enseignement) {
+    public void addEnseignement(Enseignement enseignement) {
         enseignements.add(enseignement);
         fireTableRowsInserted(enseignements.size() -1, enseignements.size() -1);
     }
@@ -83,7 +83,7 @@ public class ModelTableEnseignement extends AbstractTableModel {
      * Methode qui permet de supprimer une personne
      * @param rowIndex index de la personne à supprimer
      */
-    public void removePersonne(int rowIndex) {
+    public void removeEnseignement(int rowIndex) {
         enseignements.remove(rowIndex);
 
         fireTableRowsDeleted(rowIndex, rowIndex);

@@ -16,7 +16,6 @@ import java.awt.*;
 public class FormulaireDevoir extends JPanel {
     //Attributs
     JButton valider;
-    JTextField id;
     JTextField note;
     JTextField appreciation;
     ModelTableDevoir modele;
@@ -33,20 +32,19 @@ public class FormulaireDevoir extends JPanel {
      * <b>Methode d'initialisation des composants</b>
      */
     public void init(){
-        id = new JTextField();
+        note = new JTextField();
+        appreciation = new JTextField();
+
 
         valider = new JButton("Ajouter");
 
 
-        id.setPreferredSize(new Dimension(300,30));
         note.setPreferredSize(new Dimension(300,30));
         appreciation.setPreferredSize(new Dimension(300,30));
 
 
-        JLabel idStringLabel = new JLabel("Id : ");
         JLabel noteStringLabel = new JLabel("Note : ");
         JLabel appreciationStringLabel = new JLabel("Appreciation : ");
-        idStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         noteStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         appreciationStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
 
@@ -58,27 +56,20 @@ public class FormulaireDevoir extends JPanel {
         constraints.weighty = 0.25;
         constraints.ipadx = 80;
 
-
         constraints.gridx = 0;
         constraints.gridy = 0;
-        this.add(idStringLabel, constraints);
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        this.add(id, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
         this.add(noteStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 1;
+        constraints.gridy = 0;
         this.add(note, constraints);
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(appreciationStringLabel, constraints);
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         this.add(appreciation, constraints);
         constraints.gridx=0;
-        constraints.gridy=3;
+        constraints.gridy=2;
         constraints.gridwidth=2;
         this.add(valider, constraints);
 
@@ -95,13 +86,6 @@ public class FormulaireDevoir extends JPanel {
         this.valider = valider;
     }
 
-    public JTextField getId() {
-        return id;
-    }
-
-    public void setId(JTextField id) {
-        this.id = id;
-    }
 
     public JTextField getNote() {
         return note;

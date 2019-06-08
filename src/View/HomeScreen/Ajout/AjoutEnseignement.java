@@ -1,25 +1,27 @@
 package View.HomeScreen.Ajout;
 
-import Model.Devoir;
-import View.HomeScreen.Ajout.Formulaires.FormulaireDevoir;
-import View.HomeScreen.Ajout.Formulaires.FormulairePersonne;
-import View.HomeScreen.ModelsTable.ModelTableDevoir;
+import Model.*;
+import View.HomeScreen.Ajout.Formulaires.FormulaireClasse;
+import View.HomeScreen.Ajout.Formulaires.FormulaireEnseignement;
+import View.HomeScreen.ModelsTable.ModelTableClasse;
+import View.HomeScreen.ModelsTable.ModelTableEnseignement;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
- * <b>Jframe de la fenetre de saisie de nouveaux devoirs</b>
+ * <b>Jframe de la fenetre de saisie de nouvelles classes</b>
  * @author Leonard
  * @version 1.0
  */
-public class AjoutDevoir extends JFrame {
+public class AjoutEnseignement extends JFrame {
     public static final Dimension windowDimension = new Dimension(600,800);
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
-    ModelTableDevoir modele;
+    ModelTableEnseignement modele;
 
 
     /**
@@ -27,7 +29,7 @@ public class AjoutDevoir extends JFrame {
      * @param m modele de la table pour l'ajouter
      * @throws HeadlessException
      */
-    public AjoutDevoir(ModelTableDevoir m) throws HeadlessException {
+    public AjoutEnseignement(ModelTableEnseignement m) throws HeadlessException {
         modele = m;
         init();
         setVisible(true);
@@ -41,12 +43,12 @@ public class AjoutDevoir extends JFrame {
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
         contentPane.setBackground(Color.green);
-        FormulaireDevoir form = new FormulaireDevoir(modele);
+        FormulaireEnseignement form = new FormulaireEnseignement(modele);
 
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addDevoir(new Devoir(Integer.parseInt(form.getNote().getText()), form.getAppreciation().getText()));
+                modele.addEnseignement(new Enseignement(new Discipline(), new Personne(), new Classe()));
                 setVisible(false); //you can't see me!
                 dispose();
             }
@@ -59,6 +61,6 @@ public class AjoutDevoir extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         setLocationRelativeTo(getOwner());
-        setTitle("Ajouter une classe");
+        setTitle("Ajouter un enseignement");
     }
 }

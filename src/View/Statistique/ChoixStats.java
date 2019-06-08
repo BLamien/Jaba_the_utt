@@ -1,12 +1,16 @@
 package View.Statistique;
 
 import Constants.Colors;
+import Model.Classe;
+import Model.Personne;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 /**
  * <b>Jpanel qui permet le choix de l'affichage des stats</b>
  * @author Leonard
@@ -14,13 +18,18 @@ import java.awt.event.ActionListener;
  */
 public class ChoixStats extends JPanel implements ActionListener {
     //attributs
-    private JButton camembert;
-    private JButton graphBaton;
+    private JButton graphEleveNiveau;
+    private JButton proportionProfEleve;
+    private ArrayList<Classe> mesClasses;
+    private ArrayList<Personne> personne;
+
 
     /**
      * <b>Constructeur par defaut</b>
      */
-    public ChoixStats() {
+    public ChoixStats(ArrayList<Classe> mesClasses_,ArrayList<Personne> personne_) {
+        mesClasses=mesClasses_;
+        personne=personne_;
         init();
     }
 
@@ -28,10 +37,10 @@ public class ChoixStats extends JPanel implements ActionListener {
      * <b>Methode d'intialisaation des composants</b>
      */
     public void init(){
-        camembert = new JButton("Graphe Camembert");
-        graphBaton = new JButton("Graphe baton");
-        camembert.addActionListener(this);
-        graphBaton.addActionListener(this);
+        graphEleveNiveau = new JButton("Graphe des élèves par niveau");
+        proportionProfEleve = new JButton("Proportion de prof et d'élève dans l'école");
+        graphEleveNiveau.addActionListener(this);
+        proportionProfEleve.addActionListener(this);
         // Layout
         GridLayout layout = new GridLayout(1, 2);
         layout.setHgap(300);
@@ -39,8 +48,8 @@ public class ChoixStats extends JPanel implements ActionListener {
         setBorder(new EmptyBorder(30, 30,30,30));
         setBackground(Colors.green);
 
-        this.add(camembert);
-        this.add(graphBaton);
+        this.add(graphEleveNiveau);
+        this.add(proportionProfEleve);
     }
 
     public void suppr(){
@@ -56,20 +65,12 @@ public class ChoixStats extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
 
-        if(button.getText()=="Graphe Camembert"){
-            Reporting.pieChart2parts("categorie1", 43.2,
-                    "categorie2", 27.9,
-                    "titreFenetre",
-                    "titreChart", true, true, false);
+        if(button.getText()=="Graphe des élèves par niveau"){
+            Reporting.graphEleveNiveau(mesClasses);
         }
 
-        if(button.getText()=="Graphe baton"){
-            Reporting.barChartDouble3parts("categorie1", "categorie2",
-                    "column1", "column2", "column3",
-                    1.0, 5.0, 3.0,
-                    2.0, 3.0, 2.0,
-                    "titrefenetre", "titreChart", "xLabel", "ylLabel",
-                    true, true, false);
+        if(button.getText()=="Proportion de prof et d'élève dans l'école"){
+            Reporting.graphEleveProf_ecole(personne);
         }
     }
 }
