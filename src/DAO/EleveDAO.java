@@ -26,7 +26,7 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
 
             ResultSet result = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Classe WHERE Niveau = " + classenewEleve);
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Classe WHERE Niveau = '" + classenewEleve + "'");
             result.first();
             Statement result2 = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             result2.executeUpdate("INSERT INTO Eleve (Nom, Prenom, Login, Mdp, ID_Classe)" +
