@@ -15,7 +15,7 @@ public class Main {
              eleve = eleveDao.Connection(i);
             System.out.println("Elève N°" + eleve.getId_personne() +"\n- " + eleve.getType()+ "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom()+"\n- "
                     + eleve.getLogin()+"\n- " + eleve.getMdp());
-            //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
+            System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
 
         //Test 2

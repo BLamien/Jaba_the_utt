@@ -14,7 +14,7 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         super();
     }
 
-    public void create(Devoir obj) {
+    public void create(Devoir newDevoir) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
             Class.forName("com.mysql.jdbc.Driver");
