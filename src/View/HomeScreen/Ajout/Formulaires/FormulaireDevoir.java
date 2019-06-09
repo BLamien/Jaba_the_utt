@@ -1,6 +1,7 @@
 package View.HomeScreen.Ajout.Formulaires;
 
 import Constants.Colors;
+import Model.DetailBulletin;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
 
@@ -19,6 +20,8 @@ public class FormulaireDevoir extends JPanel {
     JTextField note;
     JTextField appreciation;
     ModelTableDevoir modele;
+
+
     /**
      * Constructeur
      * @param m modele de la table pour ajout
@@ -47,6 +50,7 @@ public class FormulaireDevoir extends JPanel {
         JLabel appreciationStringLabel = new JLabel("Appreciation : ");
         noteStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         appreciationStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+
 
 
         // Layout
@@ -96,6 +100,7 @@ public class FormulaireDevoir extends JPanel {
     }
 
     public JTextField getAppreciation() {
+        System.out.println("Appreciation : "+appreciation.getText());
         return appreciation;
     }
 
@@ -103,3 +108,4 @@ public class FormulaireDevoir extends JPanel {
         this.appreciation = appreciation;
     }
 }
+

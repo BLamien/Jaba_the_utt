@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    private void initComponent() {
+    public void initComponent() {
 
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         for(int i = 0; i < ((EleveDAO) eleveDao).ID_Eleve.size(); i++){
@@ -175,7 +175,7 @@ public class MainFrame extends JFrame implements ActionListener {
         setTitle("JABA");
     }
 
-    private void resetTables(){
+    public void resetTables(){
         personnes.clear();
         devoirs.clear();
         classes.clear();
@@ -194,7 +194,7 @@ public class MainFrame extends JFrame implements ActionListener {
     /**
      * <b>Methode qui intialise les modeles de tables</b>
      */
-    private void initTables() {
+    public void initTables() {
         //initiation de la table Personne
         tableauPersonne = new JTable(modelePersonne);
         tabPersonne = new JScrollPane(tableauPersonne);
@@ -272,7 +272,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 if(actualScrollPane==tabDevoir){
                     int[] selection = tableauDevoir.getSelectedRows();
                     for(int i = selection.length - 1; i >= 0; i--){
-                        //new DevoirDAO().suppressionEleve(devoirs.get(selection[i]).getId_devoir());
+                        new DevoirDAO().suppressionDevoir(devoirs.get(selection[i]).getId_devoir());
                         resetTables();
                         initTables();
                         getContentPane().revalidate();
@@ -289,16 +289,10 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         if(button.getText().equals("Ajouter")){
             if(actualScrollPane==tabPersonne){
-                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
-                resetTables();
-                initTables();
-                getContentPane().revalidate();
+                AjoutPersonne ap = new AjoutPersonne(modelePersonne,this);
             }
             if(actualScrollPane==tabDevoir){
-                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
-                resetTables();
-                initTables();
-                getContentPane().revalidate();
+                AjoutDevoir ap = new AjoutDevoir(modeleDevoir, this);
             }
             if(actualScrollPane==tabClasse){
                 //AjoutClasse ap = new AjoutClasse(modelClasse);

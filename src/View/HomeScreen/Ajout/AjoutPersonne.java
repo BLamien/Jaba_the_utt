@@ -3,6 +3,7 @@ package View.HomeScreen.Ajout;
 import DAO.EleveDAO;
 import Model.Personne;
 import View.HomeScreen.Ajout.Formulaires.FormulairePersonne;
+import View.HomeScreen.MainFrame;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class AjoutPersonne extends JFrame {
     public static final int widthSize = (int) windowDimension.getWidth();
     public static final int heightSize = (int) windowDimension.getHeight();
     ModelTablePersonne modele;
+    MainFrame mainFrame;
 
 
     /**
@@ -27,8 +29,9 @@ public class AjoutPersonne extends JFrame {
      * @param m modele de la table pour l'ajouter
      * @throws HeadlessException
      */
-    public AjoutPersonne(ModelTablePersonne m) throws HeadlessException {
+    public AjoutPersonne(ModelTablePersonne m, MainFrame main) throws HeadlessException {
         modele = m;
+        mainFrame=main;
         init();
         setVisible(true);
     }
@@ -48,6 +51,9 @@ public class AjoutPersonne extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new EleveDAO().ajoutEleve(new Personne((String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()),form.getListClasses().getSelectedValue());
                 setVisible(false); //you can't see me!
+                mainFrame.resetTables();
+                mainFrame.initTables();
+                mainFrame.getContentPane().revalidate();
                 dispose();
             }
         });

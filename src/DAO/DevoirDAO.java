@@ -74,6 +74,7 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
             result.executeUpdate("UPDATE DetailBulletin SET Moyenne_Enseignement = (SELECT AVG(Note)FROM Devoir WHERE ID_DetailBulletin = " + ID_DetailBulletin + ") " +
                     "WHERE ID_DetailBulletin = " + ID_DetailBulletin);
 
+
             ResultSet result2 = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)
                     .executeQuery("SELECT ID_Bulletin AS ID_Bulletin FROM DetailBulletin WHERE ID_DetailBulletin = " + ID_DetailBulletin);
             result2.first();

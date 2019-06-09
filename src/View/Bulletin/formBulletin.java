@@ -95,14 +95,20 @@ public class formBulletin extends JPanel {
         {
             constraints.gridx = 0;
             constraints.gridy = i;
-            this.add(new JLabel("Moyenne : "), constraints);
+            this.add(new JLabel("ID : "), constraints);
             constraints.gridx = 1;
             constraints.gridy = i;
-            this.add(new JLabel(Float.toString(personne.getBulletins().get(numBulletin).getMatieres().get(i).getMoyenne_matiere())+"/20"), constraints);
+            this.add(new JLabel(Integer.toString(personne.getBulletins().get(numBulletin).getMatieres().get(i).getId_detailBulletin())), constraints);
             constraints.gridx = 2;
             constraints.gridy = i;
-            this.add(new JLabel("Appreciation : "), constraints);
+            this.add(new JLabel("Moyenne : "), constraints);
             constraints.gridx = 3;
+            constraints.gridy = i;
+            this.add(new JLabel(Float.toString(personne.getBulletins().get(numBulletin).getMatieres().get(i).getMoyenne_matiere())+"/20"), constraints);
+            constraints.gridx = 4;
+            constraints.gridy = i;
+            this.add(new JLabel("Appreciation : "), constraints);
+            constraints.gridx = 5;
             constraints.gridy = i;
             this.add(new JLabel(personne.getBulletins().get(numBulletin).getMatieres().get(i).getAppreciation_detailBulletin()), constraints);
         }

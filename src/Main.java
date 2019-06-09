@@ -11,7 +11,7 @@ public class Main {
         View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
 
-        //Test
+       /* //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
         for (int i = 1; i <= ((EleveDAO) eleveDao).taille; i++) {
@@ -20,6 +20,8 @@ public class Main {
                     + eleve.getLogin() + "\n- " + eleve.getMdp());
             //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
+
+        */
 
         //Test 2
         /*Personne eleve2 = new Personne("eleve", "Cabrel", "Francis", "FrancisCabrel", "couscous4");
