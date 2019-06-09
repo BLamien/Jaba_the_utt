@@ -76,7 +76,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((EleveDAO) eleveDao).taille; i++){
             try {
                 personnes.add(eleveDao.Connection(i));
             } catch (SQLException e) {
@@ -86,7 +86,7 @@ public class MainFrame extends JFrame implements ActionListener {
         modelePersonne = new ModelTablePersonne(personnes,classes);
 
         com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((DevoirDAO) devoirDao).taille; i++){
             try {
                 devoirs.add(devoirDao.Connection(i));
             } catch (SQLException e) {
@@ -96,7 +96,7 @@ public class MainFrame extends JFrame implements ActionListener {
         modeleDevoir = new ModelTableDevoir(devoirs);
 
         com.sdz.dao.DAO<Ecole> ecoleDao = new EcoleDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((EcoleDAO) ecoleDao).taille; i++){
             try {
                 ecoles.add(ecoleDao.Connection(i));
             } catch (SQLException e) {
@@ -105,7 +105,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
         com.sdz.dao.DAO<Classe> classeDao = new ClasseDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((ClasseDAO) classeDao).taille; i++){
             try {
                 classes.add(classeDao.Connection(i));
             } catch (SQLException e) {
@@ -115,7 +115,7 @@ public class MainFrame extends JFrame implements ActionListener {
         modelClasse = new ModelTableClasse(classes,personnes,ecoles);
 
         com.sdz.dao.DAO<Enseignement> enseignementDao = new EnseignementDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((EnseignementDAO) enseignementDao).taille; i++){
             try {
                 enseignements.add(enseignementDao.Connection(i));
             } catch (SQLException e) {

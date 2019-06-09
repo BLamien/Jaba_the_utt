@@ -1,15 +1,16 @@
 import DAO.EleveDAO;
 import DAO.EnseignantDAO;
 import Model.Personne;
+import View.Acceuil.AccueilFrame;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        //View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
+        View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
-
+/*
         //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
@@ -19,6 +20,8 @@ public class Main {
                     + eleve.getLogin() + "\n- " + eleve.getMdp());
             //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
+
+ */
 
         //Test 2
         /*Personne eleve2 = new Personne("eleve", "Cabrel", "Francis", "FrancisCabrel", "couscous4");

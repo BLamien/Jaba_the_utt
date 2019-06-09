@@ -44,7 +44,7 @@ public class AcceuilCenter extends JPanel {
 
     private void initComponent(){
         com.sdz.dao.DAO<Personne> profsDao = new EnseignantDAO();
-        for(int i = 1; i <= 3; i++){
+        for(int i = 1; i <= ((EnseignantDAO) profsDao).taille; i++){
             try {
                 profs.add(profsDao.Connection(i));
             } catch (SQLException e) {
@@ -66,19 +66,22 @@ public class AcceuilCenter extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i=0; i<profs.size();i++){
-                    if(nombdd.getText()=="projetjava"&&profs.get(i).getLogin()==userName.getText()&&profs.get(i).getMdp()==password.getText()){
+                    System.out.println(profs.get(i).getLogin());
+                    System.out.println(userName.getText());
+                    System.out.println(profs.get(i).getMdp());
+                    System.out.println(password.getText());
+                    if((profs.get(i).getLogin().equals(userName.getText()))&&(profs.get(i).getMdp().equals(password.getText()))){
                         succed=true;
                     }
                 }
                 if (succed){
                     System.out.println("Connexion réussi !");
                     Popup.infoBox("La connexion à la base de donnée à réussi !", "Connexion réussi !");
+                    MainFrame mainFrame = new MainFrame();
                 }else {
                     Popup.infoBox("La connexion à la base de donnée à échoué ! Vous n'avez pas pu être identifié.", "Connexion echoué !");
                     succed=false;
                 }
-                MainFrame mainFrame = new MainFrame();
-
 
             }
         });
