@@ -7,12 +7,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
 //CTRL + SHIFT + O pour générer les imports
 public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
+    public ArrayList<Integer> ID_Eleve;
 
     public EleveDAO() {
         super();
@@ -29,6 +31,12 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT COUNT(*) AS taille FROM Eleve");
             result.first();
             this.taille = result.getInt("taille");
+
+            result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Eleve");
+            while(result.next())
+                ID_Eleve.add(result.getInt("ID_Eleve"));
 
             this.connect.close();
             result.close();
