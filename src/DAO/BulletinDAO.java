@@ -26,8 +26,8 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
             this.connect = DriverManager.getConnection(urlDatabase, "root", "");
 
             Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet taille;
-            ResultSet result2;
+            ResultSet taille = null;
+            ResultSet result2 = null;
             for (int i = 1; i <= 3; i++) {
                 result.executeUpdate("INSERT INTO Bulletin (Moyenne_Trimestre, ID_Trimestre, ID_Eleve, Appreciation_Bulletin)" +
                         "VALUES (0," + i + "," + ID_Eleve + ", '')");
@@ -41,6 +41,11 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
                     ((DetailBulletinDAO) detailBulletinDAO).ajouterDetailBulletin(result2.getInt("ID_Bulletin"));
                 }
             }
+
+            this.connect.close();
+            result.close();
+            result2.close();
+            taille.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -49,15 +54,31 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
     }
 
     public void create(Bulletin obj) {
-
     }
 
     public void delete(Bulletin obj) {
 
     }
 
-    public void update(Bulletin obj) {
+    public void update(Bulletin updateBulletin) {
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
 
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+            Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result.executeUpdate("UPDATE Bulletin SET Appreciation_Bulletin = " + updateBulletin.getAppreciation_bulletin() +
+                    " WHERE ID_Bulletin = " + updateBulletin.getId_bulletin());
+
+            this.connect.close();
+            result.close();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -100,6 +121,10 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
                 com.sdz.dao.DAO<DetailBulletin> detailBulletinDAO = new DetailBulletinDAO();
                 Bulletin.getMatieres().add(detailBulletinDAO.Connection(result.getInt("ID_DetailBulletin")));
             }
+
+            this.connect.close();
+            result.close();
+            tamp.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

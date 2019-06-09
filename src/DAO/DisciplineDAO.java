@@ -44,6 +44,9 @@ public class DisciplineDAO extends com.sdz.dao.DAO<Discipline> {
                 Discipline = new Discipline(result.getInt("ID_Discipline"),
                         result.getString("Nom_Discipline")
                 );
+
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
