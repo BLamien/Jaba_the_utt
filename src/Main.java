@@ -1,5 +1,7 @@
+import DAO.DevoirDAO;
 import DAO.EleveDAO;
 import DAO.EnseignantDAO;
+import Model.Devoir;
 import Model.Personne;
 
 import java.sql.SQLException;
@@ -31,13 +33,13 @@ public class Main {
         ((EleveDAO) eleveDao3).suppressionEleve(5);*/
 
         //Test 4
-        /*com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
-        Devoir devoir = new Devoir(16, "Tres Bien");
-        ((DevoirDAO) devoirDao).ajoutDevoir(devoir, 4);*/
+        //com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
+        //Devoir devoir = new Devoir(16, "Tres Bien");
+        //((DevoirDAO) devoirDao).ajoutDevoir(devoir, 4);
 
         //Test 5
-        /*com.sdz.dao.DAO<Devoir> devoirDao2 = new DevoirDAO();
-        ((DevoirDAO) devoirDao2).suppressionDevoir(10);*/
+        com.sdz.dao.DAO<Devoir> devoirDao2 = new DevoirDAO();
+        ((DevoirDAO) devoirDao2).suppressionDevoir(17);
 
         //Test 6
         com.sdz.dao.DAO<Personne> enseignantDao = new EnseignantDAO();
