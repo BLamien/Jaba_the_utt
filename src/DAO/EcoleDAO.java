@@ -45,6 +45,9 @@ public class EcoleDAO extends com.sdz.dao.DAO<Ecole> {
                         result.getString("Nom_Ecole"),
                         result.getInt("Annee_Fondation")
                 );
+
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

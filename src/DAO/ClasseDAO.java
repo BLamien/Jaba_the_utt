@@ -60,6 +60,7 @@ public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
                         result.getString("Login"),
                         result.getString("Mdp"))
                 );
+            }
 
                 result = this.connect.createStatement(
                         ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -76,7 +77,9 @@ public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
                     com.sdz.dao.DAO<Ecole> ecoleDAO = new EcoleDAO();
                     Classe.set_ecole(ecoleDAO.Connection(result.getInt("ID_Ecole")));
                 }
-            }
+
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

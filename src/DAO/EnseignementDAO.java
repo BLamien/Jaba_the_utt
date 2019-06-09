@@ -64,6 +64,9 @@ public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
                 com.sdz.dao.DAO<Classe> classeDAO = new ClasseDAO();
                 Enseignement.set_classe(classeDAO.Connection(result.getInt("ID_Classe")));
             }
+
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

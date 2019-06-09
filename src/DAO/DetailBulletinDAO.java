@@ -33,10 +33,14 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
             ResultSet result3 = this.connect.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Enseignement WHERE ID_Classe = " + result2.getInt("ID_Classe"));
-            while(result3.next())
-            result.executeUpdate("INSERT INTO DetailBulletin (Moyenne_Enseignement, ID_Bulletin, ID_Enseignement, Appreciation_DetailBulletin)" +
-                    "VALUES (0," + ID_Bulletin + "," + result3.getInt("ID_Enseignement") + ", '')");
+            while (result3.next())
+                result.executeUpdate("INSERT INTO DetailBulletin (Moyenne_Enseignement, ID_Bulletin, ID_Enseignement, Appreciation_DetailBulletin)" +
+                        "VALUES (0," + ID_Bulletin + "," + result3.getInt("ID_Enseignement") + ", '')");
 
+            this.connect.close();
+            result.close();
+            result2.close();
+            result3.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -63,6 +67,9 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
             Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             result.executeUpdate("UPDATE DetailBulletin SET Note = " + updateDetailBulletin.getAppreciation_detailBulletin() +
                     " WHERE ID_DetailBulletin = " + updateDetailBulletin.getId_detailBulletin());
+
+            this.connect.close();
+            result.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -109,6 +116,10 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
                 com.sdz.dao.DAO<Enseignement> enseignementDAO = new EnseignementDAO();
                 DetailBulletin.set_matiere(enseignementDAO.Connection(result.getInt("ID_Enseignement")));
             }
+
+            this.connect.close();
+            result.close();
+            tamp.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

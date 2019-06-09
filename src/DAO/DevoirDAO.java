@@ -27,6 +27,8 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
             result.executeUpdate("INSERT INTO Devoir (ID_DetailBulletin, Note, Appreciation_Devoir)" +
                     "VALUES (" + ID_DetailBulletin + ", " + newDevoir.getNote() + ", '" + newDevoir.getAppreciation_evaluation() + "')");
 
+            this.connect.close();
+            result.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -44,6 +46,9 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
 
             Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             result.executeUpdate("DELETE FROM Devoir WHERE ID_Devoir = " + ID_Devoir);
+
+            this.connect.close();
+            result.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -70,8 +75,11 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
             Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             result.executeUpdate("UPDATE Devoir SET Note = " + updateDevoir.getNote() + " WHERE ID_Devoir = " + updateDevoir.getId_devoir());
 
-            Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             result.executeUpdate("UPDATE Devoir SET Appreciation_Devoir = " + updateDevoir.getAppreciation_evaluation() + " WHERE ID_Devoir = " + updateDevoir.getId_devoir());
+
+            this.connect.close();
+            result.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -98,6 +106,9 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
                         result.getInt("Note"),
                         result.getString("Appreciation_Devoir")
                 );
+
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

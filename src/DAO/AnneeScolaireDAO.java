@@ -68,6 +68,8 @@ public class AnneeScolaireDAO extends com.sdz.dao.DAO<AnneeScolaire> {
                 com.sdz.dao.DAO<Trimestre> trimestreDAO = new TrimestreDAO();
                 AnneeScolaire.setTrimestre3(trimestreDAO.Connection(result.getInt("ID_Trimestre")));
             }
+            this.connect.close();
+            result.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

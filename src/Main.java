@@ -1,4 +1,5 @@
 import DAO.EleveDAO;
+import DAO.EnseignantDAO;
 import Model.Personne;
 
 import java.sql.SQLException;
@@ -12,11 +13,11 @@ public class Main {
         //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= ((EleveDAO) eleveDao).taille; i++) {
             eleve = eleveDao.Connection(i);
             System.out.println("Elève N°" + eleve.getId_personne() + "\n- " + eleve.getType() + "\n- " + eleve.getNom() + "\n- " + eleve.getPrenom() + "\n- "
                     + eleve.getLogin() + "\n- " + eleve.getMdp());
-            System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
+            //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
 
         //Test 2
@@ -37,5 +38,14 @@ public class Main {
         //Test 5
         /*com.sdz.dao.DAO<Devoir> devoirDao2 = new DevoirDAO();
         ((DevoirDAO) devoirDao2).suppressionDevoir(10);*/
+
+        //Test 6
+        com.sdz.dao.DAO<Personne> enseignantDao = new EnseignantDAO();
+        Personne enseignant = new Personne();
+        for (int i = 1; i <= ((EnseignantDAO) enseignantDao).taille; i++) {
+            enseignant = enseignantDao.Connection(i);
+            System.out.println("Prof N°" + enseignant.getId_personne() + "\n- " + enseignant.getType() + "\n- " + enseignant.getNom() + "\n- " + enseignant.getPrenom() + "\n- "
+                    + enseignant.getLogin() + "\n- " + enseignant.getMdp());
+        }
     }
 }
