@@ -1,11 +1,11 @@
 package Model;
 /**
  * <b>classe de definition d'une classe</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 import java.util.ArrayList;
-//TODO ajouter un attribut niveau (string) et enlever la classe niveau
+
 public class Classe {
     //attribut
     private int id_classe;
@@ -60,8 +60,6 @@ public class Classe {
      * @param nom_niveau valeur a attribuer a le nom du niveau
      */
     public void setNom_niveau(String nom_niveau) {this.nom_niveau = nom_niveau;}
-
-
 
     /**
      * <b>setter annee scolaire</b>

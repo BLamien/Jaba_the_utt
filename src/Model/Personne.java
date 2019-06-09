@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton d'une personne</b>
- * @author Victor
- * @version 1.1
+ * @author Victor & Thomas
+ * @version 2.1
  */
 public class Personne {
     //attributs

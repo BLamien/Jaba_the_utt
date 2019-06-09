@@ -1,7 +1,5 @@
-import DAO.DevoirDAO;
 import DAO.EleveDAO;
 import DAO.EnseignantDAO;
-import Model.Devoir;
 import Model.Personne;
 import View.Acceuil.AccueilFrame;
 
@@ -12,7 +10,7 @@ public class Main {
 
         View.Acceuil.AccueilFrame acceuil = new AccueilFrame();
 
-/*
+
         //Test
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         Personne eleve = new Personne();
@@ -23,8 +21,6 @@ public class Main {
             //System.out.println(eleve.getBulletins().get(0).getMatieres().get(0).getNotes().get(0).getNote());
         }
 
- */
-
         //Test 2
         /*Personne eleve2 = new Personne("eleve", "Cabrel", "Francis", "FrancisCabrel", "couscous4");
         String classeeleve2 = "6emeB";
@@ -32,8 +28,8 @@ public class Main {
         ((EleveDAO) eleveDao2).ajoutEleve(eleve2, classeeleve2);*/
 
         //Test 3
-        /*com.sdz.dao.DAO<Personne> eleveDao3 = new EleveDAO();
-        ((EleveDAO) eleveDao3).suppressionEleve(5);*/
+        com.sdz.dao.DAO<Personne> eleveDao3 = new EleveDAO();
+        ((EleveDAO) eleveDao3).suppressionEleve(1);
 
         //Test 4
         //com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
@@ -41,8 +37,8 @@ public class Main {
         //((DevoirDAO) devoirDao).ajoutDevoir(devoir, 4);
 
         //Test 5
-        com.sdz.dao.DAO<Devoir> devoirDao2 = new DevoirDAO();
-        ((DevoirDAO) devoirDao2).suppressionDevoir(17);
+        //com.sdz.dao.DAO<Devoir> devoirDao2 = new DevoirDAO();
+        //((DevoirDAO) devoirDao2).suppressionDevoir(17);
 
         //Test 6
         com.sdz.dao.DAO<Personne> enseignantDao = new EnseignantDAO();
