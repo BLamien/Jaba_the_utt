@@ -56,8 +56,22 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
 
     }
 
-    public void update(Bulletin obj) {
+    public void update(Bulletin updateBulletin) {
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
 
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+            Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result.executeUpdate("UPDATE Bulletin SET Appreciation_Bulletin = " + updateBulletin.getAppreciation_bulletin() +
+                    " WHERE ID_Bulletin = " + updateBulletin.getId_bulletin());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

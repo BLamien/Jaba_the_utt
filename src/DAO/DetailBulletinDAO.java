@@ -52,8 +52,22 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
 
     }
 
-    public void update(DetailBulletin obj) {
+    public void update(DetailBulletin updateDetailBulletin) {
+        try {
+            // chargement driver "com.mysql.jdbc.Driver"
+            Class.forName("com.mysql.jdbc.Driver");
 
+            //création d'une connexion JDBC à la base
+            this.connect = DriverManager.getConnection(urlDatabase, "root", "");
+
+            Statement result = this.connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            result.executeUpdate("UPDATE DetailBulletin SET Note = " + updateDetailBulletin.getAppreciation_detailBulletin() +
+                    " WHERE ID_DetailBulletin = " + updateDetailBulletin.getId_detailBulletin());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
