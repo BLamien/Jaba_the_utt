@@ -10,11 +10,19 @@ import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO de Devoir permettant d'acceder a la table Devoir</b>
+ * @author Thomas
+ * @version 1.0
+ */
 //CTRL + SHIFT + O pour générer les imports
 public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
     public int taille;
     public ArrayList<Integer> ID_Devoir= new ArrayList<>();
 
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public DevoirDAO() {
         super();
         try {
@@ -45,6 +53,11 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         }
     }
 
+    /**
+     * <b>Methode d'ajout d'un devoir dans la table Devoir</b>
+     * @param newDevoir variable de type Devoir contenant les informations du nouveaux devoir
+     * @param ID_DetailBulletin ID du detailbulletin auquel le devoir sera lie
+     */
     public void ajoutDevoir(Devoir newDevoir, int ID_DetailBulletin) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -80,6 +93,10 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         }
     }
 
+    /**
+     * <b>Methode de suppresion d'un devoir de la table Devoir</b>
+     * @param ID_Devoir ID de devoir a supprimer dans la table Devoir
+     */
     public void suppressionDevoir(int ID_Devoir) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -119,14 +136,10 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         }
     }
 
-    public void create(Devoir obj) {
-
-    }
-
-    public void delete(Devoir obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un devoir</b>
+     * @param updateDevoir Objet de type Devoir contenant les informations a maj
+     */
     public void update(Devoir updateDevoir) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -169,6 +182,11 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
         }
     }
 
+    /**
+     * <b>Methode permettant de recuperer les informations d'un devoir dans la table et de retourner un objet de type Devoir</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type Devoir
+     */
     @Override
     public Devoir Connection(int id) {
         Devoir Devoir = new Devoir();

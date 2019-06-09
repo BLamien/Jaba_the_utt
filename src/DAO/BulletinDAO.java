@@ -11,12 +11,25 @@ import java.sql.Statement;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Bulletin permettant d'accéder a la bdd de Bulletin</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
+    /**
+     * <b>COnstructeur par defaut appellant celui de la classe mère</b>
+     */
     public BulletinDAO() {
         super();
     }
 
+    /**
+     * <b>Methode d'ajout d'un bulletin dans la bdd</b>
+     * @param ID_Eleve valeur de l'ID_Eleve a qui attribuer le bulletin
+     */
     public void ajouterBulletin(int ID_Eleve) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -53,13 +66,10 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
         }
     }
 
-    public void create(Bulletin obj) {
-    }
-
-    public void delete(Bulletin obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un bulletin</b>
+     * @param updateBulletin Bulletin contenant les information a maj
+     */
     public void update(Bulletin updateBulletin) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -81,6 +91,11 @@ public class BulletinDAO extends com.sdz.dao.DAO<Bulletin> {
         }
     }
 
+    /**
+     * <b>Methode permettant de recuperer les donnees des bulletins depuis la bdd et retourner une variable objet de type bulletin</b>
+     * @param id ID permettant de choisir depuis la bdd quel bulletin retourner
+     * @return Objet de type bulletin
+     */
     @Override
     public Bulletin Connection(int id) {
         Bulletin Bulletin = new Bulletin();

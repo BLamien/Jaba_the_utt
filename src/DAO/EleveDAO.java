@@ -11,11 +11,20 @@ import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Eleve permettant d'acceder aux informations de la table Eleve</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
     public ArrayList<Integer> ID_Eleve= new ArrayList<>();
 
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public EleveDAO() {
         super();
 
@@ -47,6 +56,11 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         }
     }
 
+    /**
+     * <b>Methode d'ajout d'un eleve dans la table Eleve</b>
+     * @param newEleve Objet contenant les informations du nouvel eleve
+     * @param classenewEleve Nom de la classe du nouvel eleve
+     */
     public void ajoutEleve(Personne newEleve, String classenewEleve) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -85,6 +99,10 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         }
     }
 
+    /**
+     * <b>Methode de suppresion d'un eleve de la table Eleve</b>
+     * @param ID_Eleve ID de l'eleve a supprimer
+     */
     public void suppressionEleve(int ID_Eleve) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -105,18 +123,19 @@ public class EleveDAO extends com.sdz.dao.DAO<Personne> {
         }
     }
 
-    public void create(Personne obj) {
-
-    }
-
-    public void delete(Personne obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un eleve</b>
+     * @param obj objet contenant les parametres  a mettre a jour
+     */
     public void update(Personne obj) {
 
     }
 
+    /**
+     * <b>Methode permettant de récupérer les informations d'un eleve et de retourner un objet de type Personne</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type Personne
+     */
     @Override
     public Personne Connection(int id) {
         Personne Personne = new Personne();

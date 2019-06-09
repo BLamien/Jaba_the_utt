@@ -11,12 +11,25 @@ import java.sql.Statement;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO DetailleBulletin permettant d'acceder a la table DetailBulletin</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public DetailBulletinDAO() {
         super();
     }
 
+    /**
+     * <b>Methode d'ajout d'un detailbulletin dans un bulletin</b>
+     * @param ID_Bulletin ID du bulletin auquel sera lie le detailbulletin
+     */
     public void ajouterDetailBulletin(int ID_Bulletin) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -48,14 +61,10 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
         }
     }
 
-    public void create(DetailBulletin obj) {
-
-    }
-
-    public void delete(DetailBulletin obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un detail bulletin</b>
+     * @param updateDetailBulletin Objet detailbulletin contenant les information a maj
+     */
     public void update(DetailBulletin updateDetailBulletin) {
         try {
             // chargement driver "com.mysql.jdbc.Driver"
@@ -77,6 +86,11 @@ public class DetailBulletinDAO extends com.sdz.dao.DAO<DetailBulletin> {
         }
     }
 
+    /**
+     * <b>Methode permettant de recuperer les informations d'un detail bulletin et de retourner un objet de type DetailBulletin</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type DetailBulletin
+     */
     @Override
     public DetailBulletin Connection(int id) {
         DetailBulletin DetailBulletin = new DetailBulletin();
