@@ -76,9 +76,9 @@ public class MainFrame extends JFrame implements ActionListener {
     private void initComponent() {
 
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
-        for(int i = 1; i <= ((EleveDAO) eleveDao).taille; i++){
+        for(int i = 0; i < ((EleveDAO) eleveDao).ID_Eleve.size(); i++){
             try {
-                personnes.add(eleveDao.Connection(i));
+                personnes.add(eleveDao.Connection(((EleveDAO) eleveDao).ID_Eleve.get(i)));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -86,9 +86,9 @@ public class MainFrame extends JFrame implements ActionListener {
         modelePersonne = new ModelTablePersonne(personnes,classes);
 
         com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
-        for(int i = 1; i <= ((DevoirDAO) devoirDao).taille; i++){
+        for(int i = 0; i < ((DevoirDAO) devoirDao).ID_Devoir.size(); i++){
             try {
-                devoirs.add(devoirDao.Connection(i));
+                devoirs.add(devoirDao.Connection(((DevoirDAO) devoirDao).ID_Devoir.get(i)));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -96,7 +96,7 @@ public class MainFrame extends JFrame implements ActionListener {
         modeleDevoir = new ModelTableDevoir(devoirs);
 
         com.sdz.dao.DAO<Ecole> ecoleDao = new EcoleDAO();
-        for(int i = 1; i <= ((EcoleDAO) ecoleDao).taille; i++){
+        for(int i = 0; i < ((EcoleDAO) ecoleDao).taille; i++){
             try {
                 ecoles.add(ecoleDao.Connection(i));
             } catch (SQLException e) {
@@ -105,7 +105,7 @@ public class MainFrame extends JFrame implements ActionListener {
         }
 
         com.sdz.dao.DAO<Classe> classeDao = new ClasseDAO();
-        for(int i = 1; i <= ((ClasseDAO) classeDao).taille; i++){
+        for(int i = 0; i < ((ClasseDAO) classeDao).taille; i++){
             try {
                 classes.add(classeDao.Connection(i));
             } catch (SQLException e) {
@@ -115,7 +115,7 @@ public class MainFrame extends JFrame implements ActionListener {
         modelClasse = new ModelTableClasse(classes,personnes,ecoles);
 
         com.sdz.dao.DAO<Enseignement> enseignementDao = new EnseignementDAO();
-        for(int i = 1; i <= ((EnseignementDAO) enseignementDao).taille; i++){
+        for(int i = 0; i < ((EnseignementDAO) enseignementDao).taille; i++){
             try {
                 enseignements.add(enseignementDao.Connection(i));
             } catch (SQLException e) {
@@ -176,10 +176,19 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     private void resetTables(){
+        personnes.clear();
+        devoirs.clear();
+        classes.clear();
+        enseignements.clear();
+        initComponent();
         tableauPersonne.removeAll();
         tableauDevoir.removeAll();
         tabDevoir.removeAll();
         tabPersonne.removeAll();
+        modelePersonne.fireTableDataChanged();
+        modelePersonne.fireTableStructureChanged();
+        modeleDevoir.fireTableDataChanged();
+        modeleDevoir.fireTableStructureChanged();
     }
 
     /**
@@ -189,6 +198,10 @@ public class MainFrame extends JFrame implements ActionListener {
         //initiation de la table Personne
         tableauPersonne = new JTable(modelePersonne);
         tabPersonne = new JScrollPane(tableauPersonne);
+        tableauDevoir = new JTable(modeleDevoir);
+        tabDevoir = new JScrollPane(tableauDevoir);
+
+
         tabPersonne.setBorder(new EmptyBorder(50,150,50,150));
         tabPersonne.setBackground(Colors.green);
         tableauPersonne.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -200,8 +213,7 @@ public class MainFrame extends JFrame implements ActionListener {
             }
         });
         //initiation de la table Devoir
-        tableauDevoir = new JTable(modeleDevoir);
-        tabDevoir = new JScrollPane(tableauDevoir);
+
         tabDevoir.setBorder(new EmptyBorder(50,150,50,150));
         tabDevoir.setBackground(Colors.green);
         tableauDevoir.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
@@ -251,12 +263,8 @@ public class MainFrame extends JFrame implements ActionListener {
                 if(actualScrollPane==tabPersonne){
                     int[] selection = tableauPersonne.getSelectedRows();
                     for(int i = selection.length - 1; i >= 0; i--){
-                        System.out.println(personnes.get(selection[i]).getId_personne());
                         new EleveDAO().suppressionEleve(personnes.get(selection[i]).getId_personne());
-                        DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
-                        dm.getDataVector().removeAllElements();
-                        dm.fireTableDataChanged();
-                        initComponent();
+                        resetTables();
                         initTables();
                         getContentPane().revalidate();
                     }
@@ -264,11 +272,8 @@ public class MainFrame extends JFrame implements ActionListener {
                 if(actualScrollPane==tabDevoir){
                     int[] selection = tableauDevoir.getSelectedRows();
                     for(int i = selection.length - 1; i >= 0; i--){
-                        new DevoirDAO().delete(devoirs.get(selection[i]));
-                        DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
-                        dm.getDataVector().removeAllElements();
-                        dm.fireTableDataChanged();
-                        initComponent();
+                        //new DevoirDAO().suppressionEleve(devoirs.get(selection[i]).getId_devoir());
+                        resetTables();
                         initTables();
                         getContentPane().revalidate();
                     }
@@ -285,21 +290,15 @@ public class MainFrame extends JFrame implements ActionListener {
         if(button.getText().equals("Ajouter")){
             if(actualScrollPane==tabPersonne){
                 AjoutPersonne ap = new AjoutPersonne(modelePersonne);
-                DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
-                dm.getDataVector().removeAllElements();
-                dm.fireTableDataChanged();
-                initComponent();
+                resetTables();
                 initTables();
-                revalidate();
+                getContentPane().revalidate();
             }
             if(actualScrollPane==tabDevoir){
-                AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
-                DefaultTableModel dm = (DefaultTableModel)tableauDevoir.getModel();
-                dm.getDataVector().removeAllElements();
-                dm.fireTableDataChanged();
-                initComponent();
+                AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+                resetTables();
                 initTables();
-                revalidate();
+                getContentPane().revalidate();
             }
             if(actualScrollPane==tabClasse){
                 //AjoutClasse ap = new AjoutClasse(modelClasse);

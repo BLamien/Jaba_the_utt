@@ -44,9 +44,9 @@ public class AcceuilCenter extends JPanel {
 
     private void initComponent(){
         com.sdz.dao.DAO<Personne> profsDao = new EnseignantDAO();
-        for(int i = 1; i <= ((EnseignantDAO) profsDao).taille; i++){
+        for(int i = 0; i < ((EnseignantDAO) profsDao).ID_Enseignant.size(); i++){
             try {
-                profs.add(profsDao.Connection(i));
+                profs.add(profsDao.Connection(((EnseignantDAO) profsDao).ID_Enseignant.get(i)));
             } catch (SQLException e) {
                 e.printStackTrace();
             }

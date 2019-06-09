@@ -13,7 +13,7 @@ import static Constants.ConstConnexion.urlDatabase;
 //CTRL + SHIFT + O pour générer les imports
 public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
     public int taille;
-    public ArrayList<Integer> ID_Devoir;
+    public ArrayList<Integer> ID_Devoir= new ArrayList<>();
 
     public DevoirDAO() {
         super();

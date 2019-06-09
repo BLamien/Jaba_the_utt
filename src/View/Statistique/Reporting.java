@@ -10,6 +10,8 @@
 
 package View.Statistique;
 
+import DAO.EleveDAO;
+import DAO.EnseignantDAO;
 import Model.Classe;
 import Model.Personne;
 import org.jfree.chart.ChartFactory;
@@ -19,6 +21,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -415,14 +418,24 @@ public class Reporting  {
     public static void graphEleveProf_ecole(ArrayList<Personne> personnes){
         ArrayList<Personne> mesProfs = new ArrayList<>();
         ArrayList<Personne> mesEleves = new ArrayList<>();
-        for(int k=0;k<personnes.size();k++){
-            if(personnes.get(k).getType()=="Eleve"){
-                mesProfs.add(personnes.get(k));
-            }else{
-                mesEleves.add(personnes.get(k));
-            }
 
+        com.sdz.dao.DAO<Personne> profsDao = new EnseignantDAO();
+        for(int i = 0; i < ((EnseignantDAO) profsDao).ID_Enseignant.size(); i++){
+            try {
+                mesProfs.add(profsDao.Connection(((EnseignantDAO) profsDao).ID_Enseignant.get(i)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
+        for(int i = 0; i < ((EleveDAO) eleveDao).ID_Eleve.size(); i++){
+            try {
+                mesEleves.add(eleveDao.Connection(((EleveDAO) eleveDao).ID_Eleve.get(i)));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(mesEleves.size(), "eleve", "el");
         dataset.addValue(mesProfs.size(), "enseignant", "ei");

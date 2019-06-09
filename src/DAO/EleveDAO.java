@@ -14,7 +14,7 @@ import static Constants.ConstConnexion.urlDatabase;
 //CTRL + SHIFT + O pour générer les imports
 public class EleveDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
-    public ArrayList<Integer> ID_Eleve;
+    public ArrayList<Integer> ID_Eleve= new ArrayList<>();
 
     public EleveDAO() {
         super();

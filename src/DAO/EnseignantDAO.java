@@ -12,7 +12,7 @@ import static Constants.ConstConnexion.urlDatabase;
 //CTRL + SHIFT + O pour générer les imports
 public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
-    public ArrayList<Integer> ID_Enseignant;
+    public ArrayList<Integer> ID_Enseignant = new ArrayList<>();
 
     public EnseignantDAO() {
         super();
