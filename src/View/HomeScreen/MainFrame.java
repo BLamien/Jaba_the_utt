@@ -13,6 +13,7 @@ import View.HomeScreen.ModelsTable.ModelTableClasse;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
 import View.HomeScreen.ModelsTable.ModelTableEnseignement;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
+import View.Popup;
 import View.Recherche.RechercheFrame;
 import View.Statistique.ChoixStats;
 import View.Statistique.StatsFrame;
@@ -59,6 +60,7 @@ public class MainFrame extends JFrame implements ActionListener {
     ArrayList<Classe> classes = new ArrayList<>();
     ArrayList<Enseignement> enseignements = new ArrayList<>();
     ArrayList<Ecole> ecoles = new ArrayList<>();
+    JButton update;
 
 
     /**
@@ -81,7 +83,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 e.printStackTrace();
             }
         }
-        modelePersonne = new ModelTablePersonne(personnes);
+        modelePersonne = new ModelTablePersonne(personnes,classes);
 
         com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
         for(int i = 1; i <= 3; i++){
@@ -154,8 +156,11 @@ public class MainFrame extends JFrame implements ActionListener {
         add.addActionListener(this);
         JButton remove = new JButton("Supprimer");
         remove.addActionListener(this);
+        update = new JButton("Update");
+        update.addActionListener(this);
         boutons.add(add);
         boutons.add(remove);
+        boutons.add(update);
         boutons.setBackground(Colors.gris);
         contentPane.add(boutons, BorderLayout.SOUTH);
 
@@ -235,11 +240,30 @@ public class MainFrame extends JFrame implements ActionListener {
         JButton button = (JButton) e.getSource();
 
         if(button.getText().equals("Supprimer")){
-            if(View.Popup.check("Etes-vous sur de vouloir supprimer cette personne ?")){
-                int[] selection = tableauPersonne.getSelectedRows();
-                for(int i = selection.length - 1; i >= 0; i--){
-                    modelePersonne.removePersonne(selection[i]);
+            if(View.Popup.check("Etes-vous sur de vouloir supprimer ?")){
+                if(actualScrollPane==tabPersonne){
+                    int[] selection = tableauPersonne.getSelectedRows();
+                    for(int i = selection.length - 1; i >= 0; i--){
+                        modelePersonne.removePersonne(selection[i]);
+                        //et on retire de la base de donnée
+                        new EleveDAO().delete(personnes.get(selection[i]));
+                    }
                 }
+                if(actualScrollPane==tabDevoir){
+                    int[] selection = tableauDevoir.getSelectedRows();
+                    for(int i = selection.length - 1; i >= 0; i--){
+                        modeleDevoir.removeDevoir(selection[i]);
+                        //et on retire de la base de donnée
+                        new DevoirDAO().delete(devoirs.get(selection[i]));
+                    }
+                }
+                if(actualScrollPane==tabClasse){
+
+                }
+                if(actualScrollPane==tabEnseignement){
+
+                }
+                getContentPane().revalidate();
             }
         }
         if(button.getText().equals("Ajouter")){
@@ -250,10 +274,31 @@ public class MainFrame extends JFrame implements ActionListener {
                 AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
             }
             if(actualScrollPane==tabClasse){
-                AjoutClasse ap = new AjoutClasse(modelClasse);
+                //AjoutClasse ap = new AjoutClasse(modelClasse);
             }
             if(actualScrollPane==tabEnseignement){
-                AjoutEnseignement ap = new AjoutEnseignement(modelEnseignement);
+                //AjoutEnseignement ap = new AjoutEnseignement(modelEnseignement);
+            }
+            getContentPane().revalidate();
+        }
+        if(button.getText().equals("Update")){
+            if(actualScrollPane==tabPersonne){
+                int selection1 = tableauPersonne.getSelectedRow();
+                int selection2 = tableauPersonne.getSelectedColumn();
+                String value = Popup.ask("Ecrivez la nouvelle valeur", "Update");
+
+                modelePersonne.update(selection1,selection2);
+            }
+            if(actualScrollPane==tabDevoir){
+                int selection = tableauDevoir.getSelectedRow();
+                int selection2 = tableauDevoir.getSelectedColumn();
+                modeleDevoir.update(selection,selection2);
+            }
+            if(actualScrollPane==tabClasse){
+
+            }
+            if(actualScrollPane==tabEnseignement){
+
             }
             getContentPane().revalidate();
         }

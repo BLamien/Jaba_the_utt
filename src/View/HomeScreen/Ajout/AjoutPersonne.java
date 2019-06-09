@@ -1,5 +1,6 @@
 package View.HomeScreen.Ajout;
 
+import DAO.EleveDAO;
 import Model.Personne;
 import View.HomeScreen.Ajout.Formulaires.FormulairePersonne;
 import View.HomeScreen.ModelsTable.ModelTablePersonne;
@@ -46,6 +47,7 @@ public class AjoutPersonne extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modele.addPersonne(new Personne((String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()));
+                new EleveDAO().ajoutEleve(new Personne((String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()),form.getListClasses().getSelectedValue());
                 setVisible(false); //you can't see me!
                 dispose();
             }
