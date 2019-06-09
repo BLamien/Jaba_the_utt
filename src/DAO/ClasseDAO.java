@@ -11,10 +11,19 @@ import java.sql.SQLException;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Classe permettant d'acceder a la bdd de Classe</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
     public int taille;
 
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public ClasseDAO() {
         super();
         try {
@@ -39,18 +48,20 @@ public class ClasseDAO extends com.sdz.dao.DAO<Classe> {
         }
     }
 
-    public void create(Classe obj) {
-
-    }
-
-    public void delete(Classe obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj de classe</b>
+     * @param obj objet class contenant les information a maj
+     */
     public void update(Classe obj) {
 
     }
 
+    /**
+     * <b>Methode permettant de recuperer les donnees de la bdd Classe et de retourner un objet de type Classe</b>
+     * @param id ID permettant de selectionner dans la table la classe voulue
+     * @return objet de type Classe
+     * @throws SQLException exception
+     */
     @Override
     public Classe Connection(int id) throws SQLException {
         Classe Classe = new Classe();

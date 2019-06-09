@@ -11,10 +11,19 @@ import java.sql.SQLException;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Enseignement permettant d'acceder aux informations de la table Enseignement</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
     public int taille;
 
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public EnseignementDAO() {
         super();
         try {
@@ -39,18 +48,19 @@ public class EnseignementDAO extends com.sdz.dao.DAO<Enseignement> {
         }
     }
 
-    public void create(Enseignement obj) {
-
-    }
-
-    public void delete(Enseignement obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un Enseignement</b>
+     * @param obj objet contenant les parametres  a mettre a jour
+     */
     public void update(Enseignement obj) {
 
     }
 
+    /**
+     * <b>Methode permettant de recuperer les informations d'un enseignement et de retourner un objet de type Enseignement</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type Enseignement
+     */
     @Override
     public Enseignement Connection(int id) {
         Enseignement Enseignement = new Enseignement();

@@ -8,24 +8,34 @@ import java.sql.SQLException;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Trimestre permettant d'acceder aux informations de la table Trimestre</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class TrimestreDAO extends com.sdz.dao.DAO<Trimestre> {
+    /**
+     * <b>Constructeur par defaut</b>
+     */
     public TrimestreDAO() {
         super();
     }
 
-    public void create(Trimestre obj) {
-
-    }
-
-    public void delete(Trimestre obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un Trimestre</b>
+     * @param obj objet contenant les parametres  a mettre a jour
+     */
     public void update(Trimestre obj) {
 
     }
 
+    /**
+     * <b>Methode permettant de recuperer les informations d'un trimestre et de retourner un objet de type Trimestre</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type Trimestre
+     */
     @Override
     public Trimestre Connection(int id) {
         Trimestre Trimestre = new Trimestre();

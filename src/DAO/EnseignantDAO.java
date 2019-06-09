@@ -9,11 +9,20 @@ import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
+/**
+ * <b>DAO Enseignant permettant d'acceder aux informations de la table Enseignant</b>
+ * @author Thomas
+ * @version 1.0
+ */
+
 //CTRL + SHIFT + O pour générer les imports
 public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
     public ArrayList<Integer> ID_Enseignant;
 
+    /**
+     * <b>Contructeur par defaut</b>
+     */
     public EnseignantDAO() {
         super();
 
@@ -45,19 +54,19 @@ public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
         }
     }
 
-    public void create(Personne obj) {
-
-
-    }
-
-    public void delete(Personne obj) {
-
-    }
-
+    /**
+     * <b>Methode de maj d'un enseignant</b>
+     * @param obj objet contenant les parametres  a mettre a jour
+     */
     public void update(Personne obj) {
 
     }
 
+    /**
+     * <b>Methode permettant de recuperer les informations d'un enseignant et de retourner un objet de type Personne</b>
+     * @param id ID permettant de selectionner l'item souhaite dans la table
+     * @return objet de type Personne
+     */
     @Override
     public Personne Connection(int id) {
         Personne Personne = new Personne();

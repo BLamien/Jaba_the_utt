@@ -28,8 +28,8 @@ public class Main {
         ((EleveDAO) eleveDao2).ajoutEleve(eleve2, classeeleve2);*/
 
         //Test 3
-        com.sdz.dao.DAO<Personne> eleveDao3 = new EleveDAO();
-        ((EleveDAO) eleveDao3).suppressionEleve(1);
+        //com.sdz.dao.DAO<Personne> eleveDao3 = new EleveDAO();
+        //((EleveDAO) eleveDao3).suppressionEleve(1);
 
         //Test 4
         //com.sdz.dao.DAO<Devoir> devoirDao = new DevoirDAO();
