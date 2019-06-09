@@ -2,7 +2,11 @@ package View.Acceuil;
 //TODO : JavaDoc
 import Constants.Colors;
 import Controller.Connexion;
+import DAO.EleveDAO;
+import DAO.EnseignantDAO;
+import Model.Personne;
 import View.HomeScreen.MainFrame;
+import View.HomeScreen.ModelsTable.ModelTablePersonne;
 import View.ImagePanel;
 import View.Popup;
 
@@ -12,6 +16,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * <b>Jpanel de la partie central de la fenetre d'acceuil</b>
@@ -25,12 +30,27 @@ public class AcceuilCenter extends JPanel {
     JTextField nombdd;
     JTextField userName;
     JPasswordField password;
+    ArrayList<Personne> profs = new ArrayList<>();
+    Boolean succed=false;
+
 
     /**
      * <b>Constructeur par defaut</b>
      */
     public AcceuilCenter() {
+        initComponent();
         init();
+    }
+
+    private void initComponent(){
+        com.sdz.dao.DAO<Personne> profsDao = new EnseignantDAO();
+        for(int i = 1; i <= ((EnseignantDAO) profsDao).taille; i++){
+            try {
+                profs.add(profsDao.Connection(i));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -45,18 +65,24 @@ public class AcceuilCenter extends JPanel {
         connexion = new JButton("Connection");connexion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Connexion test = new Connexion(nombdd.getText(), userName.getText(), password.getText());
+                for (int i=0; i<profs.size();i++){
+                    System.out.println(profs.get(i).getLogin());
+                    System.out.println(userName.getText());
+                    System.out.println(profs.get(i).getMdp());
+                    System.out.println(password.getText());
+                    if((profs.get(i).getLogin().equals(userName.getText()))&&(profs.get(i).getMdp().equals(password.getText()))){
+                        succed=true;
+                    }
+                }
+                if (succed){
                     System.out.println("Connexion réussi !");
                     Popup.infoBox("La connexion à la base de donnée à réussi !", "Connexion réussi !");
-                } catch (SQLException u) {
-                    Popup.infoBox("La connexion à la base de donnée à échoué !", "Connexion raté !");
-                    u.printStackTrace();
-                } catch (ClassNotFoundException u) {
-                    Popup.infoBox("La connexion à la base de donnée à échoué !", "Connexion raté !");
-                    u.printStackTrace();
+                    MainFrame mainFrame = new MainFrame();
+                }else {
+                    Popup.infoBox("La connexion à la base de donnée à échoué ! Vous n'avez pas pu être identifié.", "Connexion echoué !");
+                    succed=false;
                 }
-                MainFrame mainFrame = new MainFrame();
+
             }
         });
 

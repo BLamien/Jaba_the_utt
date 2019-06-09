@@ -1,5 +1,6 @@
 package View.HomeScreen.ModelsTable;
 //TODO : JavaDoc
+import Model.Classe;
 import Model.Personne;
 
 import javax.swing.table.AbstractTableModel;
@@ -12,15 +13,17 @@ import java.util.ArrayList;
  */
 public class ModelTablePersonne extends AbstractTableModel {
     private ArrayList<Personne> personnes;
+    private ArrayList<Classe> classes;
 
     private String[] entetes = {"ID", "type", "Nom", "Prenom", "login", "password"};
 
     /**
      * <b>Constructeur du modèle de JTable</b>
      */
-    public ModelTablePersonne(ArrayList<Personne> personnes_) {
+    public ModelTablePersonne(ArrayList<Personne> personnes_, ArrayList<Classe> classes_) {
         super();
         personnes=personnes_;
+        classes=classes_;
     }
 
     /**
@@ -90,5 +93,14 @@ public class ModelTablePersonne extends AbstractTableModel {
         personnes.remove(rowIndex);
 
         fireTableRowsDeleted(rowIndex, rowIndex);
+    }
+
+    public ArrayList<Classe> getClasses() {
+        return classes;
+    }
+
+    public void update(int rowIndex1, int rowIndex2) {
+        fireTableCellUpdated(rowIndex1, rowIndex2);
+
     }
 }

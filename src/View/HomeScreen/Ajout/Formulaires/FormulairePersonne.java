@@ -21,6 +21,8 @@ public class FormulairePersonne extends JPanel {
     JTextField userName;
     JPasswordField password;
     ModelTablePersonne modele;
+    JList<String> listClasses = new JList<>();
+
 
     /**
      * Constructeur
@@ -55,11 +57,20 @@ public class FormulairePersonne extends JPanel {
         JLabel prenomStringLabel = new JLabel("Prenom : ");
         JLabel usernameStringLabel = new JLabel("Nom d'utilisateur : ");
         JLabel mdpStringLabel = new JLabel("Mot de passe : ");
+        JLabel listClassesStringLabel = new JLabel("Choix de la classe : ");
         typesrtringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         nomStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         prenomStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         usernameStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         mdpStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+        listClassesStringLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+
+        DefaultListModel<String> l1 = new DefaultListModel<>();
+        for (int i=0;i<modele.getClasses().size();i++){
+            l1.addElement(modele.getClasses().get(i).getNom_niveau());
+        };
+        listClasses = new JList<>(l1);
+        listClasses.setBounds(100,100, 75,75);
 
         // Layout
         GridBagLayout layout = new GridBagLayout();
@@ -98,9 +109,15 @@ public class FormulairePersonne extends JPanel {
         this.add(mdpStringLabel, constraints);
         constraints.gridx = 1;
         constraints.gridy = 4;
-        this.add(password, constraints);
+        this.add(userName, constraints);
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        this.add(listClassesStringLabel, constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        this.add(listClasses, constraints);
         constraints.gridx=0;
-        constraints.gridy=5;
+        constraints.gridy=6;
         constraints.gridwidth=2;
         this.add(valider, constraints);
 
@@ -115,7 +132,6 @@ public class FormulairePersonne extends JPanel {
     public JButton getValider() {
         return valider;
     }
-
     /**
      * Getteur du JComboBox qui recupère le type
      * @return le JComboBox
@@ -151,5 +167,11 @@ public class FormulairePersonne extends JPanel {
     public JPasswordField getPassword() {
         return password;
     }
-
+    /**
+     * Getteur du JComboBox qui récupère la classe
+     * @return le JcomBox qui définie la classe de l'élève
+     */
+    public JList<String> getListClasses() {
+        return listClasses;
+    }
 }

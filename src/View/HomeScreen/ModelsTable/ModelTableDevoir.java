@@ -3,8 +3,11 @@ package View.HomeScreen.ModelsTable;
 import Model.Devoir;
 import Model.Personne;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import View.Popup;
+
 
 /**
  * <b>Model de table pour l'affichage des informations sur la fenetre principale</b>
@@ -85,5 +88,11 @@ public class ModelTableDevoir extends AbstractTableModel {
         devoir.remove(rowIndex);
 
         fireTableRowsDeleted(rowIndex, rowIndex);
+    }
+
+    public void update(int rowIndex1, int rowIndex2) {
+        String value = Popup.ask("Ecrivez la nouvelle valeur", "Update");
+        setValueAt(value,rowIndex1,rowIndex2);
+        fireTableCellUpdated(rowIndex1,rowIndex2);
     }
 }
