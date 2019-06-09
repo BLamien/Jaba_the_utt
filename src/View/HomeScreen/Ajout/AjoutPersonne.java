@@ -46,7 +46,6 @@ public class AjoutPersonne extends JFrame {
         form.getValider().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                modele.addPersonne(new Personne((String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()));
                 new EleveDAO().ajoutEleve(new Personne((String) form.getType().getItemAt(form.getType().getSelectedIndex()), form.getNom().getText(), form.getPrenom().getText(),form.getUserName().getText(), form.getPassword().getText()),form.getListClasses().getSelectedValue());
                 setVisible(false); //you can't see me!
                 dispose();

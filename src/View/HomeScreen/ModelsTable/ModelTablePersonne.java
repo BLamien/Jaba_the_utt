@@ -3,7 +3,9 @@ package View.HomeScreen.ModelsTable;
 import Model.Classe;
 import Model.Personne;
 
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 /**
@@ -94,6 +96,7 @@ public class ModelTablePersonne extends AbstractTableModel {
 
         fireTableRowsDeleted(rowIndex, rowIndex);
     }
+
 
     public ArrayList<Classe> getClasses() {
         return classes;

@@ -22,6 +22,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,7 +74,6 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     private void initComponent() {
-
 
         com.sdz.dao.DAO<Personne> eleveDao = new EleveDAO();
         for(int i = 1; i <= ((EleveDAO) eleveDao).taille; i++){
@@ -175,6 +175,13 @@ public class MainFrame extends JFrame implements ActionListener {
         setTitle("JABA");
     }
 
+    private void resetTables(){
+        tableauPersonne.removeAll();
+        tableauDevoir.removeAll();
+        tabDevoir.removeAll();
+        tabPersonne.removeAll();
+    }
+
     /**
      * <b>Methode qui intialise les modeles de tables</b>
      */
@@ -244,17 +251,26 @@ public class MainFrame extends JFrame implements ActionListener {
                 if(actualScrollPane==tabPersonne){
                     int[] selection = tableauPersonne.getSelectedRows();
                     for(int i = selection.length - 1; i >= 0; i--){
-                        modelePersonne.removePersonne(selection[i]);
-                        //et on retire de la base de donnée
-                        new EleveDAO().delete(personnes.get(selection[i]));
+                        System.out.println(personnes.get(selection[i]).getId_personne());
+                        new EleveDAO().suppressionEleve(personnes.get(selection[i]).getId_personne());
+                        DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
+                        dm.getDataVector().removeAllElements();
+                        dm.fireTableDataChanged();
+                        initComponent();
+                        initTables();
+                        getContentPane().revalidate();
                     }
                 }
                 if(actualScrollPane==tabDevoir){
                     int[] selection = tableauDevoir.getSelectedRows();
                     for(int i = selection.length - 1; i >= 0; i--){
-                        modeleDevoir.removeDevoir(selection[i]);
-                        //et on retire de la base de donnée
                         new DevoirDAO().delete(devoirs.get(selection[i]));
+                        DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
+                        dm.getDataVector().removeAllElements();
+                        dm.fireTableDataChanged();
+                        initComponent();
+                        initTables();
+                        getContentPane().revalidate();
                     }
                 }
                 if(actualScrollPane==tabClasse){
@@ -269,9 +285,21 @@ public class MainFrame extends JFrame implements ActionListener {
         if(button.getText().equals("Ajouter")){
             if(actualScrollPane==tabPersonne){
                 AjoutPersonne ap = new AjoutPersonne(modelePersonne);
+                DefaultTableModel dm = (DefaultTableModel)tableauPersonne.getModel();
+                dm.getDataVector().removeAllElements();
+                dm.fireTableDataChanged();
+                initComponent();
+                initTables();
+                revalidate();
             }
             if(actualScrollPane==tabDevoir){
                 AjoutDevoir ap = new AjoutDevoir(modeleDevoir);
+                DefaultTableModel dm = (DefaultTableModel)tableauDevoir.getModel();
+                dm.getDataVector().removeAllElements();
+                dm.fireTableDataChanged();
+                initComponent();
+                initTables();
+                revalidate();
             }
             if(actualScrollPane==tabClasse){
                 //AjoutClasse ap = new AjoutClasse(modelClasse);

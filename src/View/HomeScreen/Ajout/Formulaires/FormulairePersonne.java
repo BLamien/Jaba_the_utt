@@ -109,7 +109,7 @@ public class FormulairePersonne extends JPanel {
         this.add(mdpStringLabel, constraints);
         constraints.gridx = 1;
         constraints.gridy = 4;
-        this.add(userName, constraints);
+        this.add(password, constraints);
         constraints.gridx = 0;
         constraints.gridy = 5;
         this.add(listClassesStringLabel, constraints);
