@@ -4,8 +4,8 @@ import java.util.Date;
 
 /**
  * <b>classe de definiton d'un trimestre</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 public class Trimestre {
     //attribut

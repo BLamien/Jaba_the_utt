@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton du detail du bulletin</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 public class DetailBulletin {
     //attributs

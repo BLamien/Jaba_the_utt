@@ -1,11 +1,12 @@
 package Model;
 /**
  * <b>classe de definiton d'une annee scolaire</b>
- * @author Victor
- * @version 1.0
+ * @author Thomas & Victor
+ * @version 2.0
  */
 public class AnneeScolaire {
     //attribut
+
     private int id_anneescolaire;
     private Trimestre trimestre1;
     private Trimestre trimestre2;

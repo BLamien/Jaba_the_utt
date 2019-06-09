@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton d'un bulletin</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 public class Bulletin {
     //attribut

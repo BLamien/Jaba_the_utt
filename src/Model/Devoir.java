@@ -1,8 +1,8 @@
 package Model;
 /**
  * <b>classe de definiton d'un devoir</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 public class Devoir {
     //attribut

@@ -6,12 +6,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
 //CTRL + SHIFT + O pour générer les imports
 public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
     public int taille;
+    public ArrayList<Integer> ID_Devoir;
 
     public DevoirDAO() {
         super();
@@ -27,6 +29,12 @@ public class DevoirDAO extends com.sdz.dao.DAO<Devoir> {
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT COUNT(*) AS taille FROM Devoir");
             result.first();
             this.taille = result.getInt("taille");
+
+            result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Devoir");
+            while(result.next())
+                ID_Devoir.add(result.getInt("ID_Devoir"));
 
             this.connect.close();
             result.close();

@@ -5,12 +5,14 @@ import Model.Personne;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static Constants.ConstConnexion.urlDatabase;
 
 //CTRL + SHIFT + O pour générer les imports
 public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
     public int taille;
+    public ArrayList<Integer> ID_Enseignant;
 
     public EnseignantDAO() {
         super();
@@ -27,6 +29,12 @@ public class EnseignantDAO extends com.sdz.dao.DAO<Personne> {
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT COUNT(*) AS taille FROM Enseignant");
             result.first();
             this.taille = result.getInt("taille");
+
+            result = this.connect.createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Enseignant");
+            while(result.next())
+                ID_Enseignant.add(result.getInt("ID_Enseignant"));
 
             this.connect.close();
             result.close();

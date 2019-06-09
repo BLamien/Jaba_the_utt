@@ -1,8 +1,8 @@
 package Model;
 /**
  * <b>classe de definiton d'un d'une ecole</b>
- * @author Victor
- * @version 1.0
+ * @author Victor & Thomas
+ * @version 2.0
  */
 public class Ecole {
     //attribut
