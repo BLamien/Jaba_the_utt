@@ -32,6 +32,15 @@ public class RechercheFrame extends JFrame {
                 personnesTree.getLastLeaf().add(treeBulletinPersonne.get(j));
             }
         }
+        ArrayList<DefaultMutableTreeNode> treeClasses = new ArrayList<>();
+        for(int i=0;i<mesClasses.size();i++){
+            treeClasses.add(new DefaultMutableTreeNode(mesClasses.get(i).getNom_niveau()));
+            treeClasses.get(i).add(new DefaultMutableTreeNode(mesClasses.get(i).get_anneescolaire()));
+            treeClasses.get(i).add(new DefaultMutableTreeNode(mesClasses.get(i).get_ecole()));
+            treeClasses.get(i).add(new DefaultMutableTreeNode(mesClasses.get(i).get_effectif()));
+            treeClasses.get(i).add(new DefaultMutableTreeNode(mesClasses.get(i).getId_classe()));
+            classesTree.add(treeClasses.get(i));
+        }
         JTree jt=new JTree(BDD);
 
         jt.setBackground(Colors.green);
