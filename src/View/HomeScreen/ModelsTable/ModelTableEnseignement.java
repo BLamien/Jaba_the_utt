@@ -1,7 +1,6 @@
 package View.HomeScreen.ModelsTable;
 //TODO : JavaDoc
 import Model.Enseignement;
-import Model.Personne;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ public class ModelTableEnseignement extends AbstractTableModel {
 
     /**
      * <b>Constructeur du modèle de JTable</b>
+     * @param  enseignements_ arraylist d'enseignement
      */
     public ModelTableEnseignement(ArrayList<Enseignement> enseignements_) {
         super();

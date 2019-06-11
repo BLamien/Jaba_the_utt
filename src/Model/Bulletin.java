@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton d'un bulletin</b>
- * @author Victor & Thomas
+ * @author Victor
  * @version 2.0
  */
 public class Bulletin {

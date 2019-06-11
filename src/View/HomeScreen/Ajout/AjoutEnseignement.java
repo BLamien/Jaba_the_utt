@@ -1,16 +1,16 @@
 package View.HomeScreen.Ajout;
 
-import Model.*;
-import View.HomeScreen.Ajout.Formulaires.FormulaireClasse;
+import Model.Classe;
+import Model.Discipline;
+import Model.Enseignement;
+import Model.Personne;
 import View.HomeScreen.Ajout.Formulaires.FormulaireEnseignement;
-import View.HomeScreen.ModelsTable.ModelTableClasse;
 import View.HomeScreen.ModelsTable.ModelTableEnseignement;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  * <b>Jframe de la fenetre de saisie de nouvelles classes</b>
@@ -27,7 +27,7 @@ public class AjoutEnseignement extends JFrame {
     /**
      * <b>Constructeur</b>
      * @param m modele de la table pour l'ajouter
-     * @throws HeadlessException
+     * @throws HeadlessException exception
      */
     public AjoutEnseignement(ModelTableEnseignement m) throws HeadlessException {
         modele = m;

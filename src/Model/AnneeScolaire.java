@@ -1,7 +1,7 @@
 package Model;
 /**
  * <b>classe de definiton d'une annee scolaire</b>
- * @author Thomas & Victor
+ * @author Thomas
  * @version 2.0
  */
 public class AnneeScolaire {

@@ -21,8 +21,6 @@ public class BulletinFrame extends JFrame {
     String dateDebutBulletin = "12/09/2019";
     String dateFinBulletin = "23/12/2019";
 
-    //Il s'agirat d'une Arraylist de <DetailBulletin>
-    //Contient : moyenne trimestrielle pour cet enseignement (calculée) et appréciation
     ArrayList<String> detailsBulletin = new ArrayList<>();
 
     ArrayList<Bulletin> bulletins = new ArrayList<>();

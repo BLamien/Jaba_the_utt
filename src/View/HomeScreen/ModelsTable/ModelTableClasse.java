@@ -21,6 +21,9 @@ public class ModelTableClasse extends AbstractTableModel {
 
     /**
      * <b>Constructeur du modèle de JTable</b>
+     * @param classes_ arraylist de classes
+     * @param personnes_ arraylist de personnes
+     * @param  ecoles_ arraylist d'ecole
      */
     public ModelTableClasse(ArrayList<Classe> classes_, ArrayList<Personne> personnes_, ArrayList<Ecole> ecoles_) {
         super();

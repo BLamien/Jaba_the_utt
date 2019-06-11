@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton d'une personne</b>
- * @author Victor & Thomas
+ * @author Victor
  * @version 2.1
  */
 public class Personne {
@@ -39,6 +39,7 @@ public class Personne {
      * @param prenom_ valaur a attribuer au prenom
      * @param login_ valaur a attribuer au login
      * @param mdp_ valaur a attribuer au mot de passe
+     * @param bulletins_ arraylist de bulletin
      */
     public Personne(int id_personne_,String type_ ,String nom_, String prenom_ ,String login_, String mdp_, ArrayList<Bulletin> bulletins_){
         id_personne=id_personne_;
@@ -56,6 +57,7 @@ public class Personne {
      * @param prenom_ valaur a attribuer au prenom
      * @param login_ valaur a attribuer au login
      * @param mdp_ valaur a attribuer au mot de passe
+     * @param id_personne_ valeur a attribuer a l'id_personne
      */
     public Personne(int id_personne_,String type_ ,String nom_, String prenom_ ,String login_, String mdp_){
         id_personne=id_personne_;

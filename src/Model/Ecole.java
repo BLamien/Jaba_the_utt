@@ -1,7 +1,7 @@
 package Model;
 /**
  * <b>classe de definiton d'un d'une ecole</b>
- * @author Victor & Thomas
+ * @author Victor
  * @version 2.0
  */
 public class Ecole {

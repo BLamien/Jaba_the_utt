@@ -1,12 +1,10 @@
 package View.HomeScreen.ModelsTable;
 //TODO : JavaDoc
 import Model.Devoir;
-import Model.Personne;
+import View.Popup;
 
-import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
-import View.Popup;
 
 
 /**
@@ -21,6 +19,7 @@ public class ModelTableDevoir extends AbstractTableModel {
 
     /**
      * <b>Constructeur du modèle de JTable</b>
+     * @param devoir_ arraylist de devoir
      */
     public ModelTableDevoir(ArrayList<Devoir> devoir_) {
         super();

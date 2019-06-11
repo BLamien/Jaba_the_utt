@@ -30,7 +30,9 @@ public class formBulletin extends JPanel {
 
 
     /**
-     * Constructeur
+     * Constructeur surcharge
+     * @param personneSelect valeur attribuer a personne
+     * @param numBulletin_ valeur attribuer a numBulletin
      */
     public formBulletin(Personne personneSelect, int numBulletin_) {
         numBulletin=numBulletin_;
@@ -152,6 +154,7 @@ public class formBulletin extends JPanel {
     }
     /**
      * Setteur du Jtextfield qui recupère l'ID
+     * @param appreciationMatiere nouvelle valeur appreciationmMatiere
      */
     public void setAppreciationMatiere(JTextField appreciationMatiere) {
         this.appreciationMatiere = appreciationMatiere;

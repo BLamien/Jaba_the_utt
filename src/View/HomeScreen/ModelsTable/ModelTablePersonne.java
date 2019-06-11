@@ -3,9 +3,7 @@ package View.HomeScreen.ModelsTable;
 import Model.Classe;
 import Model.Personne;
 
-import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +19,8 @@ public class ModelTablePersonne extends AbstractTableModel {
 
     /**
      * <b>Constructeur du modèle de JTable</b>
+     * @param personnes_ arraylist de personnes
+     * @param classes_ arraylist de classes
      */
     public ModelTablePersonne(ArrayList<Personne> personnes_, ArrayList<Classe> classes_) {
         super();

@@ -27,7 +27,8 @@ public class AjoutPersonne extends JFrame {
     /**
      * <b>Constructeur</b>
      * @param m modele de la table pour l'ajouter
-     * @throws HeadlessException
+     * @param main valeur attribuer a mainFrame
+     * @throws HeadlessException exception
      */
     public AjoutPersonne(ModelTablePersonne m, MainFrame main) throws HeadlessException {
         modele = m;

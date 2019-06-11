@@ -27,6 +27,7 @@ public abstract class DAO<T> {
      * Méthode de recherche des informations et de connexion
      * @param id ID permettant de selectionner l'item souhaite dans la table
      * @return T objet de type T
+     * @throws SQLException exception
      */
     public abstract T Connection(int id) throws SQLException;
 }

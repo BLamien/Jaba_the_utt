@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * <b>classe de definiton du detail du bulletin</b>
- * @author Victor & Thomas
+ * @author Victor
  * @version 2.0
  */
 public class DetailBulletin {
@@ -111,6 +111,7 @@ public class DetailBulletin {
      * <b>constructeur surcharge sans les objets ni arraylist</b>
      * @param id_detailBulletin_ valeur a attribuer a l'id bulletin
      * @param appreciation_detailBulletin_ valeur a attribuer a l'apprecation
+     * @param moyenne_matiere_ valeur a attribuer a la moyenne de la matiere
      */
     public DetailBulletin(int id_detailBulletin_, float moyenne_matiere_, String appreciation_detailBulletin_){
         id_detailBulletin=id_detailBulletin_;

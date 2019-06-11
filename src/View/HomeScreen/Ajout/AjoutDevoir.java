@@ -3,15 +3,14 @@ package View.HomeScreen.Ajout;
 import DAO.DevoirDAO;
 import Model.Devoir;
 import View.HomeScreen.Ajout.Formulaires.FormulaireDevoir;
-import View.HomeScreen.Ajout.Formulaires.FormulairePersonne;
 import View.HomeScreen.MainFrame;
 import View.HomeScreen.ModelsTable.ModelTableDevoir;
+import View.Popup;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import View.Popup;
 
 /**
  * <b>Jframe de la fenetre de saisie de nouveaux devoirs</b>
@@ -29,7 +28,8 @@ public class AjoutDevoir extends JFrame {
     /**
      * <b>Constructeur</b>
      * @param m modele de la table pour l'ajouter
-     * @throws HeadlessException
+     * @param main valeur attribuer a mainFrame
+     * @throws HeadlessException exception
      */
     public AjoutDevoir(ModelTableDevoir m, MainFrame main) throws HeadlessException {
         modele = m;

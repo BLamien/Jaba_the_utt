@@ -1,0 +1,15 @@
+unnamed package
+com.sdz.dao
+Constants
+Controller
+DAO
+Model
+View
+View.Acceuil
+View.Bulletin
+View.HomeScreen
+View.HomeScreen.Ajout
+View.HomeScreen.Ajout.Formulaires
+View.HomeScreen.ModelsTable
+View.Recherche
+View.Statistique

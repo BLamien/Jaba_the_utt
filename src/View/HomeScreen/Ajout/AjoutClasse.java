@@ -27,7 +27,7 @@ public class AjoutClasse extends JFrame {
     /**
      * <b>Constructeur</b>
      * @param m modele de la table pour l'ajouter
-     * @throws HeadlessException
+     * @throws HeadlessException exception
      */
     public AjoutClasse(ModelTableClasse m) throws HeadlessException {
         modele = m;

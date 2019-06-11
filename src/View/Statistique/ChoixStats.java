@@ -26,6 +26,8 @@ public class ChoixStats extends JPanel implements ActionListener {
 
     /**
      * <b>Constructeur par defaut</b>
+     * @param  mesClasses_ arraylist de classes
+     * @param  personne_ arraylist de personnes
      */
     public ChoixStats(ArrayList<Classe> mesClasses_,ArrayList<Personne> personne_) {
         mesClasses=mesClasses_;

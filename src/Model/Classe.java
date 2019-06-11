@@ -1,7 +1,7 @@
 package Model;
 /**
  * <b>classe de definition d'une classe</b>
- * @author Victor & Thomas
+ * @author Victor
  * @version 2.0
  */
 import java.util.ArrayList;
